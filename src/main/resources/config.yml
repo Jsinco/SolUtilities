@@ -1,0 +1,469 @@
+# prefix: '&#7ad563&lI&#89e373&ln&#99f182&lf&#a8ff92&lo &r&7➜&#E2E2E2 '
+prefix: '&#f7903b&lI&#f7a93b&ln&#f8c23a&lf&#f8db3a&lo &r&8»&#E2E2E2 '
+ServerName: 'SolaceMC Towny'
+
+# interval in seconds && %prefix% when setting to true you must restart the server to take effect
+Announcer:
+  enabled: true
+  interval: 1800
+  messages:
+    - '%prefix%Join our [/discord] to stay up to date with announcements and changes!'
+    - '%prefix%Want access to more commands and perks? [/ranks]!'
+    - '%prefix%Check out our [/socials]!'
+    - '%prefix%Earn money from working [/jobs] or selling items!'
+    - '%prefix%Need some extra help? Don''t be afraid to ask in chat or check out our [/wiki]!'
+    - '%prefix%Got some extra items? Check out [/hoarder] and earn some prizes!'
+    - '%prefix%Use emojis in chat with [/emoji] or like this :emoji: '
+    - '%prefix%Want to see all the item wraps? Head over to [/wraps] and have a look around!'
+    - '%prefix%Found a bug or want to make a suggestion? Join our [/discord] and make a ticket or a #suggestion!'
+    - '%prefix%Need help? Make a ticket in our discord or message an online staff member! We''re happy to help! :hug:'
+    - '%prefix%Use [/rtp] to get to the resource worlds and gather materials!'
+    - '%prefix%Want to get some cool cosmetics like wraps and particles? Check out our [/store]!'
+    - '%prefix%Make sure to read our [/rules] so we can all play fairly!'
+    - '%prefix%Wanna get some cool custom gear and items? Stick around for our seasonal events or check out [/celestial]!'
+    - '%prefix%Got friends? Refer them and get rewarded! [/refer]'
+    - '%prefix%Confused about a custom item or want to see stats on certain custom items? Visit Aries or use [/profiler]!'
+  donation-message: '&#f76a3b&lS&#f7863b&lt&#f8a33b&lo&#f8bf3a&lr&#f8db3a&le &8» <GRADIENT:FFAA00>&l%player%</GRADIENT:FDD394> &#E2E2E2has just purchased a %package%&#E2E2E2! Thank you for supporting &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&la&#f8ab3a&lc&#f8bb3a&le&#f8cb3a&lM&#f8db3a&lC&r&f!'
+  donation-sound: 'UI_TOAST_CHALLENGE_COMPLETE'
+
+#NetherRoof
+NetherRoof:
+  dispatchCommand: 'spawn'
+  message: 'Players are not allowed on the Nether roof!'
+  sound: 'BLOCK_ANVIL_PLACE'
+
+# /healall
+Healall:
+  cooldown: 1200
+  message: '%prefix%&#a8ff92%sender% &#E2E2E2has healed everyone! '
+
+#Placeholder %player% can be used to replace with player name
+#Placeholder %joins% can be used to replace with total unique player joins. (Only for FirstJoin message)
+#I recommend using https://rgb.birdflop.com/ for RGB gradient colors
+#Sounds, Use ALL, PLAYER, or leave blank for none. All sound types can be found here https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+#Players with /joinsounds toggled will not hear sounds.
+Sounds: ALL
+# Unused
+Volume: 1
+Pitch: 1
+JoinSound: BLOCK_AMETHYST_BLOCK_HIT
+#Quit sounds are optional, leave blank for none. Leave sounds will play for ALL no matter what the Sounds option is set to. (You can't play a sound to an offline player!)
+QuitSound: BLOCK_AMETHYST_CLUSTER_BREAK
+
+#Particles, Leave blank for none. All particle types can be found here https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+ParticleType: GLOW
+ParticleAmount: 0
+
+UseTitle?: false
+#Max is 2 lines
+TitleMsg:
+  - "&#d6eff6Welcome back"
+  - "&#d6eff6%player%"
+#How long the title stays. Remember that 20 ticks = 1 second
+Stays: 60
+FadeIn: 2
+FadeOut: 3
+
+#Message sent above player hotbar the 'ActionBar', RGB not supported but normal color codes will work
+UseActionBar?: true
+JoinBarMsg: "&aWelcome back %player%!"
+
+#The message sent when a player joins for the first time. A new line = a new line in game
+UseFirstJoin?: true
+FirstJoin:
+  - '&#EEE1D5⋆⁺₊⋆★ &#f76a3b&lP&#f76f3b&ll&#f7743b&le&#f7793b&la&#f77e3b&ls&#f7833b&le &#f7873b&lw&#f78c3b&le&#f7913b&ll&#f7963b&lc&#f79b3b&lo&#f7a03b&lm&#f8a53a&le %player% &#f8aa3a&lt&#f8af3a&lo &#f8b43a&lS&#f8b93a&lo&#f8be3a&ll&#f8c23a&la&#f8c73a&lc&#f8cc3a&le&#f8d13a&lM&#f8d63a&lC&#f8db3a&l! &r&7(#%joins%) &#EEE1D5★⋆₊⁺⋆'
+
+#Message sent when a player joins. A random message will be selected from the list upon join. If you only want 1 message, remove the other lines.
+#Prefix can be blank
+JoinPrefix: "&8[&#8dff7c+&8] "
+JoinMsg:
+  - "&#8dff7cIs it a bird? Is it a plane? No it's just %player%..."
+  - "&#8dff7cWoah %player% just joined the game!"
+  - "&#8dff7cHey %player%, welcome back!"
+  - "&#8dff7c%player% thanked the bus driver"
+  - "&#8dff7c%player% omg you're back!"
+  - "&#8dff7c%player% is back!"
+  - "&#8dff7cWb, %player%!"
+  - "&#8dff7cWe got %player%'s reboot card"
+  - "&#8dff7cHello? Hello? Is that %player%?"
+  - "&#8dff7cWow! It's %player%!"
+  - "&#8dff7cHmmm? Oh it's %player%!"
+  - "&#8dff7cwag1 %player%, wys g?"
+  - "&#8dff7cyooo o/ %player%"
+  - "&#8dff7chey hey %player%!"
+  - "&#8dff7cwbwbwbwbwbwbwb %player%"
+  - "&#8dff7cInsta-locked %player%"
+  - "&#8dff7cWelcome to the jungle, %player%"
+  - "&#8dff7cAnd then, there was %player%..."
+  - "&#8dff7cI hope you brought food for the rest of us, %player%"
+  - "&#8dff7cLookin' sharp today, %player%!"
+  - "&#8dff7cGm, %player%!"
+  - "&#8dff7c%player% is here!"
+  - "&#8dff7c%player% just slid in"
+  - "&#8dff7cWhere we dropping, %player%?"
+  - "&#8dff7c%player%"
+#Message sent when a player quits. A random message will be selected from the list upon quit. If you only want 1 message, remove the other lines.
+#Prefix can be blank
+QuitPrefix: "&8[&#FF5F5F-&8] "
+QuitMsg:
+  - "&#FF5F5F%player% just left"
+  - "&#FF5F5FWho needs %player% anyways?!"
+  - "&#FF5F5FCya, %player%"
+  - "&#FF5F5FFarewell, %player%"
+  - "&#FF5F5FSayonara, %player%"
+  - "&#FF5F5FBaibai, %player%"
+  - "&#FF5F5FAdios, %player%"
+  - "&#FF5F5F%player% left me all alone D:"
+  - "&#FF5F5FHasta lasagna %player%, don't get any on ya!"
+  - "&#FF5F5FCya later alligator, %player%"
+  - "&#FF5F5FIn a while crocodile, %player%"
+  - "&#FF5F5FSmell you later, %player%"
+  - "&#FF5F5FDon't miss me too much, %player%"
+  - "&#FF5F5FGoodbye %player%"
+  - "&#FF5F5FGOODNIGHT %player%"
+  - "&#FF5F5FGn, %player% :)"
+  - "&#FF5F5FWell, there goes %player%..."
+  - "&#FF5F5FI guess %player% had a bad connection..."
+  - "&#FF5F5F%player% didn't even say bye :("
+  - "&#FF5F5FAre we missing someone? Oh, %player% left"
+  - "&#FF5F5F%player%"
+  - "&#FF5F5FIt was a good time, %player%"
+# For ranks gui
+Ranks:
+  - '&#26fb04&lSeed'
+  - '&#d2fdb7&lSprout'
+  - '&#86ffd3&lSapling'
+  - '&#0094ff&lJuniper'
+  - '&#92ffff&lElder'
+  - '&#e3c0ff&lMagnolia'
+  - '&#ff64e6&lCherry'
+Ranks2:
+  - '&#ff8a00&lMaple'
+  - '&#bc8b0e&lSpruce'
+  - '&#3b8e08&lCypress'
+  - '&#cb3f13&lSequoia'
+  - '&#aa0000&lRedwood'
+
+RanksDivider:
+  - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+  - "&#FFEBC5• &#FFEBC5Price: &r%rankprice%"
+  - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+
+RanksInfo: "&#f76a3b&lI&#f7903b&ln&#f8b53a&lf&#f8db3a&lo"
+RanksInfoLore:
+  - "&#E2E2E2Ranks are one of the best ways to spend"
+  - "&#E2E2E2your money early as they award you with"
+  - "&#E2E2E2unique perks! Hover over the ranks below"
+  - "&#E2E2E2to preview their benefits."
+  - ""
+  - "&#E2E2E2Note: Benefits do not stack with paid rank"
+  - "&#E2E2E2benefits, and the amounts listed are totals"
+  - "&#E2E2E2not cumulative."
+  - ""
+  - "&#E2E2E2Also, all ranks inherit the benefits of the"
+  - "&#E2E2E2previous rank, so if a benefit is not listed"
+  - "&#E2E2E2it will be the same as the previous rank."
+
+RanksLore:
+  seed:
+    - '&#FFEBC5• &#26fb04&lSeed &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2One /home'
+    - '&#FFEBC5• &#E2E2E2One max /jobs'
+    - '&#FFEBC5• &#E2E2E2Three /ah slots'
+    - '&#FFEBC5• &#E2E2E2Access to /rtp main worlds'
+    - '&#FFEBC5• &#E2E2E2Access to /orelevels'
+    - '&#FFEBC5• &#E2E2E2/kit starter'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+  sprout:
+    - '&#FFEBC5• &#d2fdb7&lSprout &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Two /homes'
+    - '&#FFEBC5• &#E2E2E2Access to /near'
+    - '&#FFEBC5• &#E2E2E2Access to /poke'
+    - '&#FFEBC5• &#E2E2E2Access to /tr'
+    - '&#FFEBC5• &#E2E2E2Access to /baltop'
+    - '&#FFEBC5• &#E2E2E2Access to /mctop'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E25 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E21 &#07ff1a&lV&#19fe37&lo&#2afd53&lt&#3cfb70&le &#4dfa8d&lC&#5ff9a9&lr&#70f8c6&la&#82f6e2&lt&#93f5ff&le &fKey'
+  sapling:
+    - '&#FFEBC5• &#86ffd3&lSapling &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Three /homes'
+    - '&#FFEBC5• &#E2E2E2Two max /jobs'
+    - '&#FFEBC5• &#E2E2E22k /es total space'
+    - '&#FFEBC5• &#E2E2E2Four /ah slots'
+    - '&#FFEBC5• &#E2E2E2One /pwarp slot'
+    - '&#FFEBC5• &#E2E2E2Access to /back'
+    - '&#FFEBC5• &#E2E2E2Access to /laugh'
+    - '&#FFEBC5• &#E2E2E2Ability to create town'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E210 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E22 &#07ff1a&lV&#19fe37&lo&#2afd53&lt&#3cfb70&le &#4dfa8d&lC&#5ff9a9&lr&#70f8c6&la&#82f6e2&lt&#93f5ff&le &fKeys'
+  juniper:
+    - '&#FFEBC5• &#0094ff&lJuniper &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Four /homes'
+    - '&#FFEBC5• &#E2E2E2One /pv slot'
+    - '&#FFEBC5• &#E2E2E24k /es total space'
+    - '&#FFEBC5• &#E2E2E2/kit wood'
+    - '&#FFEBC5• &#E2E2E2Access to /hoarder'
+    - '&#FFEBC5• &#E2E2E2Access to /birthday'
+    - '&#FFEBC5• &#E2E2E2Access to /sit'
+    - '&#FFEBC5• &#E2E2E2Ability to make chest shops'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E215 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E23 &#07ff1a&lV&#19fe37&lo&#2afd53&lt&#3cfb70&le &#4dfa8d&lC&#5ff9a9&lr&#70f8c6&la&#82f6e2&lt&#93f5ff&le &fKeys'
+  elder:
+    - '&#FFEBC5• &#92ffff&lElder &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Five /homes'
+    - '&#FFEBC5• &#E2E2E28k /es total space'
+    - '&#FFEBC5• &#E2E2E2Five /ah slots'
+    - '&#FFEBC5• &#E2E2E2Access to /rtp resource nether'
+    - '&#FFEBC5• &#E2E2E2Access to /ec'
+    - '&#FFEBC5• &#E2E2E2Access to /disposal'
+    - '&#FFEBC5• &#E2E2E2Access to /bow'
+    - '&#FFEBC5• &#E2E2E2Access to /wrestle'
+    - '&#FFEBC5• &#E2E2E2Ability to use RGB on signs'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E220 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E25 &#07ff1a&lV&#19fe37&lo&#2afd53&lt&#3cfb70&le &#4dfa8d&lC&#5ff9a9&lr&#70f8c6&la&#82f6e2&lt&#93f5ff&le &fKeys'
+  magnolia:
+    - '&#FFEBC5• &#e3c0ff&lMagnolia &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Six /homes'
+    - '&#FFEBC5• &#E2E2E2Two /pv slots'
+    - '&#FFEBC5• &#E2E2E212k /es total space'
+    - '&#FFEBC5• &#E2E2E2Six /ah slots'
+    - '&#FFEBC5• &#E2E2E2Two /pwarp slots'
+    - '&#FFEBC5• &#E2E2E2Access to /emoji (/e)'
+    - '&#FFEBC5• &#E2E2E2Access to /hdb'
+    - '&#FFEBC5• &#E2E2E2Access to /thank'
+    - '&#FFEBC5• &#E2E2E2Access to /praise'
+    - '&#FFEBC5• &#E2E2E2Ability to silk spawners'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E225 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E210 &#07ff1a&lV&#19fe37&lo&#2afd53&lt&#3cfb70&le &#4dfa8d&lC&#5ff9a9&lr&#70f8c6&la&#82f6e2&lt&#93f5ff&le &fKeys'
+  cherry:
+    - '&#FFEBC5• &#ff64e6&lCherry &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Seven /homes'
+    - '&#FFEBC5• &#E2E2E2Three max /jobs'
+    - '&#FFEBC5• &#E2E2E2Three /pv slots'
+    - '&#FFEBC5• &#E2E2E216k /es total space'
+    - '&#FFEBC5• &#E2E2E2Seven /ah slots'
+    - '&#FFEBC5• &#E2E2E2/kit animals'
+    - '&#FFEBC5• &#E2E2E2Access to /hat'
+    - '&#FFEBC5• &#E2E2E2Access to /craft'
+    - '&#FFEBC5• &#E2E2E2Access to /hug'
+    - '&#FFEBC5• &#E2E2E2Access to /gn'
+    - '&#FFEBC5• &#E2E2E2Access to /lay'
+    - '&#FFEBC5• &#E2E2E2Access to /nick (plain)'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E230 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E21 &#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lC&#f8b93a&lr&#f8c43a&la&#f8d03a&lt&#f8db3a&le &fKey'
+  maple:
+    - '&#FFEBC5• &#ff8a00&lMaple &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Eight /homes'
+    - '&#FFEBC5• &#E2E2E2Four /pv slots'
+    - '&#FFEBC5• &#E2E2E224k /es total space'
+    - '&#FFEBC5• &#E2E2E2Eight /ah slots'
+    - '&#FFEBC5• &#E2E2E2Three /pwarp slots'
+    - '&#FFEBC5• &#E2E2E2Access to /rtp resource end'
+    - '&#FFEBC5• &#E2E2E2Access to /recipe'
+    - '&#FFEBC5• &#E2E2E2Access to /ptime'
+    - '&#FFEBC5• &#E2E2E2Access to /gg'
+    - '&#FFEBC5• &#E2E2E2Access to /cry'
+    - '&#FFEBC5• &#E2E2E2Ability to create nation'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E235 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E21 &#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lC&#f8b93a&lr&#f8c43a&la&#f8d03a&lt&#f8db3a&le &fKey'
+  spruce:
+    - '&#FFEBC5• &#bc8b0e&lSpruce &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Nine /homes'
+    - '&#FFEBC5• &#E2E2E2Five /pv slots'
+    - '&#FFEBC5• &#E2E2E232k /es total space'
+    - '&#FFEBC5• &#E2E2E2Nine /ah slots'
+    - '&#FFEBC5• &#E2E2E2Access to /anvil'
+    - '&#FFEBC5• &#E2E2E2Access to /pweather'
+    - '&#FFEBC5• &#E2E2E2Access to /blush'
+    - '&#FFEBC5• &#E2E2E2Access to /highfive'
+    - '&#FFEBC5• &#E2E2E2Access to /crawl'
+    - '&#FFEBC5• &#E2E2E2Keep EXP on death'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E240 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E21 &#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lC&#f8b93a&lr&#f8c43a&la&#f8d03a&lt&#f8db3a&le &fKey'
+  cypress:
+    - '&#FFEBC5• &#3b8e08&lCypress &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Ten /homes'
+    - '&#FFEBC5• &#E2E2E2Six /pv slots'
+    - '&#FFEBC5• &#E2E2E240k /es total space'
+    - '&#FFEBC5• &#E2E2E2Ten /ah slots'
+    - '&#FFEBC5• &#E2E2E2Four /pwarp slots'
+    - '&#FFEBC5• &#E2E2E2Access to /condense'
+    - '&#FFEBC5• &#E2E2E2Access to /beezooka'
+    - '&#FFEBC5• &#E2E2E2Access to /heal'
+    - '&#FFEBC5• &#E2E2E2Access to /fliptable'
+    - '&#FFEBC5• &#E2E2E2Access to /nick (colour)'
+    - '&#FFEBC5• &#E2E2E25% mcMMO boost'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E250 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E22 &#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lC&#f8b93a&lr&#f8c43a&la&#f8d03a&lt&#f8db3a&le &fKeys'
+  sequoia:
+    - '&#FFEBC5• &#cb3f13&lSequoia &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Twelve /homes'
+    - '&#FFEBC5• &#E2E2E2Nine /pv slots'
+    - '&#FFEBC5• &#E2E2E248k /es total space'
+    - '&#FFEBC5• &#E2E2E2Eleven /ah slots'
+    - '&#FFEBC5• &#E2E2E2Access to /rtp resource sand'
+    - '&#FFEBC5• &#E2E2E2Access to /nightvision'
+    - '&#FFEBC5• &#E2E2E2Access to /hidearmor'
+    - '&#FFEBC5• &#E2E2E2Access to /jukebox'
+    - '&#FFEBC5• &#E2E2E2Access to /dance'
+    - '&#FFEBC5• &#E2E2E2Access to /tableback'
+    - '&#FFEBC5• &#E2E2E2Access to /tfly'
+    - '&#FFEBC5• &#E2E2E2Access to /spin'
+    - '&#FFEBC5• &#E2E2E2Ability to use RGB in chat'
+    - '&#FFEBC5• &#E2E2E210% mcMMO boost'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E275 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E23 &#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lC&#f8b93a&lr&#f8c43a&la&#f8d03a&lt&#f8db3a&le &fKeys'
+  redwood:
+    - '&#FFEBC5• &#aa0000&lRedwood &#E2E2E2Tag'
+    - '&#FFEBC5• &#E2E2E2Sixteen /homes'
+    - '&#FFEBC5• &#E2E2E2Four max /jobs'
+    - '&#FFEBC5• &#E2E2E2Twelve /pv slots'
+    - '&#FFEBC5• &#E2E2E275k /es total space'
+    - '&#FFEBC5• &#E2E2E2Five /pwarp slots'
+    - '&#FFEBC5• &#E2E2E2/kit jackpot'
+    - '&#FFEBC5• &#E2E2E2Access to /kittycannon'
+    - '&#FFEBC5• &#E2E2E2Access to /flex'
+    - '&#FFEBC5• &#E2E2E2Access to /healall (20 min cooldown)'
+    - '&#FFEBC5• &#E2E2E2Access to /nick (RGB)'
+    - '&#FFEBC5• &#E2E2E2Access to /fly'
+    - '&#FFEBC5• &#E2E2E2Keep inv on death'
+    - '&#FFEBC5• &#E2E2E225% mcMMO boost'
+    - "&8&m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m &m"
+    - "&#FFEBC5• &#E2E2E2100 &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&lc&#f8ab3a&lo&#f8bb3a&li&#f8cb3a&ln&#f8db3a&ls"
+    - '&#FFEBC5• &#E2E2E25 &#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lC&#f8b93a&lr&#f8c43a&la&#f8d03a&lt&#f8db3a&le &fKeys'
+
+RanksPrices:
+  seed: '&#a8ff92Free!'
+  sprout: '&#a8ff92$3,000'
+  sapling: '&#a8ff92$10,000'
+  juniper: '&#a8ff92$30,000'
+  elder: '&#a8ff92$100,000'
+  magnolia: '&#a8ff92$300,000'
+  cherry: '&#a8ff92$750,000'
+  maple: '&#a8ff92$2,000,000'
+  spruce: '&#a8ff92$5,000,000'
+  cypress: '&#a8ff92$15,000,000'
+  sequoia: '&#a8ff92$35,000,000'
+  redwood: '&#a8ff92$75,000,000'
+
+# solutilities.prefix.staff
+# solutilities.color.<group>
+Prefixes:
+  Staff: '★ '
+  Colors:
+    owner: '&#9c3dee'
+    admin: '&#ff3535'
+    mod: '&#ff8383'
+    builder: '&#44b3ee'
+    helper: '&#fff172'
+    dev: '&#f09240'
+    content: '&#82ff80'
+    recruit: '&#f1e6dc'
+
+# All jobs are read as integers you cannot exceed 32 bits. (2,147,483,647)
+JobsRewards:
+  Command: 'points give %player% 1'
+  Alchemist:
+    BoundInt: 32000
+    Chance: 30
+  Blacksmith:
+    BoundInt: 32000
+    Chance: 30
+  Builder:
+    BoundInt: 32000
+    Chance: 14
+  Cook:
+    BoundInt: 32000
+    Chance: 30
+  Digger:
+    BoundInt: 32000
+    Chance: 13
+  Farmer:
+    BoundInt: 32000
+    Chance: 10
+  Fisherman:
+    BoundInt: 32000
+    Chance: 30
+  Hunter:
+    BoundInt: 32000
+    Chance: 17
+  Lumberjack:
+    BoundInt: 32000
+    Chance: 14
+  Miner:
+    BoundInt: 32000
+    Chance: 12
+
+# Reset in hours
+# Amount of decoys that will be prepared. (/blackmarket <num> <player>)
+Blackmarket:
+  Enabled: false
+  Prefix: '&#df4a4a&lM&#ca464b&la&#b5414b&lr&#9f3d4c&lk&#8a384c&le&#75344d&lt &r&8»&#E2E2E2 '
+  ResetMin: 6
+  ResetMax: 8
+  Message: "%prefix%The blackmarket has been reset! &e/blackmarket"
+  BlackMarketDefaultCommand: '[P] warp blackmarket'
+  Return-NPC-Name?:
+    NPC1: 'Touji'
+    NPC2: 'Kosuke'
+    NPC3: 'Suzume'
+
+# Death white list means this mob will drop loot no matter the killer
+# Killer white list means that any mob this killer kills will drop loot
+# If an entity dies from one of the whitelisted causes, it will drop loot
+
+# ALl EntityTypes can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
+# All Causes can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+DropBlocker:
+  DeathWhitelist:
+    - 'PLAYER'
+    - 'SHULKER'
+    - 'MAGMA_CUBE'
+    - 'ARMOR_STAND'
+    - 'ITEM_FRAME'
+    - 'ITEM_DISPLAY'
+  KillerWhitelist:
+    - 'PLAYER'
+    - 'SHULKER'
+    - 'SHULKER_BULLET'
+    - 'FROG'
+    - 'WITHER'
+    - 'WITHER_SKULL'
+  CauseWhitelist:
+    - 'PROJECTILE'
+    - 'ENTITY_EXPLOSION'
+    - 'WITHER'
+    - 'MAGIC'
+    - 'FIRE_TICK'
+    - 'CUSTOM'
+
+PVGUI:
+  Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt&#f8db3a&ls'
+  MaxVaults: 500
+  OpenVault:
+    Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt &#f8db3a&l#$vaultnum' # $vaultnum, this placeholder may only be used on OpenVaults
+    Lore: ['&eClick to open vault #$vaultnum','','&eRight click to edit color']
+  LockedVault:
+    Title: '&#f76a3b&lL&#f7753b&lo&#f7813b&lc&#f78c3b&lk&#f7973b&le&#f8a33b&ld &#f8ae3a&lV&#f8b93a&la&#f8c43a&lu&#f8d03a&ll&#f8db3a&lt'
+    Lore: ['&eUnlock vaults by ranking up!']
+
+Referrals:
+  RewardCommands:
+    Referrer:
+      chance_75: 'points give $player 20'
+      chance_20: 'soltarget $player stellar'
+      chance_5: 'crates key give $player solacecratekey 1'
+    Referred:
+      chance_75: 'points give $player 20'
+      chance_20: 'soltarget $player stellar'
+      chance_5: 'crates key give $player solacecratekey 1'

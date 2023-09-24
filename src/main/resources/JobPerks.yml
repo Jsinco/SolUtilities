@@ -1,0 +1,242 @@
+Alchemist:
+  Level:
+    - 20
+    - 35
+    - 45
+    - 45
+    - 45
+    - 45
+    - 75
+  Perk:
+    - 'eternaltags.tag.alchemist'
+    - 'solutilities.absorption'
+    - 'eternaltags.tag.alchemist2'
+    - 'solutilities.claimedAlchemistCMD'
+    - 'solutilities.bottle'
+    - 'solutilities.blaze'
+    - 'eternaltags.tag.alchemist3'
+  Message:
+    - "You have unlocked the Alchemist perk tag!"
+    - "You have unlocked the Absorption perk!"
+    - "You have unlocked the Alchemist II perk tag!"
+    - "You have got 500 levels of Alchemy!"
+    - "You have unlocked the Bottle perk!"
+    - "You have unlocked the Blaze perk!"
+    - "You have unlocked the Alchemist III perk tag!"
+  Command:
+    - '45^mcmmo:addlevels %player% Alchemy 500'
+
+Blacksmith:
+  Level:
+    - 20
+    - 35
+    - 45
+    - 45
+    - 75
+  Perk:
+    - 'eternaltags.tag.blacksmith'
+    - 'solutilities.fireresistance'
+    - 'eternaltags.tag.blacksmith2'
+    - 'solutilities.triad'
+    - 'solutilities.blacksmith3'
+  Message:
+    - "You have unlocked the Blacksmith perk tag!"
+    - "You have unlocked the Fire Resistance perk!"
+    - "You have unlocked the Blacksmith II perk tag!"
+    - "You have unlocked the Triad perk!"
+    - "You have unlocked the Blacksmith III perk tag!"
+
+Builder:
+  Level:
+    - 20
+    - 35
+    - 35
+    - 45
+    - 45
+    - 45
+    - 55
+    - 75
+  Perk:
+    - 'eternaltags.tag.builder1' # 20
+    - 'essentials.top' # 35
+    - 'essentials.bottom' # 35
+    - 'eternaltags.tag.builder2' # 45
+    - 'solutilities.concrete' # 45
+    - 'solutilities.powder' # 45
+    - 'solutilities.stripcolor' # 55
+    - 'eternaltags.tag.builder3' # 75
+  Message:
+    - "You have unlocked the Builder perk TAG!"
+    - "You have unlocked the Top perk!"
+    - "You have unlocked the Bottom perk!"
+    - "You have unlocked the Builder II perk TAG!"
+    - "You have unlocked the Concrete perk!"
+    - "You have unlocked the Powder perk!"
+    - "You have unlocked the Strip Color perk!"
+    - "You have unlocked the Builder III perk TAG!"
+
+Cook:
+  Level:
+    - 20
+    - 35
+    - 45
+    - 45
+    - 55
+    - 75
+  Perk:
+    - 'eternaltags.tag.cook'
+    - 'essentials.feed'
+    - 'eternaltags.tag.cook2'
+    - 'essentials.heal'
+    - 'solutilities.healall'
+    - 'eternaltags.tag.cook3'
+  Message:
+    - "You have unlocked the Cook perk TAG!"
+    - "You have unlocked the Feed perk!"
+    - "You have unlocked the Heal perk!"
+    - "You have unlocked the Cook II perk TAG!"
+    - "You have unlocked the Heal All perk!"
+    - "You have unlocked the Cook III perk TAG!"
+
+Digger:
+    Level:
+        - 20
+        - 35
+        - 35
+        - 45
+        - 45
+        - 45
+        - 75
+    Perk:
+        - 'eternaltags.tag.digger'
+        - 'solutilities.grass'
+        - 'solutilities.dirt'
+        - 'eternaltags.tag.digger2'
+        - 'solutilities.concrete'
+        - 'solutilities.powder'
+        - 'eternaltags.tag.digger3'
+    Message:
+        - "You have unlocked the Digger perk TAG!"
+        - "You have unlocked the Grass perk!"
+        - "You have unlocked the Dirt perk!"
+        - "You have unlocked the Digger II perk TAG!"
+        - "You have unlocked the Concrete perk!"
+        - "You have unlocked the Powder perk!"
+        - "You have unlocked the Digger III perk TAG!"
+
+Farmer:
+  Level:
+    - 20
+    - 35
+    - 45
+    - 45
+    - 55
+    - 75
+  Perk:
+    - 'eternaltags.tag.farmer'
+    - 'safarinet.craft.singleuse'
+    - 'eternaltags.tag.farmer2'
+    - 'solutilities.claimedFarmerCMD'
+    - 'solutilities.speed'
+    - 'eternaltags.tag.farmer3'
+  Message:
+    - "You have unlocked the Farmer perk TAG!"
+    - "You have unlocked the Safari Net perk!"
+    - "You have unlocked the Farmer II perk TAG!"
+    - "You got 500 levels of Herbalism!"
+    - "You have unlocked the Speed perk!"
+    - "You have unlocked the Farmer III perk TAG!"
+  Command:
+    - '45^mcmmo:addlevels %player% Herbalism 500'
+
+Fisherman:
+  Level:
+    - 20
+    - 35
+    - 45
+    - 45
+    - 75
+  Perk:
+    - 'eternaltags.tag.fisherman'
+    - 'solutilities.luck'
+    - 'eternaltags.tag.fisherman2'
+    - 'solutilities.dolphinsgrace'
+    - 'eternaltags.tag.fisherman3'
+  Message:
+    - "You have unlocked the Fisherman perk TAG!"
+    - "You have unlocked the Luck perk!"
+    - "You have unlocked the Fisherman II perk TAG!"
+    - "You have unlocked the Dolphin's Grace perk!"
+    - "You have unlocked the Fisherman III perk TAG!"
+
+Hunter:
+  Level:
+    - 20
+    - 35
+    - 45
+    - 45
+    - 75
+  Perk:
+    - 'eternaltags.tag.hunter'
+    - 'solutilities.strength'
+    - 'eternaltags.tag.hunter2'
+    - 'solutilities.speed'
+    - 'eternaltags.tag.hunter3'
+  Message:
+    - "You have unlocked the Hunter perk TAG!"
+    - "You have unlocked the strength perk!"
+    - "You have unlocked the Hunter II perk TAG!"
+    - "You have unlocked the speed perk!"
+    - "You have unlocked the Hunter III perk TAG!"
+
+Lumberjack:
+  Level:
+    - 20
+    - 30
+    - 35
+    - 45
+    - 45
+    - 55
+    - 75
+  Perk:
+    - 'eternaltags.tag.lumberjack'
+    - 'mcmmo.ability.woodcutting.treefeller'
+    - 'essentials.top'
+    - 'eternaltags.tag.lumberjack2'
+    - 'solutilities.haste'
+    - 'solutilities.strip'
+    - 'eternaltags.tag.lumberjack3'
+  Message:
+    - "You have unlocked the Lumberjack perk TAG!"
+    - "You have unlocked the Tree Feller perk!"
+    - "You have unlocked the Top perk!"
+    - "You have unlocked the Lumberjack II perk TAG!"
+    - "You have unlocked the Haste perk!"
+    - "You have unlocked the Strip perk!"
+    - "You have unlocked the Lumberjack III perk TAG!"
+
+Miner:
+  Level:
+    - 20
+    - 35
+    - 35
+    - 45
+    - 45
+    - 65
+    - 75
+  Perk:
+    - 'eternaltags.tag.miner'
+    - 'essentials.top'
+    - 'essentials.bottom'
+    - 'eternaltags.tag.miner2'
+    - 'solutilities.nightvision'
+    - 'solutilities.haste'
+    - 'eternaltags.tag.miner3'
+  Message:
+    - "You have unlocked the Miner perk TAG!"
+    - "You have unlocked the Top perk!"
+    - "You have unlocked the Bottom perk!"
+    - "You have unlocked the Miner II perk TAG!"
+    - "You have unlocked the Night Vision perk!"
+    - "You have unlocked the Haste perk!"
+    - "You have unlocked the Miner III perk TAG!"

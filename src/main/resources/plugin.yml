@@ -1,0 +1,114 @@
+name: SolUtilities
+version: '${version}'
+main: me.jsinco.solutilities.SolUtilities
+api-version: '1.20'
+author: 'Jsinco'
+depend: [Vault, SolItems, PlaceholderAPI]
+softdepend: [PlayerPoints]
+permissions:
+  solutilities.prefix.staff:
+    default: false
+  solutilities.color.owner:
+    default: false
+  solutilities.color.admin:
+    default: false
+  solutilities.color.mod:
+    default: false
+  solutilities.color.builder:
+    default: false
+  solutilities.color.helper:
+    default: false
+  solutilities.color.dev:
+    default: false
+  solutilities.color.content:
+    default: false
+  solutilities.color.recruit:
+    default: false
+commands:
+  solace:
+    description: Solace command
+    permission: solutilities.global
+    usage: §e/<command> <sols | sounds> <amount>
+  solcoin:
+    description: Solcoin command
+    permission: solutilities.global
+    usage: §e/<command> <give | take | set> <player> <amount>
+  addenchant:
+    description: Adds an enchantment to an item
+    permission: solutilities.admin
+    usage: /<command> <enchant> <level>
+  celesteadmin:
+    description: Gives a player celeste admin
+    permission: solutilities.admin
+    usage: /<command>
+  celesteshop:
+    description: Opens the celeste shop
+    permission: solutilities.admin
+    usage: /<command> <player>
+  modelitem:
+    description: Gives a player a model item
+    permission: solutilities.admin
+    usage: /<command> <player> <model>
+  lunaadmin:
+    description: Gives a player luna admin
+    permission: solutilities.admin
+    usage: /<command>
+  lunawrapper:
+    description: Gives a player a luna wrapper
+    permission: solutilities.admin
+    usage: /<command> <player>
+  ariesadmin:
+    description: Gives a player aries admin
+    permission: solutilities.admin
+    usage: /<command>
+  ariesmisc:
+    description: Gives a player aries misc
+    permission: solutilities.admin
+    usage: /<command> <player>
+  ranks:
+    description: Ranks GUI
+  ls:
+    description: Looking to find items to buy
+  lb:
+    description: Looking to sell items
+  welcomes:
+    description: Welcomes from SolUtilities
+    permission: solutilities.global
+  rankupgrade:
+    description: Rank Upgrade Command
+    permission: solutilities.admin
+    usage: /<command> <player> <oldRank> <newRank>
+  healall:
+    description: Heal all players
+    permission: solutilities.healall
+    usage: /<command>
+  donationmsg:
+    description: Donation Message Command
+    permission: solutilities.admin
+    usage: /<command> <player> <packagetype>
+  solwarp:
+    usage: §c/<command> <warp | add | remove> <player? | warp>
+    description: SolWarps Command!
+  furniture:
+    description: Furniture Command
+    permission: solutilities.global
+    usage: /<command>
+  itemprofiler:
+    description: Item Profiler
+    permission: solutilities.global
+    usage: /<command>
+    aliases: [itemprofile,profiler]
+  blackmarket:
+    description: The Black Market
+    permission: solutilities.blackmarket
+    usage: §c/<command> <add | remove | preview | market | reset | time> <dollar | solcoin | itemname | marketnumber> <player | price> <weight> <stock>
+    aliases: [bm]
+  solrg:
+    permission: solutilities.admin
+  refer:
+    description: Refer CMD
+    usage: /<command> <player>
+    permission: solutilities.global
+  rfintl:
+    description: Referrals Internal Command
+    permission: solutilities.global

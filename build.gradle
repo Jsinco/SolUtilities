@@ -1,0 +1,86 @@
+plugins {
+    id 'java'
+}
+
+group = 'me.jsinco'
+version = '1.2.0'
+
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+    maven {
+        name = "playerpoints"
+        url = 'https://repo.rosewooddev.io/repository/public/'
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
+    maven {
+        name = "iridiumdevelopment"
+        url = "https://nexus.iridiumdevelopment.net/repository/maven-releases/"
+    }
+    maven {
+        name = "placeholderapi"
+        url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = "enginehub-maven"
+        url = "https://maven.enginehub.org/repo/"
+    }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT"
+    compileOnly "org.black_ixx:playerpoints:3.2.5"
+    compileOnly "com.github.MilkBowl:VaultAPI:1.7"
+    compileOnly "com.iridium:IridiumColorAPI:1.0.6"
+    compileOnly "me.clip:placeholderapi:2.11.3"
+    compileOnly "com.github.Zrips:jobs:4.17.2"
+
+
+    implementation 'com.github.Jsinco:OneAnnouncer1.2.0:v1.2.2'
+}
+
+def targetJavaVersion = 17
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release = targetJavaVersion
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'utf-8'
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+
+

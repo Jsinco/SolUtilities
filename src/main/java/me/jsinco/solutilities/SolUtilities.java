@@ -52,6 +52,7 @@ public final class SolUtilities extends JavaPlugin {
         Saves.setup(); // Sol withdrawal vouchers
         Saves.save();
         ppAPI = PlayerPoints.getInstance().getAPI();
+        setupEconomy();
 
 
 

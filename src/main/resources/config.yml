@@ -4,25 +4,6 @@ ServerName: 'SolaceMC Towny'
 
 # interval in seconds && %prefix% when setting to true you must restart the server to take effect
 Announcer:
-  enabled: true
-  interval: 1800
-  messages:
-    - '%prefix%Join our [/discord] to stay up to date with announcements and changes!'
-    - '%prefix%Want access to more commands and perks? [/ranks]!'
-    - '%prefix%Check out our [/socials]!'
-    - '%prefix%Earn money from working [/jobs] or selling items!'
-    - '%prefix%Need some extra help? Don''t be afraid to ask in chat or check out our [/wiki]!'
-    - '%prefix%Got some extra items? Check out [/hoarder] and earn some prizes!'
-    - '%prefix%Use emojis in chat with [/emoji] or like this :emoji: '
-    - '%prefix%Want to see all the item wraps? Head over to [/wraps] and have a look around!'
-    - '%prefix%Found a bug or want to make a suggestion? Join our [/discord] and make a ticket or a #suggestion!'
-    - '%prefix%Need help? Make a ticket in our discord or message an online staff member! We''re happy to help! :hug:'
-    - '%prefix%Use [/rtp] to get to the resource worlds and gather materials!'
-    - '%prefix%Want to get some cool cosmetics like wraps and particles? Check out our [/store]!'
-    - '%prefix%Make sure to read our [/rules] so we can all play fairly!'
-    - '%prefix%Wanna get some cool custom gear and items? Stick around for our seasonal events or check out [/celestial]!'
-    - '%prefix%Got friends? Refer them and get rewarded! [/refer]'
-    - '%prefix%Confused about a custom item or want to see stats on certain custom items? Visit Aries or use [/profiler]!'
   donation-message: '&#f76a3b&lS&#f7863b&lt&#f8a33b&lo&#f8bf3a&lr&#f8db3a&le &8» <GRADIENT:FFAA00>&l%player%</GRADIENT:FDD394> &#E2E2E2has just purchased a %package%&#E2E2E2! Thank you for supporting &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&la&#f8ab3a&lc&#f8bb3a&le&#f8cb3a&lM&#f8db3a&lC&r&f!'
   donation-sound: 'UI_TOAST_CHALLENGE_COMPLETE'
 

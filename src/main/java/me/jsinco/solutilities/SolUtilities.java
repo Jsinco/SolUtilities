@@ -41,10 +41,11 @@ public final class SolUtilities extends JavaPlugin {
     private static Economy econ = null;
     java.io.File itemProfilesFile = new java.io.File(getDataFolder(), "ItemProfiles.yml");
     private final Plugin SolItems = Bukkit.getServer().getPluginManager().getPlugin("SolItems");
+    private static SolUtilities plugin;
 
     @Override
     public void onEnable() {
-
+        plugin = this;
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
@@ -52,6 +53,8 @@ public final class SolUtilities extends JavaPlugin {
         Saves.setup(); // Sol withdrawal vouchers
         Saves.save();
         ppAPI = PlayerPoints.getInstance().getAPI();
+        setupEconomy();
+
 
 
 
@@ -170,6 +173,10 @@ public final class SolUtilities extends JavaPlugin {
 
     public static PlayerPointsAPI getPPAPI() {
         return ppAPI;
+    }
+
+    public static SolUtilities getPlugin() {
+        return plugin;
     }
 
     @Override

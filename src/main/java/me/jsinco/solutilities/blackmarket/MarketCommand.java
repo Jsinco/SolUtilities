@@ -1,5 +1,6 @@
 package me.jsinco.solutilities.blackmarket;
 
+import me.jsinco.oneannouncer.api.DiscordCommandManager;
 import me.jsinco.solutilities.BulkSaves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
@@ -42,6 +43,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
 
         plugin.getServer().getPluginManager().registerEvents(new MarketItemPreview(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new MarketGUI(), plugin);
+        DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand()); // discord command
     }
 
     @Override

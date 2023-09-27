@@ -1,5 +1,7 @@
 package me.jsinco.solutilities.blackmarket;
 
+import me.jsinco.oneannouncer.DiscordSRVUtil;
+import me.jsinco.oneannouncer.discord.JDAMethods;
 import me.jsinco.solutilities.BulkSaves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
@@ -147,6 +149,14 @@ public class Market {
 
                 BulkSaves.get().set("Blackmarket.ResetTime", System.currentTimeMillis()+randomHour*3600000);
                 BulkSaves.save();
+
+                Set<String> notifyDiscordPlayers = BulkSaves.get().getConfigurationSection("Blackmarket.NotifyDiscord").getKeys(false);
+                for (String uuid: notifyDiscordPlayers) {
+                    String discordID = DiscordSRVUtil.INSTANCE.getDiscordIDFromUUID(UUID.fromString(uuid));
+
+                    if (discordID == null) continue;
+                    JDAMethods.sendMessageDiscordUser(discordID, "**Market** » The Blackmarket has restocked!");
+                }
             }
             if (BulkSaves.get().getConfigurationSection("Blackmarket.Cooldown") == null || BulkSaves.get().getConfigurationSection("Blackmarket.Cooldown").getKeys(false).isEmpty()) return;
             List<String> cooldownPlayers = new ArrayList<>(BulkSaves.get().getConfigurationSection("Blackmarket.Cooldown").getKeys(false));

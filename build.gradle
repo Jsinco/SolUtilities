@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.20-Beta2'
 }
 
 group = 'me.jsinco'
@@ -48,16 +49,13 @@ dependencies {
     compileOnly "com.iridium:IridiumColorAPI:1.0.6"
     compileOnly "me.clip:placeholderapi:2.11.3"
     compileOnly "com.github.Zrips:jobs:4.17.2"
-
-
-    implementation 'com.github.Jsinco:OneAnnouncer1.2.0:v1.2.2'
+    compileOnly "com.github.Jsinco:OneAnnouncer:v1.2.9"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 def targetJavaVersion = 17
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
@@ -80,6 +78,9 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+kotlin {
+    jvmToolchain(17)
 }
 
 

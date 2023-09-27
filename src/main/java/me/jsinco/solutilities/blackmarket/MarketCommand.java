@@ -43,7 +43,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
 
         plugin.getServer().getPluginManager().registerEvents(new MarketItemPreview(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new MarketGUI(), plugin);
-        DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand());
+        DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand()); // discord command
     }
 
     @Override

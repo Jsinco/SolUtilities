@@ -121,7 +121,7 @@ public class UtilListeners implements Listener {
         }
     }
 
-    @EventHandler // temporary
+    //@EventHandler // temporary
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
@@ -136,9 +136,9 @@ public class UtilListeners implements Listener {
 
                     List<String> lore = new ArrayList<>(List.of("§fUse this item to wrap your","§ftools or armor!","",ColorUtils.colorcode("§fSpeak to Luna §fat &#a8ff92/celestial"),"§fto apply!"));
 
-                    lore.addAll(List.of("", ColorUtils.colorcode("&#EEE1D5&m       &r&#EEE1D5\\u22C6\\u207A\\u208A\\u22C6 \\u2605 \\u22C6\\u207A\\u208A\\u22C6&m       "),
+                    lore.addAll(List.of("", ColorUtils.colorcode("&#EEE1D5&m       &r&#EEE1D5⋆⁺₊⋆ ★ ⋆⁺₊⋆&m       "),
                             ColorUtils.colorcode("&#EEE1D5Tier • &#b9ddff&lC&#bedaff&le&#c4d8ff&ll&#c9d5ff&le&#ced3ff&ls&#d3d0ff&lt&#d9cdff&li&#decbff&la&#e3c8ff&ll"),
-                            ColorUtils.colorcode("&#EEE1D5&m       &r&#EEE1D5\\u22C6\\u207A\\u208A\\u22C6 \\u2605 \\u22C6\\u207A\\u208A\\u22C6&m       ")));
+                            ColorUtils.colorcode("&#EEE1D5&m       &r&#EEE1D5⋆⁺₊⋆ ★ ⋆⁺₊⋆&m       ")));
                     // ⋆⁺₊⋆ ★ ⋆⁺₊⋆
                     meta.setLore(lore);
                     meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES,ItemFlag.HIDE_ITEM_SPECIFICS,ItemFlag.HIDE_DYE,ItemFlag.HIDE_UNBREAKABLE);

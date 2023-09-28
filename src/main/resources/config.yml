@@ -351,40 +351,6 @@ Prefixes:
     content: '&#82ff80'
     recruit: '&#f1e6dc'
 
-# All jobs are read as integers you cannot exceed 32 bits. (2,147,483,647)
-JobsRewards:
-  Command: 'points give %player% 1'
-  Alchemist:
-    BoundInt: 32000
-    Chance: 30
-  Blacksmith:
-    BoundInt: 32000
-    Chance: 30
-  Builder:
-    BoundInt: 32000
-    Chance: 14
-  Cook:
-    BoundInt: 32000
-    Chance: 30
-  Digger:
-    BoundInt: 32000
-    Chance: 13
-  Farmer:
-    BoundInt: 32000
-    Chance: 10
-  Fisherman:
-    BoundInt: 32000
-    Chance: 30
-  Hunter:
-    BoundInt: 32000
-    Chance: 17
-  Lumberjack:
-    BoundInt: 32000
-    Chance: 14
-  Miner:
-    BoundInt: 32000
-    Chance: 12
-
 # Reset in hours
 # Amount of decoys that will be prepared. (/blackmarket <num> <player>)
 Blackmarket:

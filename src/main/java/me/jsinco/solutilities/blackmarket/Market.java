@@ -164,7 +164,10 @@ public class Market {
                 if (BulkSaves.get().getLong("Blackmarket.Cooldown." + cooldownPlayer) <= System.currentTimeMillis()) {
                     BulkSaves.get().set("Blackmarket.Cooldown." + cooldownPlayer, null);
                     BulkSaves.save();
-                    Bukkit.getPlayer(UUID.fromString(cooldownPlayer)).sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
+                    Player player = Bukkit.getPlayer(UUID.fromString(cooldownPlayer));
+                    if (player != null) {
+                        player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
+                    }
                 }
             }
         },0L, 1200L);

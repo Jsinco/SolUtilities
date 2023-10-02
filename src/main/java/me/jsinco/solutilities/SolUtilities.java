@@ -78,7 +78,6 @@ public final class SolUtilities extends JavaPlugin {
         getCommand("lb").setTabCompleter(new TabCompletion());
         getCommand("welcomes").setExecutor(new Welcomes());
         getCommand("welcomes").setTabCompleter(new TabCompletion());
-        getCommand("healall").setExecutor(new Healall());
         getCommand("solwarp").setExecutor(new Warps());
         getCommand("solwarp").setTabCompleter(new Warps());
         

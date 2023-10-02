@@ -78,10 +78,6 @@ commands:
     description: Rank Upgrade Command
     permission: solutilities.admin
     usage: /<command> <player> <oldRank> <newRank>
-  healall:
-    description: Heal all players
-    permission: solutilities.healall
-    usage: /<command>
   donationmsg:
     description: Donation Message Command
     permission: solutilities.admin

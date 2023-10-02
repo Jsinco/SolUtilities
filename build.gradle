@@ -22,7 +22,8 @@ repositories {
         url = 'https://repo.rosewooddev.io/repository/public/'
     }
     maven {
-        url 'https://jitpack.io'
+        name = "jitpack.io"
+        url = 'https://jitpack.io'
     }
     maven {
         name = "iridiumdevelopment"
@@ -50,6 +51,7 @@ dependencies {
     compileOnly "me.clip:placeholderapi:2.11.3"
     compileOnly "com.github.Zrips:jobs:4.17.2"
     compileOnly "com.github.Jsinco:OneAnnouncer:v1.2.9"
+    compileOnly "com.github.tebexio.BuycraftX:BuycraftX:v10.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 

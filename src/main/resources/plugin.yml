@@ -82,9 +82,6 @@ commands:
     description: Donation Message Command
     permission: solutilities.admin
     usage: /<command> <player> <packagetype>
-  solwarp:
-    usage: §c/<command> <warp | add | remove> <player? | warp>
-    description: SolWarps Command!
   furniture:
     description: Furniture Command
     permission: solutilities.global
@@ -99,8 +96,6 @@ commands:
     permission: solutilities.blackmarket
     usage: §c/<command> <add | remove | preview | market | reset | time> <dollar | solcoin | itemname | marketnumber> <player | price> <weight> <stock>
     aliases: [bm]
-  solrg:
-    permission: solutilities.admin
   refer:
     description: Refer CMD
     usage: /<command> <player>

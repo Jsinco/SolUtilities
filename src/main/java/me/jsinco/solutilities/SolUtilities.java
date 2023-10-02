@@ -78,21 +78,15 @@ public final class SolUtilities extends JavaPlugin {
         getCommand("lb").setTabCompleter(new TabCompletion());
         getCommand("welcomes").setExecutor(new Welcomes());
         getCommand("welcomes").setTabCompleter(new TabCompletion());
-        getCommand("solwarp").setExecutor(new Warps());
-        getCommand("solwarp").setTabCompleter(new Warps());
-        
+
         new PlaceHolders().register(); //register PAPI placeholder
         new RankUpgrades(this);
         new Furniture(this);
         new UtilListeners();
-        new DonationMsgs(this);
         new ItemProfiler(this);
         new MarketCommand(this);
         new PVGUI(this);
         new Referrals(this);
-
-
-        getCommand("solrg").setExecutor(new SolRegions());
 
         // Celeste
         File.setup();

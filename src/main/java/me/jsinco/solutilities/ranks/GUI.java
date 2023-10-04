@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.ranks;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +25,7 @@ public class GUI implements Listener {
 
 
     private static Inventory createPage(Player player) {
-        Inventory page = Bukkit.createInventory(null, 54, ColorUtils.colorcode("&#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lR&#f8b93a&la&#f8c43a&ln&#f8d03a&lk&#f8db3a&ls"));
+        Inventory page = Bukkit.createInventory(null, 54, Util.colorcode("&#f76a3b&lS&#f7753b&lo&#f7813b&ll&#f78c3b&la&#f7973b&lc&#f8a33b&le &#f8ae3a&lR&#f8b93a&la&#f8c43a&ln&#f8d03a&lk&#f8db3a&ls"));
         int[] whiteTulip = {0,8,45,53};
         int[] orangeTulip = {3,5,48,50};
         int[] torchFlower = {4,49};
@@ -46,18 +46,18 @@ public class GUI implements Listener {
 
         int zeroHolder = 0;
         for (int i = 19; i < 26; i++) {
-            String rankName = ColorUtils.colorcode(pl.getConfig().getStringList("Ranks").get(zeroHolder));
+            String rankName = Util.colorcode(pl.getConfig().getStringList("Ranks").get(zeroHolder));
 
             List<String> rawLore = pl.getConfig().getStringList("RanksLore." + ChatColor.stripColor(rankName).toLowerCase());
             ItemStack item = GUIActions.createGuiItem(false, new ItemStack(Material.RED_CONCRETE_POWDER), rankName,"");
             ItemMeta meta = item.getItemMeta();
             List<String> rawDivider = pl.getConfig().getStringList("RanksDivider");
             List<String> divider = new ArrayList<>();
-            rawDivider.forEach(line -> divider.add(ColorUtils.colorcode(line.replace("%rankprice%", pl.getConfig().getString("RanksPrices." + ChatColor.stripColor(rankName).toLowerCase())))));
+            rawDivider.forEach(line -> divider.add(Util.colorcode(line.replace("%rankprice%", pl.getConfig().getString("RanksPrices." + ChatColor.stripColor(rankName).toLowerCase())))));
             meta.setLore(divider);
 
             List<String> lore = meta.getLore();
-            rawLore.forEach(line -> lore.add(ColorUtils.colorcode(line)));
+            rawLore.forEach(line -> lore.add(Util.colorcode(line)));
             meta.setLore(lore);
             item.setItemMeta(meta);
 
@@ -66,19 +66,19 @@ public class GUI implements Listener {
         }
         zeroHolder = 0;
         for (int i = 29; i < 34; i++) {
-            String rankName = ColorUtils.colorcode(pl.getConfig().getStringList("Ranks2").get(zeroHolder));
+            String rankName = Util.colorcode(pl.getConfig().getStringList("Ranks2").get(zeroHolder));
 
             List<String> rawLore = pl.getConfig().getStringList("RanksLore." + ChatColor.stripColor(rankName).toLowerCase());
             ItemStack item = GUIActions.createGuiItem(false, new ItemStack(Material.RED_CONCRETE_POWDER), rankName,"");
             ItemMeta meta = item.getItemMeta();
             List<String> rawDivider = pl.getConfig().getStringList("RanksDivider");
             List<String> divider = new ArrayList<>();
-            rawDivider.forEach(line -> divider.add(ColorUtils.colorcode(line.replace("%rankprice%", pl.getConfig().getString("RanksPrices." + ChatColor.stripColor(rankName).toLowerCase())))));
+            rawDivider.forEach(line -> divider.add(Util.colorcode(line.replace("%rankprice%", pl.getConfig().getString("RanksPrices." + ChatColor.stripColor(rankName).toLowerCase())))));
             meta.setLore(divider);
 
 
             List<String> lore = meta.getLore();
-            rawLore.forEach(line -> lore.add(ColorUtils.colorcode(line)));
+            rawLore.forEach(line -> lore.add(Util.colorcode(line)));
             meta.setLore(lore);
             item.setItemMeta(meta);
 
@@ -100,14 +100,14 @@ public class GUI implements Listener {
             }
         }
 
-        ItemStack ranksInfo = GUIActions.createGuiItem(true,new ItemStack(Material.BOOK),ColorUtils.colorcode(pl.getConfig().getString("RanksInfo"))," ");
+        ItemStack ranksInfo = GUIActions.createGuiItem(true,new ItemStack(Material.BOOK), Util.colorcode(pl.getConfig().getString("RanksInfo"))," ");
 
         List<String> lore = new ArrayList<>();
-        pl.getConfig().getStringList("RanksInfoLore").forEach(line -> lore.add(ColorUtils.colorcode(line)));
+        pl.getConfig().getStringList("RanksInfoLore").forEach(line -> lore.add(Util.colorcode(line)));
         ranksInfo.setLore(lore);
         page.setItem(13, ranksInfo);
 
-        page.setItem(40, GUIActions.createGuiItem(false,new ItemStack(Material.NETHER_STAR),ColorUtils.colorcode("&#f76a3b&lP&#f7743b&lr&#f77f3b&le&#f7893b&lm&#f7933b&li&#f79d3b&lu&#f8a83a&lm &#f8b23a&lR&#f8bc3a&la&#f8c63a&ln&#f8d13a&lk&#f8db3a&ls"),
+        page.setItem(40, GUIActions.createGuiItem(false,new ItemStack(Material.NETHER_STAR), Util.colorcode("&#f76a3b&lP&#f7743b&lr&#f77f3b&le&#f7893b&lm&#f7933b&li&#f79d3b&lu&#f8a83a&lm &#f8b23a&lR&#f8bc3a&la&#f8c63a&ln&#f8d13a&lk&#f8db3a&ls"),
                         "§7Click to view our donator ranks!"));
 
         pages.add(page);
@@ -150,8 +150,8 @@ public class GUI implements Listener {
 
         switch (clickedItem.getType()) {
             case YELLOW_CONCRETE_POWDER -> Bukkit.dispatchCommand(player, "rankup");
-            case LIME_CONCRETE_POWDER -> player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You are already this rank!"));
-            case RED_CONCRETE_POWDER -> player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You cannot rank up to this rank yet!"));
+            case LIME_CONCRETE_POWDER -> player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You are already this rank!"));
+            case RED_CONCRETE_POWDER -> player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You cannot rank up to this rank yet!"));
             case NETHER_STAR -> Bukkit.dispatchCommand(player, "premium");
         }
     }

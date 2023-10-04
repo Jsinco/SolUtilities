@@ -60,7 +60,7 @@ public class Welcomes implements Listener, CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         if (args.length < 1 && commandSender instanceof Player player ) {
-            player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You have "
+            player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You have "
                     + Saves.get().getInt("Welcomes." + player.getUniqueId()) + " welcome points!"));
             return true;
         }
@@ -70,20 +70,20 @@ public class Welcomes implements Listener, CommandExecutor {
             case "see" -> {
                 try {
                     int points = Saves.get().getInt("Welcomes." + Bukkit.getOfflinePlayer(args[1]).getUniqueId());
-                    commandSender.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + Bukkit.getOfflinePlayer(args[1]).getName()
+                    commandSender.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + Bukkit.getOfflinePlayer(args[1]).getName()
                             + " has " + points + " welcome points!"));
                 } catch (Exception e) {
-                    commandSender.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "That player has no welcome points!"));
+                    commandSender.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "That player has no welcome points!"));
                 }
             }
             case "toggle" -> {
                 if (!(commandSender instanceof Player player)) return true;
                 if (player.getScoreboardTags().contains("solwelcomes.off")) {
                     player.removeScoreboardTag("solwelcomes.off");
-                    player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You will now receive welcome points!"));
+                    player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You will now receive welcome points!"));
                 } else {
                     player.addScoreboardTag("solwelcomes.off");
-                    player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You will no longer receive welcome points!"));
+                    player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You will no longer receive welcome points!"));
                 }
             }
         }

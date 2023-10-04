@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.utility;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -29,7 +29,7 @@ public class UtilMethods {
             player.getInventory().setItemInMainHand(item);
         }
         else {
-            player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You must be looking at an armor stand to do this!"));
+            player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You must be looking at an armor stand to do this!"));
         }
     }
 
@@ -129,7 +129,7 @@ public class UtilMethods {
 
         // Format
         for (String page : pages) {
-            newPages.add(ColorUtils.colorcode(page));
+            newPages.add(Util.colorcode(page));
         }
 
         book.setPages(newPages);

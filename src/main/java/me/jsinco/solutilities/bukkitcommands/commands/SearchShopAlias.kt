@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.bukkitcommands.commands
 
-import me.jsinco.solutilities.ColorUtils
+import me.jsinco.solutilities.Util
 import me.jsinco.solutilities.SolUtilities
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -15,7 +15,7 @@ class SearchShopAlias(val plugin: SolUtilities) : CommandExecutor, TabCompleter 
     override fun onCommand(commandSender: CommandSender, command: Command, s: String, strings: Array<String>): Boolean {
         if (commandSender !is Player) return false
         if (strings.isEmpty()) {
-            commandSender.sendMessage(ColorUtils.colorcode(plugin.config.getString("prefix") + "Specify an item to search for."))
+            commandSender.sendMessage(Util.colorcode(plugin.config.getString("prefix") + "Specify an item to search for."))
             return true
         }
         if (command.name.equals("ls", ignoreCase = true)) {

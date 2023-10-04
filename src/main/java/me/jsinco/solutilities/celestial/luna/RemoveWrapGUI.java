@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.luna;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,7 +22,7 @@ public class RemoveWrapGUI implements Listener {
 
     @SuppressWarnings("DuplicatedCode")
     public static Inventory removewrapGUI() {
-        Inventory removewrap = Bukkit.createInventory(null,27, ColorUtils.colorcode("&#b9ddff&lL&#bedaff&lu&#c4d8ff&ln&#c9d5ff&la &#ced3ff&lW&#d3d0ff&lr&#d9cdff&la&#decbff&lp&#e3c8ff&ls"));
+        Inventory removewrap = Bukkit.createInventory(null,27, Util.colorcode("&#b9ddff&lL&#bedaff&lu&#c4d8ff&ln&#c9d5ff&la &#ced3ff&lW&#d3d0ff&lr&#d9cdff&la&#decbff&lp&#e3c8ff&ls"));
         int[] roseBush = {0,1,7,8,18,19,25,26};
         int[] torchFlower = {2,4,6,20,22,24};
         int[] seaGrass = {3,5,21,23};

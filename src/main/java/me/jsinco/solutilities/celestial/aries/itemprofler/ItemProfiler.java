@@ -1,8 +1,8 @@
 package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
-import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -46,7 +46,7 @@ public class ItemProfiler implements Listener, CommandExecutor {
     private static List<Inventory> openItemProfilers = new ArrayList<>();
 
     public static void openItemProfiler(Player player) {
-        Inventory inv = player.getServer().createInventory(null, 45, ColorUtils.colorcode("&#ffb89c&lI&#ffb8a4&lt&#ffb8ad&le&#ffb8b5&lm &#ffb8bd&lP&#ffb8c6&lr&#ffb9ce&lo&#ffb9d7&lf&#ffb9df&li&#ffb9e7&ll&#ffb9f0&le&#ffb9f8&lr"));
+        Inventory inv = player.getServer().createInventory(null, 45, Util.colorcode("&#ffb89c&lI&#ffb8a4&lt&#ffb8ad&le&#ffb8b5&lm &#ffb8bd&lP&#ffb8c6&lr&#ffb9ce&lo&#ffb9d7&lf&#ffb9df&li&#ffb9e7&ll&#ffb9f0&le&#ffb9f8&lr"));
 
         inv.setItem(23, GUIActions.createNBTItem(true, "itemprofilersearch", 10071, Material.PAPER, "&#ffb89c&lV&#ffb8a1&li&#ffb8a7&le&#ffb8ac&lw &#ffb8b2&lC&#ffb8b7&lu&#ffb8bc&ls&#ffb8c2&lt&#ffb8c7&lo&#ffb9cd&lm &#ffb9d2&lI&#ffb9d8&lt&#ffb9dd&le&#ffb9e2&lm &#ffb9e8&lI&#ffb9ed&ln&#ffb9f3&lf&#ffb9f8&lo",
                 "&7Click to view any info on this custom item!"));
@@ -61,7 +61,7 @@ public class ItemProfiler implements Listener, CommandExecutor {
         }
 
         openItemProfilers.add(inv);
-        player.sendMessage(ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "Opening Item Profiler!"));
+        player.sendMessage(Util.colorcode(plugin.getConfig().getString("prefix") + "Opening Item Profiler!"));
         player.openInventory(inv);
     }
 
@@ -91,7 +91,7 @@ public class ItemProfiler implements Listener, CommandExecutor {
 
             if (event.getInventory().getItem(22) == null)  return;
             ItemStack customItem = event.getInventory().getItem(22);
-            String profile = ColorUtils.colorcode(ItemProfilerMethods.setProfilePlaceholders(pl, player, ItemProfilerMethods.profileItem(pl, customItem)));
+            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(pl, player, ItemProfilerMethods.profileItem(pl, customItem)));
 
             // Experimental
             ItemStack infoBox = event.getInventory().getItem(13);
@@ -107,13 +107,13 @@ public class ItemProfiler implements Listener, CommandExecutor {
                 int size = Math.min(string.size(), 7);
 
                 for (int i = 0; i < size; i++) { // 7 lines of lore max
-                    infoBoxLore.add(ColorUtils.colorcode("&#E2E2E2" + string.get(i)));
+                    infoBoxLore.add(Util.colorcode("&#E2E2E2" + string.get(i)));
                 }
             } else {
-                infoBoxLore.add(ColorUtils.colorcode("&#E2E2E2" + profile));
+                infoBoxLore.add(Util.colorcode("&#E2E2E2" + profile));
             }
 
-            infoBoxLore.addAll(List.of("", ColorUtils.colorcode("&#E2E2E2&l... Click for full info")));
+            infoBoxLore.addAll(List.of("", Util.colorcode("&#E2E2E2&l... Click for full info")));
 
             infoBoxMeta.setLore(infoBoxLore);
 
@@ -127,7 +127,7 @@ public class ItemProfiler implements Listener, CommandExecutor {
             String rgb2 = pl.ItemProfilesFile().getString("IridiumColors.rgb2");
             ItemStack customItem = event.getInventory().getItem(22);
 
-            String profile = ColorUtils.colorcode(ItemProfilerMethods.setProfilePlaceholders(pl, player, ItemProfilerMethods.profileItem(pl, customItem)));
+            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(pl, player, ItemProfilerMethods.profileItem(pl, customItem)));
             player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + pl.ItemProfilesFile().getString("IridiumColors.border1") + "</GRADIENT:"+rgb2+">"));
             player.sendMessage(profile);
             player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + pl.ItemProfilesFile().getString("IridiumColors.border2") + "</GRADIENT:"+rgb2+">"));

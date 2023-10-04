@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.utility;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -46,12 +46,12 @@ public class TagParticleVouchers implements Listener {
         if (meta.getPersistentDataContainer().has(new NamespacedKey(pl,"tagID"), PersistentDataType.STRING)) {
             if (!confirmList.contains(player)) {
                 confirmList.add(player);
-                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "Are you sure you want to use this tag? &6Right-click &#E2E2E2again to confirm."));
+                player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "Are you sure you want to use this tag? &6Right-click &#E2E2E2again to confirm."));
                 Bukkit.getScheduler().scheduleSyncDelayedTask(pl, () -> confirmList.remove(player), 140L);
             } else {
                 String tagID = meta.getPersistentDataContainer().get(new NamespacedKey(pl,"tagID"), PersistentDataType.STRING);
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set eternaltags.tag." + tagID + " true");
-                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You have redeemed the " + meta.getDisplayName() + "&r&#E2E2E2!"));
+                player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You have redeemed the " + meta.getDisplayName() + "&r&#E2E2E2!"));
                 ItemStack tag = player.getInventory().getItemInMainHand().clone();
                 tag.setAmount(1);
                 player.getInventory().removeItem(tag);
@@ -63,7 +63,7 @@ public class TagParticleVouchers implements Listener {
     public static void playerParticleRedeem(Player player) {
         if (!confirmList.contains(player)) {
             confirmList.add(player);
-            player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "Are you sure you want to use this tag? &6Right-click &#E2E2E2again to confirm."));
+            player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "Are you sure you want to use this tag? &6Right-click &#E2E2E2again to confirm."));
             Bukkit.getScheduler().scheduleSyncDelayedTask(pl, () -> confirmList.remove(player), 140L);
         } else {
             ItemMeta meta = player.getInventory().getItemInMainHand().getItemMeta();
@@ -80,7 +80,7 @@ public class TagParticleVouchers implements Listener {
         ItemStack tag = new ItemStack(Material.NAME_TAG);
         ItemMeta tagMeta = tag.getItemMeta();
 
-        tagMeta.setDisplayName(ColorUtils.colorcode(tagName + " &r&7Tag"));
+        tagMeta.setDisplayName(Util.colorcode(tagName + " &r&7Tag"));
         tagMeta.setLore(List.of("§7Right click to redeem!"));
         tagMeta.getPersistentDataContainer().set(new NamespacedKey(pl,"tagID"), PersistentDataType.STRING, tagID);
         tagMeta.addEnchant(Enchantment.LUCK, 1, true);
@@ -94,7 +94,7 @@ public class TagParticleVouchers implements Listener {
         ItemStack item = new ItemStack(Material.valueOf(material));
         ItemMeta meta = item.getItemMeta();
         meta.getPersistentDataContainer().set(new NamespacedKey(pl, "particleID"), PersistentDataType.STRING, permissionNode);
-        meta.setLore(List.of(ColorUtils.colorcode("&7Right click to redeem!")));
+        meta.setLore(List.of(Util.colorcode("&7Right click to redeem!")));
         meta.addEnchant(Enchantment.LUCK, 1, true);
         meta.addItemFlags(HIDE_ENCHANTS,HIDE_ATTRIBUTES);
         item.setItemMeta(meta);

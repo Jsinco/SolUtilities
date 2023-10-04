@@ -1,7 +1,8 @@
 package me.jsinco.solutilities.solace;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -128,7 +129,7 @@ public class PVGUI implements Listener {
             mappedPaneColor.remove(player.getName());
             player.closeInventory();
             createVaultsGUI(player);
-            player.sendMessage(ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "Color changed!"));
+            player.sendMessage(Util.colorcode(plugin.getConfig().getString("prefix") + "Color changed!"));
             
         }
 
@@ -155,13 +156,13 @@ public class PVGUI implements Listener {
                         pane = Material.valueOf(Saves.get().getString("PVGUI.Vault"+i+"."+player.getUniqueId()));
                     }
 
-                    ItemStack openVault = GUIActions.createGuiItem(true, new ItemStack(pane), ColorUtils.colorcode(plugin.getConfig().getString("PVGUI.OpenVault.Title")).replace("$vaultnum", String.valueOf(i)));
+                    ItemStack openVault = GUIActions.createGuiItem(true, new ItemStack(pane), Util.colorcode(plugin.getConfig().getString("PVGUI.OpenVault.Title")).replace("$vaultnum", String.valueOf(i)));
                     ItemMeta openVaultMeta = openVault.getItemMeta();
                     openVaultMeta.getPersistentDataContainer().set(new NamespacedKey(plugin, "vault"), PersistentDataType.INTEGER, i);
 
                     final int finalI = i;
                     List<String> lore = new ArrayList<>();
-                    plugin.getConfig().getStringList("PVGUI.OpenVault.Lore").forEach(line -> lore.add(ColorUtils.colorcode(line.replace("$vaultnum", String.valueOf(finalI)))));
+                    plugin.getConfig().getStringList("PVGUI.OpenVault.Lore").forEach(line -> lore.add(Util.colorcode(line.replace("$vaultnum", String.valueOf(finalI)))));
                     openVaultMeta.setLore(lore);
 
                     openVault.setItemMeta(openVaultMeta);
@@ -183,11 +184,11 @@ public class PVGUI implements Listener {
                 }
 
                 int vaultNum = i + 1;
-                ItemStack openVault = GUIActions.createGuiItem(true, new ItemStack(pane), ColorUtils.colorcode(plugin.getConfig().getString("PVGUI.OpenVault.Title")).replace("$vaultnum", String.valueOf(vaultNum)));
+                ItemStack openVault = GUIActions.createGuiItem(true, new ItemStack(pane), Util.colorcode(plugin.getConfig().getString("PVGUI.OpenVault.Title")).replace("$vaultnum", String.valueOf(vaultNum)));
                 ItemMeta openVaultMeta = openVault.getItemMeta();
                 openVaultMeta.getPersistentDataContainer().set(new NamespacedKey(plugin, "vault"), PersistentDataType.INTEGER, vaultNum);
                 List<String> lore = new ArrayList<>();
-                plugin.getConfig().getStringList("PVGUI.OpenVault.Lore").forEach(line -> lore.add(ColorUtils.colorcode(line.replace("$vaultnum", String.valueOf(vaultNum)))));
+                plugin.getConfig().getStringList("PVGUI.OpenVault.Lore").forEach(line -> lore.add(Util.colorcode(line.replace("$vaultnum", String.valueOf(vaultNum)))));
                 openVaultMeta.setLore(lore);
                 openVault.setItemMeta(openVaultMeta);
                 gui.setItem(i, openVault);
@@ -230,11 +231,11 @@ public class PVGUI implements Listener {
     }
 
     private static Inventory createRegularGUI() {
-        Inventory inv = Bukkit.createInventory(null,54, ColorUtils.colorcode(plugin.getConfig().getString("PVGUI.Title")));
+        Inventory inv = Bukkit.createInventory(null,54, Util.colorcode(plugin.getConfig().getString("PVGUI.Title")));
 
-        ItemStack lockedVault = GUIActions.createGuiItem(false, new ItemStack(Material.GRAY_STAINED_GLASS_PANE), ColorUtils.colorcode(plugin.getConfig().getString("PVGUI.LockedVault.Title")));
+        ItemStack lockedVault = GUIActions.createGuiItem(false, new ItemStack(Material.GRAY_STAINED_GLASS_PANE), Util.colorcode(plugin.getConfig().getString("PVGUI.LockedVault.Title")));
         ItemMeta meta = lockedVault.getItemMeta();
-        meta.setLore(ColorUtils.colorArrayList(plugin.getConfig().getStringList("PVGUI.LockedVault.Lore")));
+        meta.setLore(Util.colorArrayList(plugin.getConfig().getStringList("PVGUI.LockedVault.Lore")));
         lockedVault.setItemMeta(meta);
         for (int i = 0; i < inv.getSize(); i++) {
             inv.setItem(i, lockedVault);

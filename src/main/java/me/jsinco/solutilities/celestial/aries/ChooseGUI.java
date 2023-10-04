@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.aries;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.celestial.aries.itemprofler.ItemProfiler;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class ChooseGUI implements Listener {
-    public static Inventory gui = Bukkit.createInventory(null, 27, ColorUtils.colorcode("&#ffb89c&lA&#ffb8b3&lr&#ffb9ca&li&#ffb9e1&le&#ffb9f8&ls"));
+    public static Inventory gui = Bukkit.createInventory(null, 27, Util.colorcode("&#ffb89c&lA&#ffb8b3&lr&#ffb9ca&li&#ffb9e1&le&#ffb9f8&ls"));
 
     @SuppressWarnings("DuplicatedCode")
     public static void init() {
@@ -38,7 +38,7 @@ public class ChooseGUI implements Listener {
             gui.setItem(ameth,GUIActions.createGuiItem(false,new ItemStack(Material.AMETHYST_CLUSTER)," "));
         }
 
-        gui.setItem(12,GUIActions.createGuiItem(true, new ItemStack(Material.FLINT_AND_STEEL), ColorUtils.colorcode("&#ffb89c&lC&#ffb8a4&la&#ffb8ad&ln&#ffb8b5&ld&#ffb8bd&ll&#ffb8c6&le &#ffb9ce&lB&#ffb9d7&lu&#ffb9df&lr&#ffb9e7&ln&#ffb9f0&le&#ffb9f8&lr")));
+        gui.setItem(12,GUIActions.createGuiItem(true, new ItemStack(Material.FLINT_AND_STEEL), Util.colorcode("&#ffb89c&lC&#ffb8a4&la&#ffb8ad&ln&#ffb8b5&ld&#ffb8bd&ll&#ffb8c6&le &#ffb9ce&lB&#ffb9d7&lu&#ffb9df&lr&#ffb9e7&ln&#ffb9f0&le&#ffb9f8&lr")));
 //Vaulted gui.setItem(13,GUIActions.createGuiItem(true,new ItemStack(Material.BUNDLE), ColorUtils.colorcode("&#ffb89c&lA&#ffb8a8&lr&#ffb8b3&li&#ffb8bf&le&#ffb9ca&ls&#ffb9d6&l' &#ffb9e1&lB&#ffb9ed&la&#ffb9f8&lg")));
         gui.setItem(14,GUIActions.createNBTItem(true,"ariesmiscitemprofiler", 10071, Material.PAPER, "&#ffb89c&lI&#ffb8a4&lt&#ffb8ad&le&#ffb8b5&lm &#ffb8bd&lP&#ffb8c6&lr&#ffb9ce&lo&#ffb9d7&lf&#ffb9df&li&#ffb9e7&ll&#ffb9f0&le&#ffb9f8&lr"));
     }

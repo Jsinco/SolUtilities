@@ -3,10 +3,18 @@ package me.jsinco.solutilities.solcmd.subcommands
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.solcmd.SubCommand
 import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 
-class HelpCommand : SubCommand {
+class NBTSeeCommand : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
-        TODO("Not yet implemented")
+        val player = sender as Player
+        val item: ItemStack = player.inventory.itemInMainHand
+        val meta = item.itemMeta
+        if (meta != null) {
+            player.sendMessage("NameSpacedKeys: ")
+            player.sendMessage(meta.persistentDataContainer.keys.toString())
+        }
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): List<String?>? {
@@ -14,10 +22,10 @@ class HelpCommand : SubCommand {
     }
 
     override fun permission(): String {
-        return "solutilities.command.help"
+        return "solutilities.command.nbtsee"
     }
 
     override fun playerOnly(): Boolean {
-        return false
+        return true
     }
 }

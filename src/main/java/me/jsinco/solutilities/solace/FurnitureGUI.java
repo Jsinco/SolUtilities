@@ -1,7 +1,7 @@
 package me.jsinco.solutilities.solace;
 
 import me.jsinco.solutilities.Saves;
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,7 +28,7 @@ public class FurnitureGUI implements Listener {
         try {
             pages.forEach(page -> page.getViewers().forEach(humanEntity -> {
                 humanEntity.closeInventory();
-                humanEntity.sendMessage(ColorUtils.colorcode("Saved!"));
+                humanEntity.sendMessage(Util.colorcode("Saved!"));
             }));
             pages.clear();
             int leftOffItem = 0;
@@ -55,7 +55,7 @@ public class FurnitureGUI implements Listener {
 
 
     public static Inventory createPage() {
-        Inventory page = Bukkit.createInventory(null,54, ColorUtils.colorcode("&#f76a3b&lF&#f7783b&lu&#f7863b&lr&#f7943b&ln&#f8a33b&li&#f8b13a&lt&#f8bf3a&lu&#f8cd3a&lr&#f8db3a&le"));
+        Inventory page = Bukkit.createInventory(null,54, Util.colorcode("&#f76a3b&lF&#f7783b&lu&#f7863b&lr&#f7943b&ln&#f8a33b&li&#f8b13a&lt&#f8bf3a&lu&#f8cd3a&lr&#f8db3a&le"));
 
         for (int i = 45; i < 54; i++) {
             page.setItem(i, GUIActions.createGuiItem(false, new ItemStack(Material.GRAY_STAINED_GLASS_PANE), "&l"));
@@ -84,7 +84,7 @@ public class FurnitureGUI implements Listener {
                     case "Previous Page" -> openInventory(player, pages.indexOf(event.getInventory()) - 1);
                 }
             } catch (IndexOutOfBoundsException e) {
-                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You are on the last page."));
+                player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You are on the last page."));
             }
         }
     }

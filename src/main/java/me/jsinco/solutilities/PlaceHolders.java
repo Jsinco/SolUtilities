@@ -61,6 +61,6 @@ public class PlaceHolders extends PlaceholderExpansion {
         else if(player.hasPermission("solutilities.color.recruit")) color = pl.getConfig().getString("Prefixes.Colors.recruit");
         else return "";
 
-        return ColorUtils.colorcode(color + prefix);
+        return Util.colorcode(color + prefix);
     }
 }

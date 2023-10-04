@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.utility;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,19 +32,19 @@ public class InvisibleFrames implements Listener {
         Player p = event.getPlayer();
         if (!(event.getRightClicked() instanceof ItemFrame frame) || !p.isSneaking() || !p.getInventory().getItemInMainHand().getType().isAir()) return;
         event.setCancelled(true);
-        Inventory inv = Bukkit.createInventory(null, 27, ColorUtils.colorcode("&#f76a3b&lI&#f7773b&lt&#f7833b&le&#f7903b&lm &#f79c3b&lF&#f8a93a&lr&#f8b53a&la&#f8c23a&lm&#f8ce3a&le&#f8db3a&ls"));
+        Inventory inv = Bukkit.createInventory(null, 27, Util.colorcode("&#f76a3b&lI&#f7773b&lt&#f7833b&le&#f7903b&lm &#f79c3b&lF&#f8a93a&lr&#f8b53a&la&#f8c23a&lm&#f8ce3a&le&#f8db3a&ls"));
 
         if (frame.isVisible()) {
-            inv.setItem(11, GUIActions.createGuiItem(false, new ItemStack(Material.ENDER_PEARL), ColorUtils.colorcode("&#f79a3bToggle Visibility")));
+            inv.setItem(11, GUIActions.createGuiItem(false, new ItemStack(Material.ENDER_PEARL), Util.colorcode("&#f79a3bToggle Visibility")));
         } else {
-            inv.setItem(11, GUIActions.createGuiItem(true, new ItemStack(Material.ENDER_PEARL), ColorUtils.colorcode("&#f79a3bToggle Visibility")));
+            inv.setItem(11, GUIActions.createGuiItem(true, new ItemStack(Material.ENDER_PEARL), Util.colorcode("&#f79a3bToggle Visibility")));
         }
 
         ItemStack fixedPos;
         if (frame.isFixed()) {
-            fixedPos = GUIActions.createGuiItem(true, new ItemStack(Material.BEDROCK), ColorUtils.colorcode("&#f79a3bFix Position"));
+            fixedPos = GUIActions.createGuiItem(true, new ItemStack(Material.BEDROCK), Util.colorcode("&#f79a3bFix Position"));
         } else {
-            fixedPos = GUIActions.createGuiItem(false, new ItemStack(Material.BEDROCK), ColorUtils.colorcode("&#f79a3bFix Position"));
+            fixedPos = GUIActions.createGuiItem(false, new ItemStack(Material.BEDROCK), Util.colorcode("&#f79a3bFix Position"));
         }
         ItemMeta meta = fixedPos.getItemMeta();
         meta.getPersistentDataContainer().set(new NamespacedKey(pl, "itemFrameID"), PersistentDataType.STRING, frame.getUniqueId().toString());
@@ -80,10 +80,10 @@ public class InvisibleFrames implements Listener {
             assert frame != null;
             if (frame.isVisible()) {
                 frame.setVisible(false);
-                inv.setItem(11, GUIActions.createGuiItem(true, new ItemStack(Material.ENDER_PEARL), ColorUtils.colorcode("&#f79a3bToggle Visibility")));
+                inv.setItem(11, GUIActions.createGuiItem(true, new ItemStack(Material.ENDER_PEARL), Util.colorcode("&#f79a3bToggle Visibility")));
             } else {
                 frame.setVisible(true);
-                inv.setItem(11, GUIActions.createGuiItem(false, new ItemStack(Material.ENDER_PEARL), ColorUtils.colorcode("&#f79a3bToggle Visibility")));
+                inv.setItem(11, GUIActions.createGuiItem(false, new ItemStack(Material.ENDER_PEARL), Util.colorcode("&#f79a3bToggle Visibility")));
             }
 
         } else if (clicked.getType().equals(Material.BEDROCK)) {

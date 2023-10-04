@@ -5,39 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d71e540-346b-4a60-99e3-8ec80af5be18" name="Changes" comment="updates">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/Saves.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/RanksMenu.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/SearchShopAlias.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/joins/Joins.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/joins/JoinsCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/joins/Listeners.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Util.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/PingCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/NBTSeeCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/NickPreviewCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/RankupBroadcastCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/ReloadCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/SilentCommand.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/BulkSaves.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/ColorUtils.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/PlaceHolders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/PlaceHolders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolaceCMD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolaceCMD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/TabCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/TabCompletion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/Welcomes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/Welcomes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/betterjoins/Messages_Effects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/betterjoins/Messages_Effects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/BlackMarketNotifyCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/BlackMarketNotifyCommand.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/Market.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/MarketCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/MarketCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/MarketGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/MarketGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/MarketItemPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/blackmarket/MarketItemPreview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/ranks/RanksMenuOpen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/RanksMenu.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/RanksMenu.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/SearchShopAlias.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/commands/SearchShopAlias.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/CandleApplyGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/CandleApplyGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/ChooseGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/ChooseGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/itemprofler/ItemProfiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/itemprofler/ItemProfiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/itemprofler/ItemProfilerMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/aries/itemprofler/ItemProfilerMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/celeste/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/celeste/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/celeste/ShopAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/celeste/ShopAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/ModelAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/ModelAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/RemoveWrapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/RemoveWrapGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/SelectGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/SelectGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/WrapGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/WrapGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/Wrapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/luna/Wrapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/joins/Listeners.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/joins/Listeners.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/ranks/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/ranks/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/Furniture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/Furniture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/FurnitureAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/FurnitureAdminGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/FurnitureGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/FurnitureGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/PVGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/PVGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/Referrals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/Referrals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/SetItem_Redeem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solace/SolCoinWithdrawCMD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Saves.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/SearchShop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/DonationMsgCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/DonationMsgCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/GUIActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/GUIActions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/InvisibleFrames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/InvisibleFrames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/TagParticleVouchers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/TagParticleVouchers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/Util.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/UtilListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/UtilListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/UtilMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/UtilMethods.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696258414671</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updates">
+      <created>1696442701148</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696442701148</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

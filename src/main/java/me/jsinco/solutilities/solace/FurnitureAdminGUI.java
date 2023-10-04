@@ -1,7 +1,7 @@
 package me.jsinco.solutilities.solace;
 
 import me.jsinco.solutilities.Saves;
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,7 +28,7 @@ public class FurnitureAdminGUI implements Listener {
         try {
             pages.forEach(page -> page.getViewers().forEach(humanEntity -> {
                 humanEntity.closeInventory();
-                humanEntity.sendMessage(ColorUtils.colorcode("This gui can only be viewed one player at a time."));
+                humanEntity.sendMessage(Util.colorcode("This gui can only be viewed one player at a time."));
             }));
             pages.clear();
             int leftOffItem = 0;
@@ -55,7 +55,7 @@ public class FurnitureAdminGUI implements Listener {
 
 
     public static Inventory createPage() {
-        Inventory page = Bukkit.createInventory(null,54, ColorUtils.colorcode("&#f76a3b&lF&#f7733b&lu&#f77d3b&lr&#f7863b&ln&#f7903b&li&#f7993b&lt&#f8a33b&lu&#f8ac3a&lr&#f8b53a&le &#f8bf3a&lE&#f8c83a&ld&#f8d23a&li&#f8db3a&lt"));
+        Inventory page = Bukkit.createInventory(null,54, Util.colorcode("&#f76a3b&lF&#f7733b&lu&#f77d3b&lr&#f7863b&ln&#f7903b&li&#f7993b&lt&#f8a33b&lu&#f8ac3a&lr&#f8b53a&le &#f8bf3a&lE&#f8c83a&ld&#f8d23a&li&#f8db3a&lt"));
 
         for (int i = 45; i < 54; i++) {
             page.setItem(i, GUIActions.createGuiItem(false, new ItemStack(Material.GRAY_STAINED_GLASS_PANE), "&l"));
@@ -112,7 +112,7 @@ public class FurnitureAdminGUI implements Listener {
                         try {
                             openInventory(player, pages.indexOf(event.getInventory()) - 1);
                         } catch (IndexOutOfBoundsException ex) {
-                            player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + "You are on the last page."));
+                            player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You are on the last page."));
                         }
                     }
                 }

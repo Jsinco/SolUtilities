@@ -1,8 +1,7 @@
 package me.jsinco.solutilities.solcmd
 
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.solcmd.subcommands.DonationMsgCommand
-import me.jsinco.solutilities.solcmd.subcommands.HelpCommand
+import me.jsinco.solutilities.solcmd.subcommands.*
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -14,8 +13,12 @@ class CommandManager(val plugin: SolUtilities) : CommandExecutor, TabCompleter {
     private val subCommands: MutableMap<String, SubCommand> = mutableMapOf()
 
     init {
-        subCommands += "help" to HelpCommand()
-        subCommands += "donationmsg" to DonationMsgCommand()
+        subCommands["donationmsg"] = DonationMsgCommand()
+        subCommands["reload"] = ReloadCommand()
+        subCommands["silent"] = SilentCommand()
+        subCommands["rankupbroadcast"] = RankupBroadcastCommand()
+        subCommands["nbtsee"] = NBTSeeCommand()
+        subCommands["nicksee"] = NickPreviewCommand()
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
@@ -47,7 +50,13 @@ class CommandManager(val plugin: SolUtilities) : CommandExecutor, TabCompleter {
         if (args == null) {
             return null
         } else if (args.size == 1) {
-            return subCommands.keys.toMutableList()
+            val subCommandNames: MutableList<String> = mutableListOf()
+            for (subcommand in subCommands) {
+                if (subcommand.value.permission() == null || sender.hasPermission(subcommand.value.permission()!!)) {
+                    subCommandNames.add(subcommand.key)
+                }
+            }
+            return subCommandNames
         }
 
         if (!subCommands.containsKey(args[0])) return null

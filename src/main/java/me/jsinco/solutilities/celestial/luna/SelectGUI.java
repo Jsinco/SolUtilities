@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.luna;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class SelectGUI implements Listener {
 
-    private static final Inventory gui = Bukkit.createInventory(null, 27, ColorUtils.colorcode("&#b9ddff&lL&#bedaff&lu&#c4d8ff&ln&#c9d5ff&la &#ced3ff&lW&#d3d0ff&lr&#d9cdff&la&#decbff&lp&#e3c8ff&ls"));
+    private static final Inventory gui = Bukkit.createInventory(null, 27, Util.colorcode("&#b9ddff&lL&#bedaff&lu&#c4d8ff&ln&#c9d5ff&la &#ced3ff&lW&#d3d0ff&lr&#d9cdff&la&#decbff&lp&#e3c8ff&ls"));
 
 
     @SuppressWarnings("DuplicatedCode") // I KNOW, I HAVE TO FIX LATER
@@ -60,10 +60,10 @@ public class SelectGUI implements Listener {
 
         if (clickedItem.getType() == Material.PAPER) {
             WrapGUI.openInventory(player);
-            player.sendMessage(ColorUtils.colorcode("&#b9ddffL&#bbdcffe&#bedbfft&#c0daff'&#c2d8ffs &#c5d7ffg&#c7d6ffe&#c9d5fft &#ccd4fft&#ced3ffo &#d0d1ffw&#d3d0ffr&#d5cfffa&#d7ceffp&#dacdffp&#dcccffi&#decaffn&#e1c9ffg&#e3c8ff!"));
+            player.sendMessage(Util.colorcode("&#b9ddffL&#bbdcffe&#bedbfft&#c0daff'&#c2d8ffs &#c5d7ffg&#c7d6ffe&#c9d5fft &#ccd4fft&#ced3ffo &#d0d1ffw&#d3d0ffr&#d5cfffa&#d7ceffp&#dacdffp&#dcccffi&#decaffn&#e1c9ffg&#e3c8ff!"));
         } else if (clickedItem.getType() == Material.BARRIER) {
             RemoveWrapGUI.openInventory(player);
-            player.sendMessage(ColorUtils.colorcode("&#b9ddffH&#bbdcffe&#bddbffr&#bfdaffe&#c1d9ff'&#c3d8ffs &#c4d7fft&#c6d6ffh&#c8d5ffe &#cad4ffi&#ccd3fft&#ced3ffe&#d0d2ffm &#d2d1ffu&#d4d0ffn&#d6cfffw&#d8ceffr&#d9cdffa&#dbccffp&#ddcbffp&#dfcaffe&#e1c9ffr&#e3c8ff!"));
+            player.sendMessage(Util.colorcode("&#b9ddffH&#bbdcffe&#bddbffr&#bfdaffe&#c1d9ff'&#c3d8ffs &#c4d7fft&#c6d6ffh&#c8d5ffe &#cad4ffi&#ccd3fft&#ced3ffe&#d0d2ffm &#d2d1ffu&#d4d0ffn&#d6cfffw&#d8ceffr&#d9cdffa&#dbccffp&#ddcbffp&#dfcaffe&#e1c9ffr&#e3c8ff!"));
         } else if (clickedItem.getType() ==  Material.BOOK) {
             Bukkit.getServer().dispatchCommand(player, "lunahelp");
             player.closeInventory();

@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.luna;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -102,18 +102,18 @@ public class Wrapping {
                 }
                 addArmorColor(newItem, wrap);
                 wrapGUI.setItem(12,newItem);
-                player.sendMessage(ColorUtils.colorcode("&#b9ddffW&#badcffo&#bbdcffw&#bcdbff!&#bedbff! &#bfdaffT&#c0daffh&#c1d9ffa&#c2d8fft&#c3d8ff'&#c4d7ffs &#c5d7ffs&#c7d6ffu&#c8d6ffc&#c9d5ffh &#cad4ffa &#cbd4ffc&#ccd3ffo&#cdd3ffo&#cfd2ffl &#d0d2ffw&#d1d1ffr&#d2d1ffa&#d3d0ffp&#d4cfffp&#d5cfffe&#d7ceffd &#d8ceffi&#d9cdfft&#dacdffe&#dbccffm&#dccbff, &#ddcbffe&#decaffn&#e0caffj&#e1c9ffo&#e2c9ffy&#e3c8ff!"));
+                player.sendMessage(Util.colorcode("&#b9ddffW&#badcffo&#bbdcffw&#bcdbff!&#bedbff! &#bfdaffT&#c0daffh&#c1d9ffa&#c2d8fft&#c3d8ff'&#c4d7ffs &#c5d7ffs&#c7d6ffu&#c8d6ffc&#c9d5ffh &#cad4ffa &#cbd4ffc&#ccd3ffo&#cdd3ffo&#cfd2ffl &#d0d2ffw&#d1d1ffr&#d2d1ffa&#d3d0ffp&#d4cfffp&#d5cfffe&#d7ceffd &#d8ceffi&#d9cdfft&#dacdffe&#dbccffm&#dccbff, &#ddcbffe&#decaffn&#e0caffj&#e1c9ffo&#e2c9ffy&#e3c8ff!"));
             } else {
-                player.sendMessage(ColorUtils.colorcode("&#b9ddffW&#baddffe&#bbdcffl&#bcdcffl &#bcdbfft&#bddbffh&#bedaffi&#bfdaffs &#c0daffi&#c1d9ffs &#c2d9ffa&#c2d8ffw&#c3d8ffk&#c4d7ffw&#c5d7ffa&#c6d7ffr&#c7d6ffd&#c8d6ff.&#c8d5ff.&#c9d5ff. &#cad4ffT&#cbd4ffh&#ccd4ffe &#cdd3ffw&#ced3ffr&#ced2ffa&#cfd2ffp&#d0d1ffs &#d1d1ffa&#d2d1ffr&#d3d0ffe &#d4d0fft&#d4cfffw&#d5cfffo &#d6ceffd&#d7ceffi&#d8cefff&#d9cdfff&#dacdffe&#daccffr&#dbccffe&#dccbffn&#ddcbfft &#decbfft&#dfcaffy&#e0caffp&#e0c9ffe&#e1c9ffs&#e2c8ff?&#e3c8ff!"));
+                player.sendMessage(Util.colorcode("&#b9ddffW&#baddffe&#bbdcffl&#bcdcffl &#bcdbfft&#bddbffh&#bedaffi&#bfdaffs &#c0daffi&#c1d9ffs &#c2d9ffa&#c2d8ffw&#c3d8ffk&#c4d7ffw&#c5d7ffa&#c6d7ffr&#c7d6ffd&#c8d6ff.&#c8d5ff.&#c9d5ff. &#cad4ffT&#cbd4ffh&#ccd4ffe &#cdd3ffw&#ced3ffr&#ced2ffa&#cfd2ffp&#d0d1ffs &#d1d1ffa&#d2d1ffr&#d3d0ffe &#d4d0fft&#d4cfffw&#d5cfffo &#d6ceffd&#d7ceffi&#d8cefff&#d9cdfff&#dacdffe&#daccffr&#dbccffe&#dccbffn&#ddcbfft &#decbfft&#dfcaffy&#e0caffp&#e0c9ffe&#e1c9ffs&#e2c8ff?&#e3c8ff!"));
             }
         } else {
-            player.sendMessage(ColorUtils.colorcode("&#b9ddffT&#bbdcffh&#bddbffa&#c0dafft&#c2d9ff'&#c4d7ffs &#c6d6ffn&#c8d5ffo&#cbd4fft &#cdd3ffa &#cfd2ffw&#d1d1ffr&#d4d0ffa&#d6cfffp &#d8ceffs&#daccffi&#dccbffl&#dfcaffl&#e1c9ffy&#e3c8ff!"));
+            player.sendMessage(Util.colorcode("&#b9ddffT&#bbdcffh&#bddbffa&#c0dafft&#c2d9ff'&#c4d7ffs &#c6d6ffn&#c8d5ffo&#cbd4fft &#cdd3ffa &#cfd2ffw&#d1d1ffr&#d4d0ffa&#d6cfffp &#d8ceffs&#daccffi&#dccbffl&#dfcaffl&#e1c9ffy&#e3c8ff!"));
         }
     }
 
     public static void removeWrap(ItemStack item, Player player, Inventory wrapGUI) {
         if (item == null || !item.hasItemMeta()) {
-            player.sendMessage(ColorUtils.colorcode("&#b9ddffA&#bbdcffw&#bcdcffw &#bedbffb&#bfdaffu&#c1d9ffm&#c2d9ffm&#c4d8ffe&#c5d7ffr&#c7d6ff.&#c8d6ff.&#cad5ff. &#cbd4ffI &#cdd3ffc&#ced3ffa&#d0d2ffn&#d1d1ff'&#d3d0fft &#d4d0ffu&#d6cfffn&#d7ceffw&#d9cdffr&#dacdffa&#dcccffp &#ddcbfft&#dfcaffh&#e0caffi&#e2c9ffs&#e3c8ff!"));
+            player.sendMessage(Util.colorcode("&#b9ddffA&#bbdcffw&#bcdcffw &#bedbffb&#bfdaffu&#c1d9ffm&#c2d9ffm&#c4d8ffe&#c5d7ffr&#c7d6ff.&#c8d6ff.&#cad5ff. &#cbd4ffI &#cdd3ffc&#ced3ffa&#d0d2ffn&#d1d1ff'&#d3d0fft &#d4d0ffu&#d6cfffn&#d7ceffw&#d9cdffr&#dacdffa&#dcccffp &#ddcbfft&#dfcaffh&#e0caffi&#e2c9ffs&#e3c8ff!"));
             return;
         }
 
@@ -155,7 +155,7 @@ public class Wrapping {
         } else {
             item.setItemMeta(meta);
         }
-        player.sendMessage(ColorUtils.colorcode("&#b9ddffU&#badcffn&#bcdcffw&#bddbffr&#bedaffa&#c0daffp&#c1d9ffp&#c2d8ffe&#c4d8ffd &#c5d7ffi&#c6d6fft &#c7d6fff&#c9d5ffo&#cad4ffr &#cbd4ffy&#cdd3ffo&#ced3ffu&#cfd2ff! &#d1d1ffA&#d2d1ffl&#d3d0ffl &#d5cfffn&#d6cfffi&#d7ceffc&#d9cdffe &#dacdffa&#dbccffn&#dccbffd &#decbffn&#dfcaffe&#e0c9ffw&#e2c9ff!&#e3c8ff!"));
+        player.sendMessage(Util.colorcode("&#b9ddffU&#badcffn&#bcdcffw&#bddbffr&#bedaffa&#c0daffp&#c1d9ffp&#c2d8ffe&#c4d8ffd &#c5d7ffi&#c6d6fft &#c7d6fff&#c9d5ffo&#cad4ffr &#cbd4ffy&#cdd3ffo&#ced3ffu&#cfd2ff! &#d1d1ffA&#d2d1ffl&#d3d0ffl &#d5cfffn&#d6cfffi&#d7ceffc&#d9cdffe &#dacdffa&#dbccffn&#dccbffd &#decbffn&#dfcaffe&#e0c9ffw&#e2c9ff!&#e3c8ff!"));
     }
 
     private static void addArmorColor(ItemStack item, ItemStack wrap) {

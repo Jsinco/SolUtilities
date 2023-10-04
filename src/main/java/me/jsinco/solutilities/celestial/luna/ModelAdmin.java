@@ -1,8 +1,8 @@
 package me.jsinco.solutilities.celestial.luna;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
-import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
@@ -44,7 +44,7 @@ public class ModelAdmin implements CommandExecutor {
             invWrap(player, strings[1], strings[2], strings[3]);
             return true;
         }
-        player.getInventory().setItemInMainHand(wrapCreation(strings[0], meta, ColorUtils.colorcode(String.join(" ", strings).replace(strings[0], "").strip()), player.getInventory().getItemInMainHand()));
+        player.getInventory().setItemInMainHand(wrapCreation(strings[0], meta, Util.colorcode(String.join(" ", strings).replace(strings[0], "").strip()), player.getInventory().getItemInMainHand()));
 
         return true;
     }

@@ -1,8 +1,8 @@
 package me.jsinco.solutilities.solace;
 
 import me.jsinco.solutilities.Saves;
-import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -75,8 +75,8 @@ public class Furniture implements CommandExecutor, TabCompleter, Listener {
         } else if (strings[0].equalsIgnoreCase("reload")) {
             FurnitureGUI.initFurnitureGui();
         } else if (strings[0].equalsIgnoreCase("orb")){
-            ItemStack furnitureOrb = GUIActions.createGuiItem(true,new ItemStack(Material.SCUTE), ColorUtils.colorcode("&#a8ff92&lFurniture &#E2E2E2Orb"),
-                    ColorUtils.colorcode("&7Right Click to open!"));
+            ItemStack furnitureOrb = GUIActions.createGuiItem(true,new ItemStack(Material.SCUTE), Util.colorcode("&#a8ff92&lFurniture &#E2E2E2Orb"),
+                    Util.colorcode("&7Right Click to open!"));
             ItemMeta tagOrbMeta = furnitureOrb.getItemMeta();
             tagOrbMeta.getPersistentDataContainer().set(new NamespacedKey(plugin,"FurnitureOrb"), PersistentDataType.SHORT, (short) 10);
             furnitureOrb.setItemMeta(tagOrbMeta);

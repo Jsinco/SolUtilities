@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.aries;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.*;
 import org.bukkit.entity.HumanEntity;
@@ -26,7 +26,7 @@ public class CandleApplyGUI implements Listener {
     static List<Inventory> candleGUIs = new ArrayList<>();
 
     public static Inventory candleGUI() {
-        Inventory candlegui = Bukkit.createInventory(null,27, ColorUtils.colorcode("&#ffb89c&lC&#ffb8a4&la&#ffb8ad&ln&#ffb8b5&ld&#ffb8bd&ll&#ffb8c6&le &#ffb9ce&lB&#ffb9d7&lu&#ffb9df&lr&#ffb9e7&ln&#ffb9f0&le&#ffb9f8&lr"));
+        Inventory candlegui = Bukkit.createInventory(null,27, Util.colorcode("&#ffb89c&lC&#ffb8a4&la&#ffb8ad&ln&#ffb8b5&ld&#ffb8bd&ll&#ffb8c6&le &#ffb9ce&lB&#ffb9d7&lu&#ffb9df&lr&#ffb9e7&ln&#ffb9f0&le&#ffb9f8&lr"));
         int[] roseBush = {0,1,7,8,18,19,25,26};
         int[] torchFlower = {2,4,6,20,22,24};
         int[] seaGrass = {3,5,21,23};
@@ -81,7 +81,7 @@ public class CandleApplyGUI implements Listener {
                 if (glowCandle && !alreadyGlowItem){
                     itemLore.add(i, "§7Glow I§§");
                 } else if (!glowCandle) {
-                    itemLore.add(i, ColorUtils.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(pl.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
+                    itemLore.add(i, Util.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(pl.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
                 }
                 solitem = true;
                 break;
@@ -94,7 +94,7 @@ public class CandleApplyGUI implements Listener {
             if (glowCandle && !alreadyGlowItem){
                 itemLore.add(0, "§7Glow I§§");
             } else if (!glowCandle) {
-                itemLore.add(0, ColorUtils.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(pl.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
+                itemLore.add(0, Util.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(pl.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
             }
             itemLore.add(1,"§");
         }
@@ -139,7 +139,7 @@ public class CandleApplyGUI implements Listener {
             if (item == null) return;
             addCandle(item, candle);
             candleGUI.setItem(14, null);
-            player.sendMessage(ColorUtils.colorcode("&#ffb89cI &#ffb89eb&#ffb8a0u&#ffb8a3r&#ffb8a5n&#ffb8a7e&#ffb8a9d &#ffb8acy&#ffb8aeo&#ffb8b0u&#ffb8b2r &#ffb8b5c&#ffb8b7a&#ffb8b9n&#ffb8bbd&#ffb8bel&#ffb8c0e &#ffb8c2f&#ffb8c4o&#ffb8c7r &#ffb8c9y&#ffb9cbo&#ffb9cdu&#ffb9d0. &#ffb9d2W&#ffb9d4o&#ffb9d6n&#ffb9d9d&#ffb9dbe&#ffb9ddr &#ffb9dfw&#ffb9e2h&#ffb9e4a&#ffb9e6t &#ffb9e8i&#ffb9ebt &#ffb9edd&#ffb9efi&#ffb9f1d&#ffb9f4.&#ffb9f6.&#ffb9f8."));
+            player.sendMessage(Util.colorcode("&#ffb89cI &#ffb89eb&#ffb8a0u&#ffb8a3r&#ffb8a5n&#ffb8a7e&#ffb8a9d &#ffb8acy&#ffb8aeo&#ffb8b0u&#ffb8b2r &#ffb8b5c&#ffb8b7a&#ffb8b9n&#ffb8bbd&#ffb8bel&#ffb8c0e &#ffb8c2f&#ffb8c4o&#ffb8c7r &#ffb8c9y&#ffb9cbo&#ffb9cdu&#ffb9d0. &#ffb9d2W&#ffb9d4o&#ffb9d6n&#ffb9d9d&#ffb9dbe&#ffb9ddr &#ffb9dfw&#ffb9e2h&#ffb9e4a&#ffb9e6t &#ffb9e8i&#ffb9ebt &#ffb9edd&#ffb9efi&#ffb9f1d&#ffb9f4.&#ffb9f6.&#ffb9f8."));
         }
     }
 

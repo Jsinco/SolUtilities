@@ -3,8 +3,8 @@ package me.jsinco.solutilities.blackmarket;
 import me.jsinco.oneannouncer.DiscordSRVUtil;
 import me.jsinco.oneannouncer.discord.JDAMethods;
 import me.jsinco.solutilities.Saves;
-import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import net.milkbowl.vault.economy.Economy;
 import org.black_ixx.playerpoints.PlayerPoints;
 import org.black_ixx.playerpoints.PlayerPointsAPI;
@@ -46,9 +46,9 @@ public class Market {
                 List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
                 lore.add("");
                 if (Saves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)) != 0) {
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$" + String.format("%,.2f", Saves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)))));
+                    lore.add(Util.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$" + String.format("%,.2f", Saves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)))));
                 } else if (Saves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)) != 0) {
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4\uE54C" + String.format("%,d", Saves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)))));
+                    lore.add(Util.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4\uE54C" + String.format("%,d", Saves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)))));
                 }
                 meta.setLore(lore);
                 item.setItemMeta(meta);
@@ -76,7 +76,7 @@ public class Market {
     public static boolean marketPurchase(Player player, ItemStack purchasedItem) {
         if (Saves.get().get("Blackmarket.Cooldown." + player.getUniqueId()) != null) {
             if (Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) > System.currentTimeMillis()) {
-                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You can only purchase items every 30 minutes! &7(Cooldown: " + ((Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) - System.currentTimeMillis()) / 60000) + " minutes)"));
+                player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You can only purchase items every 30 minutes! &7(Cooldown: " + ((Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) - System.currentTimeMillis()) / 60000) + " minutes)"));
                 return false;
             } else {
                 Saves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), null);
@@ -104,14 +104,14 @@ public class Market {
             String bmItemName = ChatColor.stripColor(blackmarketItems.get(i).getItemMeta().getDisplayName()).replace(" ","_") + "_" + blackmarketItems.get(i).getAmount();
             if (bmItemName.equals(purchasedItemName)) {
                 if (Saves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) <= 0) {
-                    player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "This item is out of stock!"));
+                    player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "This item is out of stock!"));
                     return false;
                 }
 
                 if (Saves.get().get("Blackmarket.dollar." + purchasedItemName) != null) {
                     Economy economy = SolUtilities.getEconomy();
                     if (economy.getBalance(player) < blackmarketPrice.get(i)) {
-                        player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough money!"));
+                        player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough money!"));
                         return false;
                     }
                     economy.withdrawPlayer(player, blackmarketPrice.get(i));
@@ -119,14 +119,14 @@ public class Market {
                     PlayerPointsAPI ppAPI = PlayerPoints.getInstance().getAPI();
                     int solcoinPrice = (int) Math.round(blackmarketPrice.get(i));
                     if (!ppAPI.take(player.getUniqueId(),  solcoinPrice)) {
-                        player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough Solcoins!"));
+                        player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough Solcoins!"));
                         return false;
                     }
                 }
                 Saves.get().set("Blackmarket.ActiveItemsStock." + purchasedItemName, Saves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) - 1);
                 Saves.save();
                 player.getInventory().addItem(blackmarketItems.get(i));
-                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You purchased a " + blackmarketItems.get(i).getItemMeta().getDisplayName() + "&#E2E2E2!"));
+                player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You purchased a " + blackmarketItems.get(i).getItemMeta().getDisplayName() + "&#E2E2E2!"));
 
                 Saves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), System.currentTimeMillis() + 1800000); // 30 minutes
                 Saves.save();
@@ -143,7 +143,7 @@ public class Market {
                 MarketItemPreview.initMarketItemPreviewGui();
                 refreshMarketItems();
                 reselectMarket();
-                Bukkit.broadcastMessage(ColorUtils.colorcode(plugin.getConfig().getString("Blackmarket.Message").replace("%prefix%",pl.getConfig().getString("Blackmarket.Prefix"))));
+                Bukkit.broadcastMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Message").replace("%prefix%",pl.getConfig().getString("Blackmarket.Prefix"))));
 
                 long randomHour = new Random().nextLong(plugin.getConfig().getLong("Blackmarket.ResetMin"),plugin.getConfig().getLong("Blackmarket.ResetMax"));
 
@@ -166,7 +166,7 @@ public class Market {
                     Saves.save();
                     Player player = Bukkit.getPlayer(UUID.fromString(cooldownPlayer));
                     if (player != null) {
-                        player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
+                        player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
                     }
                 }
             }

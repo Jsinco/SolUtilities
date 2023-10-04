@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.utility;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -56,7 +56,7 @@ public class UtilListeners implements Listener {
 
         Player player = e.getPlayer();
         Bukkit.dispatchCommand(player, pl.getConfig().getString("NetherRoof.dispatchCommand"));
-        player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix") + pl.getConfig().getString("NetherRoof.message")));
+        player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + pl.getConfig().getString("NetherRoof.message")));
         Bukkit.getScheduler().scheduleSyncDelayedTask(pl, () -> player.playSound(player.getLocation(), Sound.valueOf(pl.getConfig().getString("NetherRoof.sound")), 1, 1), 1L);
     }
 
@@ -114,10 +114,10 @@ public class UtilListeners implements Listener {
         if (item == null || !item.hasItemMeta()) return;
         if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"model"), PersistentDataType.INTEGER)) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix")  + "This is a wrap! It should not be used as a normal item. Please speak to &#a8ff92Luna &#E2E2E2at [/celestial] to apply!"));
+            event.getPlayer().sendMessage(Util.colorcode(pl.getConfig().getString("prefix")  + "This is a wrap! It should not be used as a normal item. Please speak to &#a8ff92Luna &#E2E2E2at [/celestial] to apply!"));
         } else if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"wraptoken"), PersistentDataType.SHORT)) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ColorUtils.colorcode(pl.getConfig().getString("prefix")  + "This is a wrap token! Head to [/wraps] to exchange!"));
+            event.getPlayer().sendMessage(Util.colorcode(pl.getConfig().getString("prefix")  + "This is a wrap token! Head to [/wraps] to exchange!"));
         }
     }
 
@@ -134,11 +134,11 @@ public class UtilListeners implements Listener {
                 if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"model"), PersistentDataType.INTEGER)) {
                     ItemMeta meta = item.getItemMeta();
 
-                    List<String> lore = new ArrayList<>(List.of("§fUse this item to wrap your","§ftools or armor!","",ColorUtils.colorcode("§fSpeak to Luna §fat &#a8ff92/celestial"),"§fto apply!"));
+                    List<String> lore = new ArrayList<>(List.of("§fUse this item to wrap your","§ftools or armor!","", Util.colorcode("§fSpeak to Luna §fat &#a8ff92/celestial"),"§fto apply!"));
 
-                    lore.addAll(List.of("", ColorUtils.colorcode("&#EEE1D5&m       &r&#EEE1D5⋆⁺₊⋆ ★ ⋆⁺₊⋆&m       "),
-                            ColorUtils.colorcode("&#EEE1D5Tier • &#b9ddff&lC&#bedaff&le&#c4d8ff&ll&#c9d5ff&le&#ced3ff&ls&#d3d0ff&lt&#d9cdff&li&#decbff&la&#e3c8ff&ll"),
-                            ColorUtils.colorcode("&#EEE1D5&m       &r&#EEE1D5⋆⁺₊⋆ ★ ⋆⁺₊⋆&m       ")));
+                    lore.addAll(List.of("", Util.colorcode("&#EEE1D5&m       &r&#EEE1D5⋆⁺₊⋆ ★ ⋆⁺₊⋆&m       "),
+                            Util.colorcode("&#EEE1D5Tier • &#b9ddff&lC&#bedaff&le&#c4d8ff&ll&#c9d5ff&le&#ced3ff&ls&#d3d0ff&lt&#d9cdff&li&#decbff&la&#e3c8ff&ll"),
+                            Util.colorcode("&#EEE1D5&m       &r&#EEE1D5⋆⁺₊⋆ ★ ⋆⁺₊⋆&m       ")));
                     // ⋆⁺₊⋆ ★ ⋆⁺₊⋆
                     meta.setLore(lore);
                     meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES,ItemFlag.HIDE_ITEM_SPECIFICS,ItemFlag.HIDE_DYE,ItemFlag.HIDE_UNBREAKABLE);

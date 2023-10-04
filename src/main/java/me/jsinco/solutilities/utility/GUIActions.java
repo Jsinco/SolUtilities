@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.utility;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -22,7 +22,7 @@ public class GUIActions {
 
     public static ItemStack createGuiItem(boolean enchanted, ItemStack itemStack, String name, String... lore) {
         ItemMeta meta = itemStack.getItemMeta();
-        meta.setDisplayName(ColorUtils.colorcode(name));
+        meta.setDisplayName(Util.colorcode(name));
         meta.setLore(Arrays.asList(lore));
         if (enchanted) meta.addEnchant(Enchantment.DIG_SPEED, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
@@ -36,8 +36,8 @@ public class GUIActions {
         ItemStack item = new ItemStack(m);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(ColorUtils.colorcode(name));
-        meta.setLore(Arrays.asList(ColorUtils.colorArray(lore)));
+        meta.setDisplayName(Util.colorcode(name));
+        meta.setLore(Arrays.asList(Util.colorArray(lore)));
 
         if (glint) {
             meta.addEnchant(Enchantment.LUCK, 1, true);

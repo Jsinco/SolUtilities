@@ -1,6 +1,7 @@
 package me.jsinco.solutilities.bukkitcommands
 
 import me.jsinco.solutilities.SolUtilities
+import me.jsinco.solutilities.bukkitcommands.commands.PingCommand
 import me.jsinco.solutilities.bukkitcommands.commands.RanksMenu
 import me.jsinco.solutilities.bukkitcommands.commands.SearchShopAlias
 import org.bukkit.Bukkit
@@ -23,10 +24,11 @@ class CommandMapper(val plugin: SolUtilities) {
 
 
     init {
-        // Commands
+        // Commands incase they are not registered with method above
         commands["ls"] = SearchShopAlias(plugin)
         commands["lb"] = SearchShopAlias(plugin)
         commands["ranks"] = RanksMenu(plugin)
+        commands["ping"] = PingCommand(plugin)
 
         // Mapper
         mapCommands()

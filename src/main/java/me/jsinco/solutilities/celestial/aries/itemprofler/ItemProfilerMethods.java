@@ -1,7 +1,6 @@
 package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
 import me.jsinco.solutilities.utility.UtilMethods;
 import org.bukkit.NamespacedKey;
@@ -55,7 +54,7 @@ public class ItemProfilerMethods {
                 try {
                     string = string.replace(s, (int) UtilMethods.evalMath(placeholder) + "");
                 } catch (Exception ex) {
-                    string = string.replace(s, ColorUtils.colorcode(placeholder));
+                    string = string.replace(s, Util.colorcode(placeholder));
                 }
             }
         }

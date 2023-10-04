@@ -1,8 +1,9 @@
 package me.jsinco.solutilities.solace;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -55,13 +56,13 @@ public class Referrals implements CommandExecutor, Listener {
     public String tryReferralRewarding(Player player, Player referral, boolean confirmed) {
         long playtime = Long.parseLong(PlaceholderAPI.setPlaceholders(referral, "%jetsantiafkpro_timeplayed_minutes_unformatted%"));
 
-        if (playtime > 1440) return ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "Your referral cannot have more than 24 hours of playtime!");
-        else if (playtime < 120) return ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "Your referral must have at least 2 hours of playtime!");
-        else if (referral.getAddress().getHostName().equals(player.getAddress().getHostName())) return ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "You cannot refer players from the same IP address!");
+        if (playtime > 1440) return Util.colorcode(plugin.getConfig().getString("prefix") + "Your referral cannot have more than 24 hours of playtime!");
+        else if (playtime < 120) return Util.colorcode(plugin.getConfig().getString("prefix") + "Your referral must have at least 2 hours of playtime!");
+        else if (referral.getAddress().getHostName().equals(player.getAddress().getHostName())) return Util.colorcode(plugin.getConfig().getString("prefix") + "You cannot refer players from the same IP address!");
 
         if (Saves.get().get("Referrals." + player.getUniqueId()) != null || Saves.get().get("Referrals." + referral.getUniqueId()) != null) {
             if (Saves.get().getLong("Referrals." + player.getUniqueId()) > System.currentTimeMillis() || Saves.get().getLong("Referrals." + referral.getUniqueId()) > System.currentTimeMillis()) {
-                return ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "You or your referral have already claimed a referral today! You can refer players every 16 hours");
+                return Util.colorcode(plugin.getConfig().getString("prefix") + "You or your referral have already claimed a referral today! You can refer players every 16 hours");
             } else {
                 Saves.get().set("Referrals." + player.getUniqueId(), null);
                 Saves.get().set("Referrals." + referral.getUniqueId(), null);
@@ -70,11 +71,11 @@ public class Referrals implements CommandExecutor, Listener {
         }
 
         if (!confirmed) {
-            TextComponent confirm = new TextComponent(ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "You got a referral from " + player.getName() + "! Click &#a8ff92&lhere&#E2E2E2 to accept your referral!"));
+            TextComponent confirm = new TextComponent(Util.colorcode(plugin.getConfig().getString("prefix") + "You got a referral from " + player.getName() + "! Click &#a8ff92&lhere&#E2E2E2 to accept your referral!"));
             confirm.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Click to confirm '" + player.getName() + "' as your referrer!")));
             confirm.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/rfintl confref " + player.getName()));
             referral.sendMessage(confirm);
-            return ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "You have sent a referral to " + referral.getName() + "!");
+            return Util.colorcode(plugin.getConfig().getString("prefix") + "You have sent a referral to " + referral.getName() + "!");
         }
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), reward(true).replace("$player", player.getName()));
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), reward(false).replace("$player", referral.getName()));
@@ -82,7 +83,7 @@ public class Referrals implements CommandExecutor, Listener {
         Saves.get().set("Referrals." + player.getUniqueId(), System.currentTimeMillis() + 57600000);
         Saves.get().set("Referrals." + referral.getUniqueId(), System.currentTimeMillis() + 57600000);
         Saves.save();
-        return ColorUtils.colorcode(plugin.getConfig().getString("prefix") +  "You have successfully claimed your referral reward!");
+        return Util.colorcode(plugin.getConfig().getString("prefix") +  "You have successfully claimed your referral reward!");
     }
 
     private String reward(boolean isReferrer) {

@@ -1,9 +1,6 @@
 package me.jsinco.solutilities;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import me.jsinco.solutilities.betterjoins.BetterJoinsCMD;
-import me.jsinco.solutilities.solace.SolCoinWithdrawCMD;
-import me.jsinco.solutilities.utility.Saves;
 import me.jsinco.solutilities.utility.TagParticleVouchers;
 import me.jsinco.solutilities.utility.UtilMethods;
 import org.bukkit.Bukkit;
@@ -37,11 +34,6 @@ public class SolaceCMD implements CommandExecutor {
         if (args.length < 1)  return false;
         Player player = commandSender instanceof Player ? (Player) commandSender : null;
 
-        if (command.getName().equalsIgnoreCase("solcoin")) {
-            SolCoinWithdrawCMD.solsWithdraw(player, args[0]);
-            return true;
-        }
-
         switch (args[0].toLowerCase()) {
             case "reload" -> {
                 if (!player.hasPermission("solutilities.admin")) return false;
@@ -52,10 +44,6 @@ public class SolaceCMD implements CommandExecutor {
             case "sounds" -> {
                 BetterJoinsCMD.betterJoinsSilent(player);
                 player.sendMessage(ColorUtils.colorcode(plugin.getConfig().getString("prefix") + "Sounds toggled!"));
-                return true;
-            }
-            case "solcoin" -> {
-                SolCoinWithdrawCMD.solsWithdraw(player, args[1]);
                 return true;
             }
             case "betterjoins" -> {

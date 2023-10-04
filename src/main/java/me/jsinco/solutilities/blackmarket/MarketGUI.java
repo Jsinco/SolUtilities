@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.blackmarket;
 
-import me.jsinco.solutilities.BulkSaves;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
@@ -29,11 +29,11 @@ public class MarketGUI implements Listener {
     // in 54 slot gui 29, 31, 33
     @SuppressWarnings("DuplicatedCode")
     public static void loadMarketGUI() {
-        List<String> blackmarketactiveItemNames = List.copyOf(BulkSaves.get().getConfigurationSection("Blackmarket.ActiveItems").getKeys(false));
+        List<String> blackmarketactiveItemNames = List.copyOf(Saves.get().getConfigurationSection("Blackmarket.ActiveItems").getKeys(false));
         List<ItemStack> activeItems = new ArrayList<>();
 
         for (String blackmarketactiveItemName : blackmarketactiveItemNames) {
-            activeItems.add(BulkSaves.get().getItemStack("Blackmarket.ActiveItems." + blackmarketactiveItemName));
+            activeItems.add(Saves.get().getItemStack("Blackmarket.ActiveItems." + blackmarketactiveItemName));
         }
 
         for (ItemStack activeItem : activeItems) {
@@ -44,12 +44,12 @@ public class MarketGUI implements Listener {
             boolean editedStock = false;
             for (int i = 0; i < lore.size(); i++) {
                 if (ChatColor.stripColor(lore.get(i)).contains("▪ Stock:")) {
-                    lore.set(i, ColorUtils.colorcode("&#accaf4▪ &#ddeceeStock: &#accaf4" + BulkSaves.get().getInt("Blackmarket.ActiveItemsStock." + ChatColor.stripColor(activeItem.getItemMeta().getDisplayName()).replace(" ", "_") + "_" + activeItem.getAmount())));
+                    lore.set(i, ColorUtils.colorcode("&#accaf4▪ &#ddeceeStock: &#accaf4" + Saves.get().getInt("Blackmarket.ActiveItemsStock." + ChatColor.stripColor(activeItem.getItemMeta().getDisplayName()).replace(" ", "_") + "_" + activeItem.getAmount())));
                     editedStock = true;
                 }
             }
             if (!editedStock) {
-                lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceeStock: &#accaf4" + BulkSaves.get().getInt("Blackmarket.ActiveItemsStock." + ChatColor.stripColor(activeItem.getItemMeta().getDisplayName()).replace(" ", "_") + "_" + activeItem.getAmount())));
+                lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceeStock: &#accaf4" + Saves.get().getInt("Blackmarket.ActiveItemsStock." + ChatColor.stripColor(activeItem.getItemMeta().getDisplayName()).replace(" ", "_") + "_" + activeItem.getAmount())));
             }
 
             meta.setLore(lore);

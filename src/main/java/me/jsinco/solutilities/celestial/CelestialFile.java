@@ -14,7 +14,7 @@ public class CelestialFile {
         filemanager.generateFile();
     }
 
-    public static FileConfiguration get(){
+    public static YamlConfiguration get(){
         return celesteFile;
     }
 

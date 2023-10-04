@@ -40,13 +40,6 @@ public class TabCompletion implements TabCompleter {
             }
         }
 
-        else if (command.getName().equalsIgnoreCase("ls") || command.getName().equalsIgnoreCase("lb")) {
-            List<String> materials = new ArrayList<>();
-            for (Material material : Material.values()) {
-                materials.add(material.name().toLowerCase());
-            }
-            return materials;
-        }
         else if (command.getName().equalsIgnoreCase("welcomes") && args.length == 1) {
             return List.of("see", "toggle");
         }

@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.solace;
 
-import me.jsinco.solutilities.BulkSaves;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
@@ -34,7 +34,7 @@ public class FurnitureGUI implements Listener {
             int leftOffItem = 0;
 
             List<ItemStack> furnitures = new ArrayList<>();
-            BulkSaves.get().getList("Furniture").forEach(furniture -> furnitures.add((ItemStack) furniture));
+            Saves.get().getList("Furniture").forEach(furniture -> furnitures.add((ItemStack) furniture));
 
             int putItem = 0;
             while (leftOffItem < furnitures.size()) {

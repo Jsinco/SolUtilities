@@ -2,7 +2,7 @@ package me.jsinco.solutilities.blackmarket;
 
 import me.jsinco.oneannouncer.DiscordSRVUtil;
 import me.jsinco.oneannouncer.discord.JDAMethods;
-import me.jsinco.solutilities.BulkSaves;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
 import net.milkbowl.vault.economy.Economy;
@@ -20,15 +20,15 @@ import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class Market {
     public static void refreshMarketItems() {
-        List<String> itemNames = List.copyOf(BulkSaves.get().getConfigurationSection("Blackmarket.Items").getKeys(false));
+        List<String> itemNames = List.copyOf(Saves.get().getConfigurationSection("Blackmarket.Items").getKeys(false));
 
         // select items, determine weight, etc.
         // annoying to write
         List<ItemStack> selectedItems = new ArrayList<>();
         MAIN_LOOP: for (int i = 0; i < 3; i++) {
             int randomItem = new Random().nextInt(itemNames.size());
-            ItemStack item = BulkSaves.get().getItemStack("Blackmarket.Items." + itemNames.get(randomItem)).clone();
-            int weight = BulkSaves.get().getInt("Blackmarket.Weight." + itemNames.get(randomItem));
+            ItemStack item = Saves.get().getItemStack("Blackmarket.Items." + itemNames.get(randomItem)).clone();
+            int weight = Saves.get().getInt("Blackmarket.Weight." + itemNames.get(randomItem));
             if (item.getType().isAir() || !item.hasItemMeta()) {
                 i--;
                 continue;
@@ -45,10 +45,10 @@ public class Market {
                 ItemMeta meta = item.getItemMeta();
                 List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
                 lore.add("");
-                if (BulkSaves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)) != 0) {
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$" + String.format("%,.2f", BulkSaves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)))));
-                } else if (BulkSaves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)) != 0) {
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4\uE54C" + String.format("%,d", BulkSaves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)))));
+                if (Saves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)) != 0) {
+                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$" + String.format("%,.2f", Saves.get().getDouble("Blackmarket.dollar." + itemNames.get(randomItem)))));
+                } else if (Saves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)) != 0) {
+                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4\uE54C" + String.format("%,d", Saves.get().getInt("Blackmarket.solcoin." + itemNames.get(randomItem)))));
                 }
                 meta.setLore(lore);
                 item.setItemMeta(meta);
@@ -59,42 +59,42 @@ public class Market {
             }
         }
 
-        BulkSaves.get().set("Blackmarket.ActiveItems", null);
-        BulkSaves.get().set("Blackmarket.ActiveItemsStock", null);
+        Saves.get().set("Blackmarket.ActiveItems", null);
+        Saves.get().set("Blackmarket.ActiveItemsStock", null);
         for (ItemStack selectedItem : selectedItems) {
             String name = ChatColor.stripColor(selectedItem.getItemMeta().getDisplayName().replace(" ", "_"))  + "_" + selectedItem.getAmount();
-            BulkSaves.get().set("Blackmarket.ActiveItems." + name, selectedItem);
-            BulkSaves.get().set("Blackmarket.ActiveItemsStock." + name, BulkSaves.get().getInt("Blackmarket.DeadStocks." + name));
+            Saves.get().set("Blackmarket.ActiveItems." + name, selectedItem);
+            Saves.get().set("Blackmarket.ActiveItemsStock." + name, Saves.get().getInt("Blackmarket.DeadStocks." + name));
         }
 
-        BulkSaves.save();
-        BulkSaves.reload();
+        Saves.save();
+        Saves.reload();
     }
 
 
 
     public static boolean marketPurchase(Player player, ItemStack purchasedItem) {
-        if (BulkSaves.get().get("Blackmarket.Cooldown." + player.getUniqueId()) != null) {
-            if (BulkSaves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) > System.currentTimeMillis()) {
-                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You can only purchase items every 30 minutes! &7(Cooldown: " + ((BulkSaves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) - System.currentTimeMillis()) / 60000) + " minutes)"));
+        if (Saves.get().get("Blackmarket.Cooldown." + player.getUniqueId()) != null) {
+            if (Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) > System.currentTimeMillis()) {
+                player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You can only purchase items every 30 minutes! &7(Cooldown: " + ((Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) - System.currentTimeMillis()) / 60000) + " minutes)"));
                 return false;
             } else {
-                BulkSaves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), null);
-                BulkSaves.save();
+                Saves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), null);
+                Saves.save();
             }
         }
 
 
-        Set<String> blackmarketItemNames = BulkSaves.get().getConfigurationSection("Blackmarket.Items").getKeys(false);
+        Set<String> blackmarketItemNames = Saves.get().getConfigurationSection("Blackmarket.Items").getKeys(false);
         List<ItemStack> blackmarketItems = new ArrayList<>();
 
         List<Double> blackmarketPrice = new ArrayList<>();
         for (String itemName : blackmarketItemNames) {
-            blackmarketItems.add(BulkSaves.get().getItemStack("Blackmarket.Items." + itemName));
-            if (BulkSaves.get().get("Blackmarket.dollar." + itemName) != null) {
-                blackmarketPrice.add(BulkSaves.get().getDouble("Blackmarket.dollar." + itemName));
+            blackmarketItems.add(Saves.get().getItemStack("Blackmarket.Items." + itemName));
+            if (Saves.get().get("Blackmarket.dollar." + itemName) != null) {
+                blackmarketPrice.add(Saves.get().getDouble("Blackmarket.dollar." + itemName));
             } else {
-                blackmarketPrice.add(BulkSaves.get().getDouble("Blackmarket.solcoin." + itemName));
+                blackmarketPrice.add(Saves.get().getDouble("Blackmarket.solcoin." + itemName));
             }
         }
 
@@ -103,12 +103,12 @@ public class Market {
         for (int i = 0; i < blackmarketItems.size(); i++) {
             String bmItemName = ChatColor.stripColor(blackmarketItems.get(i).getItemMeta().getDisplayName()).replace(" ","_") + "_" + blackmarketItems.get(i).getAmount();
             if (bmItemName.equals(purchasedItemName)) {
-                if (BulkSaves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) <= 0) {
+                if (Saves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) <= 0) {
                     player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "This item is out of stock!"));
                     return false;
                 }
 
-                if (BulkSaves.get().get("Blackmarket.dollar." + purchasedItemName) != null) {
+                if (Saves.get().get("Blackmarket.dollar." + purchasedItemName) != null) {
                     Economy economy = SolUtilities.getEconomy();
                     if (economy.getBalance(player) < blackmarketPrice.get(i)) {
                         player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough money!"));
@@ -123,13 +123,13 @@ public class Market {
                         return false;
                     }
                 }
-                BulkSaves.get().set("Blackmarket.ActiveItemsStock." + purchasedItemName, BulkSaves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) - 1);
-                BulkSaves.save();
+                Saves.get().set("Blackmarket.ActiveItemsStock." + purchasedItemName, Saves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) - 1);
+                Saves.save();
                 player.getInventory().addItem(blackmarketItems.get(i));
                 player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You purchased a " + blackmarketItems.get(i).getItemMeta().getDisplayName() + "&#E2E2E2!"));
 
-                BulkSaves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), System.currentTimeMillis() + 1800000); // 30 minutes
-                BulkSaves.save();
+                Saves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), System.currentTimeMillis() + 1800000); // 30 minutes
+                Saves.save();
                 return true;
             }
         }
@@ -139,7 +139,7 @@ public class Market {
 
     public void marketResetter(SolUtilities plugin) {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            if (System.currentTimeMillis() >= BulkSaves.get().getLong("Blackmarket.ResetTime")) {
+            if (System.currentTimeMillis() >= Saves.get().getLong("Blackmarket.ResetTime")) {
                 MarketItemPreview.initMarketItemPreviewGui();
                 refreshMarketItems();
                 reselectMarket();
@@ -147,10 +147,10 @@ public class Market {
 
                 long randomHour = new Random().nextLong(plugin.getConfig().getLong("Blackmarket.ResetMin"),plugin.getConfig().getLong("Blackmarket.ResetMax"));
 
-                BulkSaves.get().set("Blackmarket.ResetTime", System.currentTimeMillis()+randomHour*3600000);
-                BulkSaves.save();
+                Saves.get().set("Blackmarket.ResetTime", System.currentTimeMillis()+randomHour*3600000);
+                Saves.save();
 
-                Set<String> notifyDiscordPlayers = BulkSaves.get().getConfigurationSection("Blackmarket.NotifyDiscord").getKeys(false);
+                Set<String> notifyDiscordPlayers = Saves.get().getConfigurationSection("Blackmarket.NotifyDiscord").getKeys(false);
                 for (String uuid: notifyDiscordPlayers) {
                     String discordID = DiscordSRVUtil.INSTANCE.getDiscordIDFromUUID(UUID.fromString(uuid));
 
@@ -158,12 +158,12 @@ public class Market {
                     JDAMethods.sendMessageDiscordUser(discordID, "**Market** » The Blackmarket has restocked!");
                 }
             }
-            if (BulkSaves.get().getConfigurationSection("Blackmarket.Cooldown") == null || BulkSaves.get().getConfigurationSection("Blackmarket.Cooldown").getKeys(false).isEmpty()) return;
-            List<String> cooldownPlayers = new ArrayList<>(BulkSaves.get().getConfigurationSection("Blackmarket.Cooldown").getKeys(false));
+            if (Saves.get().getConfigurationSection("Blackmarket.Cooldown") == null || Saves.get().getConfigurationSection("Blackmarket.Cooldown").getKeys(false).isEmpty()) return;
+            List<String> cooldownPlayers = new ArrayList<>(Saves.get().getConfigurationSection("Blackmarket.Cooldown").getKeys(false));
             for (String cooldownPlayer : cooldownPlayers) {
-                if (BulkSaves.get().getLong("Blackmarket.Cooldown." + cooldownPlayer) <= System.currentTimeMillis()) {
-                    BulkSaves.get().set("Blackmarket.Cooldown." + cooldownPlayer, null);
-                    BulkSaves.save();
+                if (Saves.get().getLong("Blackmarket.Cooldown." + cooldownPlayer) <= System.currentTimeMillis()) {
+                    Saves.get().set("Blackmarket.Cooldown." + cooldownPlayer, null);
+                    Saves.save();
                     Player player = Bukkit.getPlayer(UUID.fromString(cooldownPlayer));
                     if (player != null) {
                         player.sendMessage(ColorUtils.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
@@ -175,22 +175,22 @@ public class Market {
 
 
     public static boolean marketSelector(int market) {
-        return market == BulkSaves.get().getInt("Blackmarket.ActiveMarket");
+        return market == Saves.get().getInt("Blackmarket.ActiveMarket");
     }
 
     public static int seeActiveMarket() {
-        return BulkSaves.get().getInt("Blackmarket.ActiveMarket");
+        return Saves.get().getInt("Blackmarket.ActiveMarket");
     }
 
     public static String reselectMarket() {
         int random = new Random().nextInt(1,4); // between 1 and 3
-        BulkSaves.get().set("Blackmarket.ActiveMarket", random);
-        BulkSaves.save();
+        Saves.get().set("Blackmarket.ActiveMarket", random);
+        Saves.save();
         return "Market " + random + " selected!";
     }
 
     public static long getResetTime() {
-        return (BulkSaves.get().getLong("Blackmarket.ResetTime") - System.currentTimeMillis()) / 60000;
+        return (Saves.get().getLong("Blackmarket.ResetTime") - System.currentTimeMillis()) / 60000;
     }
 
     public static String activeMarketNPCName(int market) {

@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.blackmarket;
 
-import me.jsinco.solutilities.BulkSaves;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
@@ -31,12 +31,12 @@ public class MarketItemPreview implements Listener {
             }));
             pages.clear();
 
-            List<String> itemNames = new ArrayList<>(List.copyOf(BulkSaves.get().getConfigurationSection("Blackmarket.Items").getKeys(false)));
+            List<String> itemNames = new ArrayList<>(List.copyOf(Saves.get().getConfigurationSection("Blackmarket.Items").getKeys(false)));
             Collections.sort(itemNames);
             int putItem = 0;
             for (int i = 0; i < itemNames.size(); i++) {
                 String itemName = itemNames.get(i);
-                ItemStack item = BulkSaves.get().getItemStack("Blackmarket.Items." + itemName).clone();
+                ItemStack item = Saves.get().getItemStack("Blackmarket.Items." + itemName).clone();
 
                 if (pages.isEmpty() || pages.get(pages.size() - 1).getItem(44) != null) {
                     pages.add(createPage());
@@ -52,12 +52,12 @@ public class MarketItemPreview implements Listener {
 
                     List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
                     lore.add("");
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceeWeight/Chance: &#accaf4" + BulkSaves.get().getInt("Blackmarket.Weight." + itemName) + "%"));
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceeBase Stock: &#accaf4" + BulkSaves.get().getInt("Blackmarket.DeadStocks." + itemName)));
-                    if (BulkSaves.get().getDouble("Blackmarket.dollar." + itemName) != 0) {
-                        lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$" + String.format("%,.2f", BulkSaves.get().getDouble("Blackmarket.dollar." + itemName))));
-                    } else if (BulkSaves.get().getInt("Blackmarket.solcoin." + itemName) != 0) {
-                        lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4\uE54C" + String.format("%,d", BulkSaves.get().getInt("Blackmarket.solcoin." + itemName))));
+                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceeWeight/Chance: &#accaf4" + Saves.get().getInt("Blackmarket.Weight." + itemName) + "%"));
+                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceeBase Stock: &#accaf4" + Saves.get().getInt("Blackmarket.DeadStocks." + itemName)));
+                    if (Saves.get().getDouble("Blackmarket.dollar." + itemName) != 0) {
+                        lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$" + String.format("%,.2f", Saves.get().getDouble("Blackmarket.dollar." + itemName))));
+                    } else if (Saves.get().getInt("Blackmarket.solcoin." + itemName) != 0) {
+                        lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4\uE54C" + String.format("%,d", Saves.get().getInt("Blackmarket.solcoin." + itemName))));
                     }
 
                     meta.setLore(lore);
@@ -71,7 +71,7 @@ public class MarketItemPreview implements Listener {
         } catch (Exception e){ // FIXME: Exception when opening gui with no items present
             e.printStackTrace();
         }
-        BulkSaves.reload();
+        Saves.reload();
     }
 /*
 items.put(itemName, BulkSaves.get().getItemStack("Blackmarket.Items." + itemName));
@@ -144,7 +144,7 @@ items.put(itemName, BulkSaves.get().getItemStack("Blackmarket.Items." + itemName
 
             if (event.isLeftClick()) {
                 String itemName = ChatColor.stripColor(item.getItemMeta().getDisplayName()).replace(" ", "_") + "_" + item.getAmount();
-                ItemStack itemStack = BulkSaves.get().getItemStack("Blackmarket.Items." + itemName);
+                ItemStack itemStack = Saves.get().getItemStack("Blackmarket.Items." + itemName);
                 if (itemStack == null) return;
                 player.getInventory().addItem(itemStack);
             } else {

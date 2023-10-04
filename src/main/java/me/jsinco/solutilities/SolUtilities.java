@@ -2,7 +2,6 @@ package me.jsinco.solutilities;
 
 import me.jsinco.solutilities.celestial.aries.*;
 import me.jsinco.solutilities.celestial.aries.itemprofler.ItemProfiler;
-import me.jsinco.solutilities.betterjoins.PlayerJoinLeave;
 import me.jsinco.solutilities.blackmarket.MarketCommand;
 import me.jsinco.solutilities.celestial.CelestialFile;
 import me.jsinco.solutilities.celestial.celeste.Shop;
@@ -11,13 +10,12 @@ import me.jsinco.solutilities.celestial.celeste.ShopOpen;
 import me.jsinco.solutilities.celestial.luna.ArmorHandler;
 import me.jsinco.solutilities.celestial.luna.CustomModel;
 import me.jsinco.solutilities.celestial.luna.*;
+import me.jsinco.solutilities.joins.Joins;
 import me.jsinco.solutilities.ranks.GUI;
 import me.jsinco.solutilities.hooks.PermissionCheckPlaceholder;
-import me.jsinco.solutilities.ranks.RanksMenuOpen;
 import me.jsinco.solutilities.solace.Furniture;
 import me.jsinco.solutilities.solace.PVGUI;
 import me.jsinco.solutilities.solace.Referrals;
-import me.jsinco.solutilities.solace.SetItem_Redeem;
 import me.jsinco.solutilities.solcmd.CommandManager;
 import me.jsinco.solutilities.utility.*;
 import net.milkbowl.vault.economy.Economy;
@@ -35,12 +33,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.File;
 import java.nio.file.Files;
 
 public final class SolUtilities extends JavaPlugin {
     private static PlayerPointsAPI ppAPI;
     private static Economy econ = null;
-    java.io.File itemProfilesFile = new java.io.File(getDataFolder(), "ItemProfiles.yml");
+    File itemProfilesFile = new java.io.File(getDataFolder(), "ItemProfiles.yml");
     private final Plugin SolItems = Bukkit.getServer().getPluginManager().getPlugin("SolItems");
     private static SolUtilities plugin;
 
@@ -51,7 +50,7 @@ public final class SolUtilities extends JavaPlugin {
         saveDefaultConfig();
 
         setupItemProfilesFile();
-        Saves.setup(); // Sol withdrawal vouchers
+        Saves.setup();
         Saves.save();
         ppAPI = PlayerPoints.getInstance().getAPI();
         setupEconomy();
@@ -59,25 +58,20 @@ public final class SolUtilities extends JavaPlugin {
 
         getCommand("solutilities").setExecutor(new CommandManager(this));
 
-        getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
         getServer().getPluginManager().registerEvents(new UtilListeners(), this);
         getServer().getPluginManager().registerEvents(new TagParticleVouchers(), this);
         getServer().getPluginManager().registerEvents(new GUI(), this);
         getServer().getPluginManager().registerEvents(new InvisibleFrames(), this);
         getServer().getPluginManager().registerEvents(new Welcomes(), this);
 
-        getServer().getPluginManager().registerEvents(new SetItem_Redeem(this, ppAPI), this);
         getCommand("solace").setExecutor(new SolaceCMD(this));
         getCommand("solace").setTabCompleter(new TabCompletion());
-        getCommand("solcoin").setExecutor(new SolaceCMD(this));
-        getCommand("ranks").setExecutor(new RanksMenuOpen());
 
-        getCommand("ls").setExecutor(new SearchShop());
-        getCommand("lb").setExecutor(new SearchShop());
-        getCommand("ls").setTabCompleter(new TabCompletion());
-        getCommand("lb").setTabCompleter(new TabCompletion());
         getCommand("welcomes").setExecutor(new Welcomes());
         getCommand("welcomes").setTabCompleter(new TabCompletion());
+
+        // BetterJoins
+        new Joins(this);
 
         new PlaceHolders().register(); //register PAPI placeholder
         new Furniture(this);

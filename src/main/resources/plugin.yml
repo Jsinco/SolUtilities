@@ -29,10 +29,6 @@ commands:
     description: Solace command
     permission: solutilities.global
     usage: §e/<command> <sols | sounds> <amount>
-  solcoin:
-    description: Solcoin command
-    permission: solutilities.global
-    usage: §e/<command> <give | take | set> <player> <amount>
   celesteadmin:
     description: Gives a player celeste admin
     permission: solutilities.admin
@@ -59,10 +55,6 @@ commands:
     usage: /<command> <player>
   ranks:
     description: Ranks GUI
-  ls:
-    description: Looking to find items to buy
-  lb:
-    description: Looking to sell items
   welcomes:
     description: Welcomes from SolUtilities
     permission: solutilities.global

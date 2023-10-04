@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.solace;
 
-import me.jsinco.solutilities.BulkSaves;
+import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
 import me.jsinco.solutilities.utility.GUIActions;
@@ -33,8 +33,8 @@ public class Furniture implements CommandExecutor, TabCompleter, Listener {
 
     public Furniture(SolUtilities plugin) {
         this.plugin = plugin;
-        BulkSaves.setup();
-        BulkSaves.save();
+        Saves.setup();
+        Saves.save();
         FurnitureGUI.initFurnitureGui();
 
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
@@ -65,12 +65,12 @@ public class Furniture implements CommandExecutor, TabCompleter, Listener {
                 }
             });
             try {
-                BulkSaves.get().getList("Furniture").forEach(furniture -> furnitures.add((ItemStack) furniture));
-                BulkSaves.get().set("Furniture", furnitures);
+                Saves.get().getList("Furniture").forEach(furniture -> furnitures.add((ItemStack) furniture));
+                Saves.get().set("Furniture", furnitures);
             } catch (Exception e) {
-                BulkSaves.get().set("Furniture", furnitures);
+                Saves.get().set("Furniture", furnitures);
             }
-            BulkSaves.save();
+            Saves.save();
             return true;
         } else if (strings[0].equalsIgnoreCase("reload")) {
             FurnitureGUI.initFurnitureGui();
@@ -123,7 +123,7 @@ public class Furniture implements CommandExecutor, TabCompleter, Listener {
 
         if (event.getItem().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"FurnitureOrb"), PersistentDataType.SHORT)) {
             List<ItemStack> furnitures = new ArrayList<>();
-            BulkSaves.get().getList("Furniture").forEach(furniture -> furnitures.add((ItemStack) furniture));
+            Saves.get().getList("Furniture").forEach(furniture -> furnitures.add((ItemStack) furniture));
             int random = new Random().nextInt(furnitures.size());
             event.getItem().setAmount(event.getItem().getAmount() - 1);
             event.getPlayer().getInventory().addItem(furnitures.get(random));

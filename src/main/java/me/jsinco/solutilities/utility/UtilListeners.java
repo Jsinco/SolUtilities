@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class UtilListeners implements Listener {
 

@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import java.util.List;
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class PlayerJoinLeaveTest {
     static Messages_Effects messagesEffects = new Messages_Effects();

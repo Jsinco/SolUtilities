@@ -1,6 +1,7 @@
 package me.jsinco.solutilities.solcmd
 
 import me.jsinco.solutilities.SolUtilities
+import me.jsinco.solutilities.solcmd.subcommands.DonationMsgCommand
 import me.jsinco.solutilities.solcmd.subcommands.HelpCommand
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -14,6 +15,7 @@ class CommandManager(val plugin: SolUtilities) : CommandExecutor, TabCompleter {
 
     init {
         subCommands += "help" to HelpCommand()
+        subCommands += "donationmsg" to DonationMsgCommand()
     }
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
@@ -37,11 +39,11 @@ class CommandManager(val plugin: SolUtilities) : CommandExecutor, TabCompleter {
             return true
         }
 
-        subCommand.execute(plugin, sender, args!!)
+        subCommand.execute(plugin, sender, args)
         return true
     }
 
-    override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String>? {
+    override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): List<String?>? {
         if (args == null) {
             return null
         } else if (args.size == 1) {

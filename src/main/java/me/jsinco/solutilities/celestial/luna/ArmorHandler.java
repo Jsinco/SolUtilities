@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.luna;
+package me.jsinco.solutilities.celestial.luna;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import org.bukkit.*;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class ArmorHandler implements Listener {
     @EventHandler (ignoreCancelled = true, priority = EventPriority.HIGHEST)

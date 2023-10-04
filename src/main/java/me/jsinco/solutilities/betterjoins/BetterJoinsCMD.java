@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import static me.jsinco.solutilities.betterjoins.PlayerJoinLeaveTest.messagesEffects;
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class BetterJoinsCMD {
 

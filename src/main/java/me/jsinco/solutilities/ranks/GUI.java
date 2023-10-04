@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class GUI implements Listener {
 

@@ -17,7 +17,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 import static org.bukkit.inventory.ItemFlag.HIDE_ATTRIBUTES;
 import static org.bukkit.inventory.ItemFlag.HIDE_ENCHANTS;
 

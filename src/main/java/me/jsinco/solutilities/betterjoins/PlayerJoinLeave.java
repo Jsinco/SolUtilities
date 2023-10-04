@@ -12,7 +12,7 @@ import org.bukkit.metadata.MetadataValue;
 import java.util.List;
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class PlayerJoinLeave implements Listener {
     Messages_Effects messagesEffects = new Messages_Effects();

@@ -51,7 +51,7 @@ dependencies {
     compileOnly "me.clip:placeholderapi:2.11.3"
     compileOnly "com.github.Zrips:jobs:4.17.2"
     compileOnly "com.github.Jsinco:OneAnnouncer:v1.2.9"
-    compileOnly "com.github.tebexio.BuycraftX:BuycraftX:v10.0"
+    compileOnly "net.luckperms:api:5.4"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 

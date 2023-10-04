@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.luna;
+package me.jsinco.solutilities.celestial.luna;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

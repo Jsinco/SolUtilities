@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d71e540-346b-4a60-99e3-8ec80af5be18" name="Changes" comment="updates">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/PermissionCheckPlaceholder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/DonationMsgCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/ranks/RankUpgrades.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/SubCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/SubCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Interface" />
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -143,6 +131,8 @@
       <workItem from="1695776420951" duration="30000" />
       <workItem from="1695865500683" duration="1633000" />
       <workItem from="1696285425603" duration="8642000" />
+      <workItem from="1696372134773" duration="4977000" />
+      <workItem from="1696397450667" duration="651000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <option name="closed" value="true" />
@@ -175,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696258414671</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updates">
+      <option name="closed" value="true" />
+      <created>1696392607789</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696392607789</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

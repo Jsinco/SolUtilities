@@ -62,7 +62,7 @@ public class UtilListeners implements Listener {
 
     @EventHandler
     public void commandPreProcess(PlayerCommandPreprocessEvent event) {
-        if (!event.getPlayer().getScoreboardTags().contains("betterjoins.silent") && !pl.getConfig().getStringList("SilentCommands").contains(event.getMessage().split(" ")[0])) {
+        if (!event.getPlayer().getScoreboardTags().contains("solutilities.silent") && !pl.getConfig().getStringList("SilentCommands").contains(event.getMessage().split(" ")[0])) {
             event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.2f, 0.78f);
         }
         String m = event.getMessage();
@@ -78,7 +78,7 @@ public class UtilListeners implements Listener {
 
     @EventHandler
     public void onPlayerTP(PlayerTeleportEvent event) {
-        if (!event.getPlayer().getScoreboardTags().contains("betterjoins.silent") && event.getCause().equals(PlayerTeleportEvent.TeleportCause.COMMAND)) {
+        if (!event.getPlayer().getScoreboardTags().contains("solutilities.silent") && event.getCause().equals(PlayerTeleportEvent.TeleportCause.COMMAND)) {
             Sound sound;
             float pitch;
             int random = new Random().nextInt(1,3);

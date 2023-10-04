@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d71e540-346b-4a60-99e3-8ec80af5be18" name="Changes" comment="updates">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/FileManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/SubCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Cuboid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/SolRegions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Warps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696258414671</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updates">
+      <created>1696284859817</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696284859817</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

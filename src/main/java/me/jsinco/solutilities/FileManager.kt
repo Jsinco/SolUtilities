@@ -9,6 +9,7 @@ class FileManager(val fileName: String) {
     val plugin: SolUtilities = SolUtilities.getPlugin()
 
     var file: File = File(plugin.dataFolder, fileName)
+    private val yamlConfiguration: YamlConfiguration = YamlConfiguration.loadConfiguration(file)
 
     fun setFolder(folder: String) {
         file = File(plugin.dataFolder, "$folder${File.pathSeparator}$fileName")
@@ -43,11 +44,15 @@ class FileManager(val fileName: String) {
     }
 
     fun getFileYaml(): YamlConfiguration {
-        return YamlConfiguration.loadConfiguration(file)
+        return yamlConfiguration
     }
 
-    fun saveFileYaml(yamlConfiguration: YamlConfiguration) {
+    fun saveFileYaml() {
         yamlConfiguration.save(file)
+    }
+
+    fun reloadFileYaml() {
+        yamlConfiguration.load(file)
     }
 
 }

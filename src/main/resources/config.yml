@@ -1,6 +1,5 @@
 # prefix: '&#7ad563&lI&#89e373&ln&#99f182&lf&#a8ff92&lo &r&7➜&#E2E2E2 '
 prefix: '&#f7903b&lI&#f7a93b&ln&#f8c23a&lf&#f8db3a&lo &r&8»&#E2E2E2 '
-ServerName: 'SolaceMC Towny'
 
 # interval in seconds && %prefix% when setting to true you must restart the server to take effect
 Announcer:
@@ -12,11 +11,6 @@ NetherRoof:
   dispatchCommand: 'spawn'
   message: 'Players are not allowed on the Nether roof!'
   sound: 'BLOCK_ANVIL_PLACE'
-
-# /healall
-Healall:
-  cooldown: 1200
-  message: '%prefix%&#a8ff92%sender% &#E2E2E2has healed everyone! '
 
 #Placeholder %player% can be used to replace with player name
 #Placeholder %joins% can be used to replace with total unique player joins. (Only for FirstJoin message)

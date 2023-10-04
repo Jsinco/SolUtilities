@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.aries.itemprofler;
+package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jsinco.solutilities.ColorUtils;

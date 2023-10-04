@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.aries.itemprofler;
+package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
 import me.jsinco.solutilities.ColorUtils;
@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 // Info box slot - 13
 // Search button slot - 23

@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.luna;
+package me.jsinco.solutilities.celestial.luna;
 
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.utility.GUIActions;

@@ -5,11 +5,11 @@ import me.jsinco.solutilities.solcmd.SubCommand
 import org.bukkit.command.CommandSender
 
 class HelpCommand : SubCommand {
-    override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<String?>) {
+    override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
         TODO("Not yet implemented")
     }
 
-    override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<String?>?): List<String?>? {
+    override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): List<String?>? {
         return null
     }
 

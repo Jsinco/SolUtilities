@@ -1,7 +1,7 @@
-package me.jsinco.solutilities.celestial.celeste.aries;
+package me.jsinco.solutilities.celestial.aries;
 
 import me.jsinco.solutilities.ColorUtils;
-import me.jsinco.solutilities.celestial.celeste.aries.itemprofler.ItemProfiler;
+import me.jsinco.solutilities.celestial.aries.itemprofler.ItemProfiler;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

@@ -2,7 +2,7 @@ package me.jsinco.solutilities.celestial.celeste;
 
 import me.jsinco.solutilities.ColorUtils;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.celestial.celeste.File;
+import me.jsinco.solutilities.celestial.CelestialFile;
 import me.jsinco.solutilities.utility.GUIActions;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -35,10 +35,10 @@ public class Shop implements Listener {
             pages.clear();
             int leftOffItem = 0;
 
-            List<String> itemNames = new ArrayList<>(List.copyOf(File.get().getConfigurationSection("Items").getKeys(false)));
+            List<String> itemNames = new ArrayList<>(List.copyOf(CelestialFile.get().getConfigurationSection("Items").getKeys(false)));
             Collections.sort(itemNames);
             List<ItemStack> itemStacks = new ArrayList<>();
-            itemNames.forEach(name -> itemStacks.add(File.get().getItemStack("Items." + name)));
+            itemNames.forEach(name -> itemStacks.add(CelestialFile.get().getItemStack("Items." + name)));
 
             int putItem = 10;
             while (leftOffItem < itemNames.size()) {
@@ -50,7 +50,7 @@ public class Shop implements Listener {
                     ItemMeta meta = itemStack.getItemMeta();
                     List<String> lore = meta.getLore();
                     lore.add("");
-                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$") + String.format("%,d", File.get().getInt("Prices." + ChatColor.stripColor(meta.getDisplayName()).replace(" ","_"))));
+                    lore.add(ColorUtils.colorcode("&#accaf4▪ &#ddeceePrice: &#accaf4$") + String.format("%,d", CelestialFile.get().getInt("Prices." + ChatColor.stripColor(meta.getDisplayName()).replace(" ","_"))));
                     meta.setLore(lore);
                     itemStack.setItemMeta(meta);
 
@@ -116,8 +116,8 @@ public class Shop implements Listener {
 
     private void purchaseItem(Player player, String itemName) {
         Economy economy = SolUtilities.getEconomy();
-        int price = File.get().getInt("Prices." + itemName);
-        ItemStack item = File.get().getItemStack("Items." + itemName);
+        int price = CelestialFile.get().getInt("Prices." + itemName);
+        ItemStack item = CelestialFile.get().getItemStack("Items." + itemName);
         if (item == null) return;
 
         if (economy.getBalance(player) >= price) {

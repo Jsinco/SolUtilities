@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.luna;
+package me.jsinco.solutilities.celestial.luna;
 
 import me.jsinco.solutilities.ColorUtils;
 import org.bukkit.ChatColor;
@@ -18,7 +18,6 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.List;
 import java.util.UUID;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
 import static org.bukkit.attribute.Attribute.*;
 import static org.bukkit.attribute.Attribute.GENERIC_KNOCKBACK_RESISTANCE;
 
@@ -77,9 +76,9 @@ public class Wrapping {
         armorMeta.addAttributeModifier(GENERIC_KNOCKBACK_RESISTANCE, new AttributeModifier(UUID.randomUUID(), "generic.knockbackResistance", 0.1, AttributeModifier.Operation.ADD_NUMBER, equipmentSlot));
 
         if (armorPiece.equals(Material.PAPER)) {
-            armorMeta.getPersistentDataContainer().set(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER, 407);
+            armorMeta.getPersistentDataContainer().set(new NamespacedKey(ModelAdmin.pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER, 407);
         } else {
-            armorMeta.getPersistentDataContainer().set(new NamespacedKey(pl, "LUNA_NETHERITE"), PersistentDataType.SHORT, (short) 0);
+            armorMeta.getPersistentDataContainer().set(new NamespacedKey(ModelAdmin.pl, "LUNA_NETHERITE"), PersistentDataType.SHORT, (short) 0);
         }
         armor.setType(armorPiece);
         armor.setItemMeta(armorMeta);
@@ -88,9 +87,9 @@ public class Wrapping {
     public static void wrapItem(ItemStack oldItem,ItemStack newItem, ItemStack wrap, Player player, Inventory wrapGUI) {
         if (wrap == null || !wrap.hasItemMeta()) return;
         PersistentDataContainer wrapData = wrap.getItemMeta().getPersistentDataContainer();
-        if (wrapData.has(new NamespacedKey(pl, "type"), PersistentDataType.STRING) && wrapData.has(new NamespacedKey(pl, "model"), PersistentDataType.INTEGER)) {
-            String type = wrapData.get(new NamespacedKey(pl, "type"), PersistentDataType.STRING);
-            int model = wrapData.get(new NamespacedKey(pl,"model"), PersistentDataType.INTEGER);
+        if (wrapData.has(new NamespacedKey(ModelAdmin.pl, "type"), PersistentDataType.STRING) && wrapData.has(new NamespacedKey(ModelAdmin.pl, "model"), PersistentDataType.INTEGER)) {
+            String type = wrapData.get(new NamespacedKey(ModelAdmin.pl, "type"), PersistentDataType.STRING);
+            int model = wrapData.get(new NamespacedKey(ModelAdmin.pl,"model"), PersistentDataType.INTEGER);
 
             if (newItem.getType().toString().toLowerCase().contains(type) || compatiblePaperWrap(newItem, wrap)) {
                 ItemMeta itemMeta = oldItem.getItemMeta();
@@ -121,8 +120,8 @@ public class Wrapping {
         ItemMeta meta = item.getItemMeta();
         meta.setCustomModelData(null);
 
-        if (meta.getPersistentDataContainer().has((new NamespacedKey(pl, "LUNA_NETHERITE")), PersistentDataType.SHORT) ||
-                meta.getPersistentDataContainer().has((new NamespacedKey(pl, "LunaCosmeticHelmet")), PersistentDataType.INTEGER)) { // added support for paper helmets
+        if (meta.getPersistentDataContainer().has((new NamespacedKey(ModelAdmin.pl, "LUNA_NETHERITE")), PersistentDataType.SHORT) ||
+                meta.getPersistentDataContainer().has((new NamespacedKey(ModelAdmin.pl, "LunaCosmeticHelmet")), PersistentDataType.INTEGER)) { // added support for paper helmets
             meta.getPersistentDataContainer().getKeys().forEach(key -> {
                 if (key.getKey().equalsIgnoreCase("LUNA_NETHERITE") || key.getKey().equalsIgnoreCase("LunaCosmeticHelmet")) {
                     meta.getPersistentDataContainer().remove(key);
@@ -162,10 +161,10 @@ public class Wrapping {
     private static void addArmorColor(ItemStack item, ItemStack wrap) {
         if (!isArmor(item)) return;
         PersistentDataContainer wrapData = wrap.getItemMeta().getPersistentDataContainer();
-        if (wrapData.has(new NamespacedKey(pl,"red"), PersistentDataType.INTEGER)) {
-            int red = wrapData.get(new NamespacedKey(pl,"red"), PersistentDataType.INTEGER);
-            int green = wrapData.get(new NamespacedKey(pl,"green"), PersistentDataType.INTEGER);
-            int blue = wrapData.get(new NamespacedKey(pl,"blue"), PersistentDataType.INTEGER);
+        if (wrapData.has(new NamespacedKey(ModelAdmin.pl,"red"), PersistentDataType.INTEGER)) {
+            int red = wrapData.get(new NamespacedKey(ModelAdmin.pl,"red"), PersistentDataType.INTEGER);
+            int green = wrapData.get(new NamespacedKey(ModelAdmin.pl,"green"), PersistentDataType.INTEGER);
+            int blue = wrapData.get(new NamespacedKey(ModelAdmin.pl,"blue"), PersistentDataType.INTEGER);
 
             LeatherArmorMeta itemMeta = (LeatherArmorMeta) item.getItemMeta();
             itemMeta.setColor(Color.fromRGB(red,green,blue));
@@ -174,13 +173,13 @@ public class Wrapping {
     }
 
     private static boolean compatiblePaperWrap(ItemStack item, ItemStack wrap) {
-        if (!wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"PaperHelmet"), PersistentDataType.SHORT) ||
+        if (!wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(ModelAdmin.pl,"PaperHelmet"), PersistentDataType.SHORT) ||
         !item.getType().equals(Material.NETHERITE_HELMET)) return false;
         return true;
     }
     
     private static boolean convertNetheritePaper(ItemStack item, ItemStack wrap) {
-        if (!wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"PaperHelmet"), PersistentDataType.SHORT) ||
+        if (!wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(ModelAdmin.pl,"PaperHelmet"), PersistentDataType.SHORT) ||
                 !item.getType().equals(Material.NETHERITE_HELMET)) return false;
         item.setType(Material.PAPER);
         addNetheriteAttributes(item, Material.PAPER,3, EquipmentSlot.HEAD);

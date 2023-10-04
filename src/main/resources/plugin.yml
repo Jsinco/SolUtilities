@@ -33,10 +33,6 @@ commands:
     description: Solcoin command
     permission: solutilities.global
     usage: §e/<command> <give | take | set> <player> <amount>
-  addenchant:
-    description: Adds an enchantment to an item
-    permission: solutilities.admin
-    usage: /<command> <enchant> <level>
   celesteadmin:
     description: Gives a player celeste admin
     permission: solutilities.admin
@@ -57,10 +53,6 @@ commands:
     description: Gives a player a luna wrapper
     permission: solutilities.admin
     usage: /<command> <player>
-  ariesadmin:
-    description: Gives a player aries admin
-    permission: solutilities.admin
-    usage: /<command>
   ariesmisc:
     description: Gives a player aries misc
     permission: solutilities.admin
@@ -74,14 +66,6 @@ commands:
   welcomes:
     description: Welcomes from SolUtilities
     permission: solutilities.global
-  rankupgrade:
-    description: Rank Upgrade Command
-    permission: solutilities.admin
-    usage: /<command> <player> <oldRank> <newRank>
-  donationmsg:
-    description: Donation Message Command
-    permission: solutilities.admin
-    usage: /<command> <player> <packagetype>
   furniture:
     description: Furniture Command
     permission: solutilities.global
@@ -103,3 +87,5 @@ commands:
   rfintl:
     description: Referrals Internal Command
     permission: solutilities.global
+  solutilities:
+    description: SolUtilities Command

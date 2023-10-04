@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d71e540-346b-4a60-99e3-8ec80af5be18" name="Changes" comment="updates">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/FileManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/SubCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/PermissionCheckPlaceholder.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/DonationMsgCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Cuboid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/SolRegions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Warps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/ranks/RankUpgrades.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/CommandManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/SubCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/SubCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/solcmd/subcommands/HelpCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,8 +48,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -92,6 +94,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="me.jsinco.solutilities.hooks" />
+      <recent name="me.jsinco.solutilities.utility" />
       <recent name="me.jsinco.solutilities.solcmd.subcommands" />
     </key>
   </component>
@@ -115,6 +119,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
   </component>
@@ -137,6 +142,7 @@
       <workItem from="1695762602868" duration="4189000" />
       <workItem from="1695776420951" duration="30000" />
       <workItem from="1695865500683" duration="1633000" />
+      <workItem from="1696285425603" duration="8642000" />
     </task>
     <task id="LOCAL-00001" summary="updates">
       <option name="closed" value="true" />

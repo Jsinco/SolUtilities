@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.celestial.celeste.luna;
+package me.jsinco.solutilities.celestial.luna;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
 import me.jsinco.solutilities.ColorUtils;

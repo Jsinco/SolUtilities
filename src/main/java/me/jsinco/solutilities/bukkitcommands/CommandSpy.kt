@@ -49,7 +49,7 @@ class CommandSpy : BukkitCommand(
     fun onCommandPreProcess(event: PlayerCommandPreprocessEvent) {
         for (player in commandSpyList) {
             if (player != event.player) {
-                player.sendMessage(Util.colorcode("${Util.prefix} &d${event.player.name} &#E2E2E2executed &d${event.message}"))
+                player.sendMessage(Util.colorcode("${Util.prefix}&d${event.player.name} &#E2E2E2executed &d${event.message}"))
             }
         }
     }

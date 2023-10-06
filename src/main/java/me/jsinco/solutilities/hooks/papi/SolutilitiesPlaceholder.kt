@@ -35,7 +35,7 @@ class SolutilitiesPlaceholder : PlaceholderExpansion() {
     override fun onPlaceholderRequest(player: Player?, params: String): String? {
         when (params) {
             "welcomes" -> {
-                return Saves.get().getInt("Welcomes.$player").toString()
+                return Saves.get().getInt("Welcomes.${player?.uniqueId}").toString()
             }
 
             "prefix" -> {

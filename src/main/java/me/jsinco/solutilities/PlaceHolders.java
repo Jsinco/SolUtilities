@@ -6,9 +6,10 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 public class PlaceHolders extends PlaceholderExpansion {
+    private SolUtilities plugin = SolUtilities.getPlugin();
+
     @Override
     public @NotNull String getIdentifier() {
         return "solutilities";
@@ -46,19 +47,19 @@ public class PlaceHolders extends PlaceholderExpansion {
 
     private String solPrefixes(Player player) {
         String prefix;
-        if (player.hasPermission("solutilities.prefix.staff")) prefix = pl.getConfig().getString("Prefixes.Staff");
+        if (player.hasPermission("solutilities.prefix.staff")) prefix = plugin.getConfig().getString("Prefixes.Staff");
         else return "";
 
         // yeah, I know you can use a loop but there's only a handful of prefixes and I don't really care anyway.
         String color;
-        if(player.hasPermission("solutilities.color.owner")) color = pl.getConfig().getString("Prefixes.Colors.owner");
-        else if(player.hasPermission("solutilities.color.admin")) color = pl.getConfig().getString("Prefixes.Colors.admin");
-        else if(player.hasPermission("solutilities.color.mod")) color = pl.getConfig().getString("Prefixes.Colors.mod");
-        else if(player.hasPermission("solutilities.color.builder")) color = pl.getConfig().getString("Prefixes.Colors.builder");
-        else if(player.hasPermission("solutilities.color.helper")) color = pl.getConfig().getString("Prefixes.Colors.helper");
-        else if(player.hasPermission("solutilities.color.dev")) color = pl.getConfig().getString("Prefixes.Colors.dev");
-        else if(player.hasPermission("solutilities.color.content")) color = pl.getConfig().getString("Prefixes.Colors.content");
-        else if(player.hasPermission("solutilities.color.recruit")) color = pl.getConfig().getString("Prefixes.Colors.recruit");
+        if(player.hasPermission("solutilities.color.owner")) color = plugin.getConfig().getString("Prefixes.Colors.owner");
+        else if(player.hasPermission("solutilities.color.admin")) color = plugin.getConfig().getString("Prefixes.Colors.admin");
+        else if(player.hasPermission("solutilities.color.mod")) color = plugin.getConfig().getString("Prefixes.Colors.mod");
+        else if(player.hasPermission("solutilities.color.builder")) color = plugin.getConfig().getString("Prefixes.Colors.builder");
+        else if(player.hasPermission("solutilities.color.helper")) color = plugin.getConfig().getString("Prefixes.Colors.helper");
+        else if(player.hasPermission("solutilities.color.dev")) color = plugin.getConfig().getString("Prefixes.Colors.dev");
+        else if(player.hasPermission("solutilities.color.content")) color = plugin.getConfig().getString("Prefixes.Colors.content");
+        else if(player.hasPermission("solutilities.color.recruit")) color = plugin.getConfig().getString("Prefixes.Colors.recruit");
         else return "";
 
         return Util.colorcode(color + prefix);

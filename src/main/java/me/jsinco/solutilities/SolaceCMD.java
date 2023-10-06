@@ -48,10 +48,6 @@ public class SolaceCMD implements CommandExecutor {
                 UtilMethods.armorStandHands(player, true);
                 return true;
             }
-            case "particlevoucher" -> {
-                if (!player.hasPermission("solutilities.admin")) return false;
-                TagParticleVouchers.createParticleVoucher(args[1].toUpperCase(), args[2], player);
-            }
             case "discordreward" -> {
                 if (!player.hasPermission("solutilities.booster")) {
                     player.sendMessage(Util.colorcode(plugin.getConfig().getString("prefix") + "You aren't boosting our discord server, silly!"));

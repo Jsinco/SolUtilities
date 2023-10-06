@@ -1,11 +1,89 @@
 # prefix: '&#7ad563&lI&#89e373&ln&#99f182&lf&#a8ff92&lo &r&7➜&#E2E2E2 '
 prefix: '&#f7903b&lI&#f7a93b&ln&#f8c23a&lf&#f8db3a&lo &r&8»&#E2E2E2 '
 
-#NetherRoof
-NetherRoof:
-  dispatchCommand: 'spawn'
-  message: 'Players are not allowed on the Nether roof!'
-  sound: 'BLOCK_ANVIL_PLACE'
+Welcome-keywords:
+  - wb
+  - welcome
+  - yo
+
+# solutilities.prefix.staff
+# solutilities.color.<group>
+Prefixes:
+  Staff: '★ '
+  Colors:
+    owner: '&#9c3dee'
+    admin: '&#ff3535'
+    mod: '&#ff8383'
+    builder: '&#44b3ee'
+    helper: '&#fff172'
+    dev: '&#f09240'
+    content: '&#82ff80'
+    recruit: '&#f1e6dc'
+
+# Reset in hours
+# Amount of decoys that will be prepared. (/blackmarket <num> <player>)
+Blackmarket:
+  Enabled: false
+  Prefix: '&#df4a4a&lM&#ca464b&la&#b5414b&lr&#9f3d4c&lk&#8a384c&le&#75344d&lt &r&8»&#E2E2E2 '
+  ResetMin: 6
+  ResetMax: 8
+  Message: "%prefix%The blackmarket has been reset! &e/blackmarket"
+  BlackMarketDefaultCommand: '[P] warp blackmarket'
+  Return-NPC-Name?:
+    NPC1: 'Touji'
+    NPC2: 'Kosuke'
+    NPC3: 'Suzume'
+
+# Death white list means this mob will drop loot no matter the killer
+# Killer white list means that any mob this killer kills will drop loot
+# If an entity dies from one of the whitelisted causes, it will drop loot
+
+# ALl EntityTypes can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
+# All Causes can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+DropBlocker:
+  DeathWhitelist:
+    - 'PLAYER'
+    - 'SHULKER'
+    - 'MAGMA_CUBE'
+    - 'ARMOR_STAND'
+    - 'ITEM_FRAME'
+    - 'ITEM_DISPLAY'
+  KillerWhitelist:
+    - 'PLAYER'
+    - 'SHULKER'
+    - 'SHULKER_BULLET'
+    - 'FROG'
+    - 'WITHER'
+    - 'WITHER_SKULL'
+  CauseWhitelist:
+    - 'PROJECTILE'
+    - 'ENTITY_EXPLOSION'
+    - 'WITHER'
+    - 'MAGIC'
+    - 'FIRE_TICK'
+    - 'CUSTOM'
+
+PVGUI:
+  Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt&#f8db3a&ls'
+  MaxVaults: 500
+  OpenVault:
+    Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt &#f8db3a&l#$vaultnum' # $vaultnum, this placeholder may only be used on OpenVaults
+    Lore: ['&eClick to open vault #$vaultnum','','&eRight click to edit color']
+  LockedVault:
+    Title: '&#f76a3b&lL&#f7753b&lo&#f7813b&lc&#f78c3b&lk&#f7973b&le&#f8a33b&ld &#f8ae3a&lV&#f8b93a&la&#f8c43a&lu&#f8d03a&ll&#f8db3a&lt'
+    Lore: ['&eUnlock vaults by ranking up!']
+
+Referrals:
+  RewardCommands:
+    Referrer:
+      chance_75: 'points give $player 20'
+      chance_20: 'soltarget $player stellar'
+      chance_5: 'crates key give $player solacecratekey 1'
+    Referred:
+      chance_75: 'points give $player 20'
+      chance_20: 'soltarget $player stellar'
+      chance_5: 'crates key give $player solacecratekey 1'
+
 
 #Placeholder %player% can be used to replace with player name
 #Placeholder %joins% can be used to replace with total unique player joins
@@ -38,7 +116,7 @@ joins:
     - "&#8dff7c%player% just slid in"
     - "&#8dff7cWhere we dropping, %player%?"
     - "&#8dff7c%player%"
-quits:
+  # Quit messages
   quit-sound: BLOCK_AMETHYST_CLUSTER_BREAK
   quit-prefix: "&8[&#FF5F5F-&8] "
   quit-messages:
@@ -292,115 +370,3 @@ RanksPrices:
   cypress: '&#a8ff92$15,000,000'
   sequoia: '&#a8ff92$35,000,000'
   redwood: '&#a8ff92$75,000,000'
-
-# solutilities.prefix.staff
-# solutilities.color.<group>
-Prefixes:
-  Staff: '★ '
-  Colors:
-    owner: '&#9c3dee'
-    admin: '&#ff3535'
-    mod: '&#ff8383'
-    builder: '&#44b3ee'
-    helper: '&#fff172'
-    dev: '&#f09240'
-    content: '&#82ff80'
-    recruit: '&#f1e6dc'
-
-# All jobs are read as integers you cannot exceed 32 bits. (2,147,483,647)
-JobsRewards:
-  Command: 'points give %player% 1'
-  Alchemist:
-    BoundInt: 32000
-    Chance: 30
-  Blacksmith:
-    BoundInt: 32000
-    Chance: 30
-  Builder:
-    BoundInt: 32000
-    Chance: 14
-  Cook:
-    BoundInt: 32000
-    Chance: 30
-  Digger:
-    BoundInt: 32000
-    Chance: 13
-  Farmer:
-    BoundInt: 32000
-    Chance: 10
-  Fisherman:
-    BoundInt: 32000
-    Chance: 30
-  Hunter:
-    BoundInt: 32000
-    Chance: 17
-  Lumberjack:
-    BoundInt: 32000
-    Chance: 14
-  Miner:
-    BoundInt: 32000
-    Chance: 12
-
-# Reset in hours
-# Amount of decoys that will be prepared. (/blackmarket <num> <player>)
-Blackmarket:
-  Enabled: false
-  Prefix: '&#df4a4a&lM&#ca464b&la&#b5414b&lr&#9f3d4c&lk&#8a384c&le&#75344d&lt &r&8»&#E2E2E2 '
-  ResetMin: 6
-  ResetMax: 8
-  Message: "%prefix%The blackmarket has been reset! &e/blackmarket"
-  BlackMarketDefaultCommand: '[P] warp blackmarket'
-  Return-NPC-Name?:
-    NPC1: 'Touji'
-    NPC2: 'Kosuke'
-    NPC3: 'Suzume'
-
-# Death white list means this mob will drop loot no matter the killer
-# Killer white list means that any mob this killer kills will drop loot
-# If an entity dies from one of the whitelisted causes, it will drop loot
-
-# ALl EntityTypes can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
-# All Causes can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
-DropBlocker:
-  DeathWhitelist:
-    - 'PLAYER'
-    - 'SHULKER'
-    - 'MAGMA_CUBE'
-    - 'ARMOR_STAND'
-    - 'ITEM_FRAME'
-    - 'ITEM_DISPLAY'
-  KillerWhitelist:
-    - 'PLAYER'
-    - 'SHULKER'
-    - 'SHULKER_BULLET'
-    - 'FROG'
-    - 'WITHER'
-    - 'WITHER_SKULL'
-  CauseWhitelist:
-    - 'PROJECTILE'
-    - 'ENTITY_EXPLOSION'
-    - 'WITHER'
-    - 'MAGIC'
-    - 'FIRE_TICK'
-    - 'CUSTOM'
-
-PVGUI:
-  Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt&#f8db3a&ls'
-  MaxVaults: 500
-  OpenVault:
-    Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt &#f8db3a&l#$vaultnum' # $vaultnum, this placeholder may only be used on OpenVaults
-    Lore: ['&eClick to open vault #$vaultnum','','&eRight click to edit color']
-  LockedVault:
-    Title: '&#f76a3b&lL&#f7753b&lo&#f7813b&lc&#f78c3b&lk&#f7973b&le&#f8a33b&ld &#f8ae3a&lV&#f8b93a&la&#f8c43a&lu&#f8d03a&ll&#f8db3a&lt'
-    Lore: ['&eUnlock vaults by ranking up!']
-
-Referrals:
-  RewardCommands:
-    Referrer:
-      chance_75: 'points give $player 20'
-      chance_20: 'soltarget $player stellar'
-      chance_5: 'crates key give $player solacecratekey 1'
-    Referred:
-      chance_75: 'points give $player 20'
-      chance_20: 'soltarget $player stellar'
-      chance_5: 'crates key give $player solacecratekey 1'

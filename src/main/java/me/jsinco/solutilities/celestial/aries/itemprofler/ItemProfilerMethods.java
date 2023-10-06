@@ -2,6 +2,7 @@ package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.UtilMethods;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;

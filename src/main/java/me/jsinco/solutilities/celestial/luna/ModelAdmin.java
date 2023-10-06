@@ -29,12 +29,6 @@ public class ModelAdmin implements CommandExecutor {
         ItemMeta meta = item.getItemMeta();
 
         if (strings.length == 0) return false;
-        if (strings[0].equalsIgnoreCase("see")) {
-            // DEBUG
-            player.sendMessage(meta.getAttributeModifiers().toString());
-            return true;
-        }
-
         if (strings[0].equalsIgnoreCase("wraps")){
             WrapGUI.openInventory(player);
             return true;
@@ -96,34 +90,3 @@ public class ModelAdmin implements CommandExecutor {
         return wrap;
     }
 }
-
-/*
-if (!strings[0].isBlank()) {
-            type = strings[0];
-            name = strings[1];
-        } else {
-
-            type = item.getType().toString().substring(item.getType().toString().lastIndexOf("_") + 1);
-        }
-
-        ItemStack wrap = new ItemStack(Material.PAPER);
-        ItemMeta wrapMeta = wrap.getItemMeta();
-        wrapMeta.addEnchant(Enchantment.LUCK,1, true);
-        wrapMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        wrapMeta.setCustomModelData(86);
-        PersistentDataContainer wrapData = wrapMeta.getPersistentDataContainer();
-
-        wrapData.set(new NamespacedKey(pl, "type"), PersistentDataType.STRING, type);
-        wrapData.set(new NamespacedKey(pl, "model"), PersistentDataType.INTEGER, meta.getCustomModelData());
-
-        if (strings[0].equalsIgnoreCase("helmet") || strings[0].equalsIgnoreCase("chestplate") || strings[0].equalsIgnoreCase("leggings") || strings[0].equalsIgnoreCase("boots")) {
-            LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) meta;
-            wrapData.set(new NamespacedKey(pl, "red"), PersistentDataType.INTEGER, leatherArmorMeta.getColor().getRed());
-            wrapData.set(new NamespacedKey(pl, "green"), PersistentDataType.INTEGER, leatherArmorMeta.getColor().getGreen());
-            wrapData.set(new NamespacedKey(pl, "blue"), PersistentDataType.INTEGER, leatherArmorMeta.getColor().getBlue());
-        }
-
-        wrapMeta.setDisplayName(meta.getDisplayName() + " WRAP " + type);
-        wrap.setItemMeta(wrapMeta);
-        player.getInventory().addItem(wrap);
- */

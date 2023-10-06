@@ -1,28 +1,29 @@
-package me.jsinco.solutilities.celestial;
+package me.jsinco.solutilities.celestial
 
-import me.jsinco.solutilities.FileManager;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import me.jsinco.solutilities.FileManager
+import org.bukkit.configuration.file.YamlConfiguration
+import java.io.File
 
-public class CelestialFile {
-
-    private static final FileManager filemanager = new FileManager("CelesteItemsAndPrices.yml");
-    private static final YamlConfiguration celesteFile = filemanager.getFileYaml();
-
-    public static void setup(){
-        filemanager.setFolder("data");
-        filemanager.generateFile();
+object CelestialFile {
+    private val filemanager = FileManager("data/celestial.yml")
+    private val celesteFile = filemanager.getFileYaml()
+    @JvmStatic
+    fun setup() {
+        filemanager.generateFolder("data")
+        filemanager.generateFile()
     }
 
-    public static YamlConfiguration get(){
-        return celesteFile;
+    @JvmStatic
+    fun get(): YamlConfiguration {
+        return celesteFile
     }
 
-    public static void save(){
-        filemanager.saveFileYaml();
+    @JvmStatic
+    fun save() {
+        filemanager.saveFileYaml()
     }
 
-    public static void reload(){
-        filemanager.reloadFileYaml();
+    fun reload() {
+        filemanager.reloadFileYaml()
     }
 }

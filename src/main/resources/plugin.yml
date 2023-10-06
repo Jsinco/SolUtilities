@@ -28,7 +28,7 @@ commands:
   solace:
     description: Solace command
     permission: solutilities.global
-    usage: §e/<command> <sols | sounds> <amount>
+    usage: §e/<command> <sols | sounds> <amountt>
   celesteadmin:
     description: Gives a player celeste admin
     permission: solutilities.admin
@@ -53,15 +53,6 @@ commands:
     description: Gives a player aries misc
     permission: solutilities.admin
     usage: /<command> <player>
-  ranks:
-    description: Ranks GUI
-  welcomes:
-    description: Welcomes from SolUtilities
-    permission: solutilities.global
-  furniture:
-    description: Furniture Command
-    permission: solutilities.global
-    usage: /<command>
   itemprofiler:
     description: Item Profiler
     permission: solutilities.global
@@ -79,5 +70,3 @@ commands:
   rfintl:
     description: Referrals Internal Command
     permission: solutilities.global
-  solutilities:
-    description: SolUtilities Command

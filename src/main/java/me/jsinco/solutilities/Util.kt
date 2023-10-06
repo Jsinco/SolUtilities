@@ -3,8 +3,15 @@ package me.jsinco.solutilities
 import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
 import org.bukkit.Sound
+import org.bukkit.command.CommandSender
 
 object Util {
+
+    lateinit var prefix: String
+    @JvmStatic
+    fun loadPrefix() {
+        prefix = colorcode(SolUtilities.getPlugin().config.getString("prefix")!!)
+    }
 
     const val WITH_DELIMITER = "((?<=%1\$s)|(?=%1\$s))"
 
@@ -60,5 +67,13 @@ object Util {
                 player.playSound(player.location, sound, volume, pitch)
             }
         }
+    }
+
+    fun checkPermission(sender: CommandSender, permission: String): Boolean {
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage(colorcode(prefix + "You do not have permission to use this command"))
+            return false
+        }
+        return true
     }
 }

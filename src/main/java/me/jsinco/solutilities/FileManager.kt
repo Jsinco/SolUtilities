@@ -11,8 +11,10 @@ class FileManager(val fileName: String) {
     var file: File = File(plugin.dataFolder, fileName)
     private val yamlConfiguration: YamlConfiguration = YamlConfiguration.loadConfiguration(file)
 
-    fun setFolder(folder: String) {
-        file = File(plugin.dataFolder, "$folder${File.pathSeparator}$fileName")
+    fun generateFolder(folder: String) {
+        if (!File(plugin.dataFolder, folder).exists()) {
+            File(plugin.dataFolder, folder).mkdir()
+        }
     }
 
 

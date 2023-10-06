@@ -54,8 +54,7 @@ class CheckPermissionCommand : SubCommand {
             sender.sendMessage(Util.colorcode("${Util.prefix} Successfully upgraded ${offlinePlayer.name} to ${args[3]}"))
         } else {
             sender.sendMessage(Util.colorcode("${Util.prefix} Failed to upgrade ${offlinePlayer.name}. Player does not have permission: ${args[2]}"))
-            JDAMethods.sendMessageDiscordChannel(
-                "1143270088510804068",
+            JDAMethods.sendMessageDiscordChannel("1143270088510804068",
                 "Failed to upgrade ${offlinePlayer.name}. Player does not have permission: ${args[2]}",
                 false
             )

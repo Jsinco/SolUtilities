@@ -18,11 +18,11 @@ class CelesteCommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["reload"] = ReloadShopCommand()
     }
 
-    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
+    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
         return celestial.executeCelestialCommand(subCommands, sender, args)
     }
 
-    override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>?): MutableList<String> {
+    override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>): MutableList<String> {
         return celestial.tabCompleteCelestialCommand(subCommands, sender, args)
     }
 }

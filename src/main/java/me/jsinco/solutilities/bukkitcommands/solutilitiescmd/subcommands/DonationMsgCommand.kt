@@ -2,9 +2,9 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI
 import me.jsinco.oneannouncer.discord.JDAMethods
-import me.jsinco.solutilities.utility.Util
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Sound
@@ -21,7 +21,7 @@ class DonationMsgCommand : SubCommand {
 
         val player = Bukkit.getOfflinePlayer(args[1])
         val packageType: String = Util.colorcode(args.joinToString(" ").replace(args[0], "").replace(args[1], "").trim())
-        Bukkit.broadcastMessage(IridiumColorAPI.process(Util.colorcode("&#f76a3b&lS&#f7863b&lt&#f8a33b&lo&#f8bf3a&lr&#f8db3a&le &8» <GRADIENT:FFAA00>&l${player.name}</GRADIENT:FDD394> &#E2E2E2has just purchased a ${packageType}&#E2E2E2! Thank you for supporting &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&la&#f8ab3a&lc&#f8bb3a&le&#f8cb3a&lM&#f8db3a&lC&r&f!")))
+        Bukkit.broadcastMessage(IridiumColorAPI.process(Util.colorcode("&#f76a3b&lS&#f7863b&lt&#f8a33b&lo&#f8bf3a&lr&#f8db3a&le &8» <GRADIENT:FFAA00>&l${player.name}</GRADIENT:FDD394> &#E2E2E2has just purchased ${packageType}&#E2E2E2! Thank you for supporting &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&la&#f8ab3a&lc&#f8bb3a&le&#f8cb3a&lM&#f8db3a&lC&r&f!")))
         for (otherPlayer in Bukkit.getOnlinePlayers()) {
             otherPlayer.playSound(otherPlayer.location, Sound.UI_TOAST_CHALLENGE_COMPLETE, 0.5f, 0.5f)
         }

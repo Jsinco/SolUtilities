@@ -17,7 +17,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
 
 
 public class FurnitureGUI implements Listener {
@@ -84,7 +83,7 @@ public class FurnitureGUI implements Listener {
                     case "Previous Page" -> openInventory(player, pages.indexOf(event.getInventory()) - 1);
                 }
             } catch (IndexOutOfBoundsException e) {
-                player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "You are on the last page."));
+                player.sendMessage(Util.colorcode(Util.prefix + "You are on the last page."));
             }
         }
     }

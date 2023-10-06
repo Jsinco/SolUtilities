@@ -1,6 +1,7 @@
 package me.jsinco.solutilities.celestial.luna;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
+import me.jsinco.solutilities.SolUtilities;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -21,13 +22,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
+
 
 public class ArmorHandler implements Listener {
+
+    private final SolUtilities plugin = SolUtilities.getPlugin();
+
+
     @EventHandler (ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void itemDamageEvent(PlayerItemDamageEvent event) {
         ItemStack itemStack =  event.getItem();
-        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl, "LUNA_NETHERITE"), PersistentDataType.SHORT)) {
+        if (itemStack.hasItemMeta() && itemStack.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "LUNA_NETHERITE"), PersistentDataType.SHORT)) {
             int chance = new Random().nextInt(8);
             if (chance != 1) {
                 event.setCancelled(true);
@@ -40,7 +45,7 @@ public class ArmorHandler implements Listener {
         if (!(event.getEntity() instanceof Player player)||player.getInventory().getHelmet() == null||!player.getInventory().getHelmet().hasItemMeta()||
                 !(player.getInventory().getHelmet().getType() == Material.PAPER)) return;
         ItemMeta meta = player.getInventory().getHelmet().getItemMeta();
-        if (!meta.getPersistentDataContainer().has(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER)) return; // check if the paper has our nbt tag
+        if (!meta.getPersistentDataContainer().has(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER)) return; // check if the paper has our nbt tag
         int unbreakingLevel = player.getInventory().getHelmet().getEnchantmentLevel(Enchantment.DURABILITY);
         if (unbreakingLevel > 0) {
             int random = new Random().nextInt(100);
@@ -50,7 +55,7 @@ public class ArmorHandler implements Listener {
         }
 
         double armorDMG = event.getDamage() / 2; // I'm debugging, I don't know the rate at which normal armor takes dura dmg
-        int currentDura = meta.getPersistentDataContainer().get(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER); // get the current dura
+        int currentDura = meta.getPersistentDataContainer().get(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER); // get the current dura
         if (currentDura - armorDMG <= 0) { // if the armor is less than or equal to 0, break the armor
             player.getInventory().setHelmet(null);
             player.playSound(player.getLocation(),Sound.ENTITY_ITEM_BREAK,1,1);
@@ -58,7 +63,7 @@ public class ArmorHandler implements Listener {
             return;
         }
 
-        meta.getPersistentDataContainer().set(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER, currentDura - (int) armorDMG); // set the new dura
+        meta.getPersistentDataContainer().set(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER, currentDura - (int) armorDMG); // set the new dura
 
         if (meta.getLore() == null) {
             meta.setLore(List.of("§7Durability: " + (currentDura - (int)armorDMG) + "/407"));
@@ -95,17 +100,17 @@ public class ArmorHandler implements Listener {
         }
         for (ItemStack item : items) {
             if (!item.hasItemMeta()) continue;
-            if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER) &&
+            if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER) &&
             item.getItemMeta().hasEnchant(Enchantment.MENDING)){
 
                 ItemMeta meta = item.getItemMeta();
-                int currentDura = meta.getPersistentDataContainer().get(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER);
+                int currentDura = meta.getPersistentDataContainer().get(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER);
                 int exp = event.getExperienceOrb().getExperience() / 2;
                 if (currentDura + exp > 407) {
                     exp = 407 - currentDura;
                 }
 
-                meta.getPersistentDataContainer().set(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER, currentDura + exp); // set the new dura
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER, currentDura + exp); // set the new dura
 
                 if (meta.getLore() == null) {
                     meta.setLore(List.of("§7Durability: " + (currentDura + exp) + "/407"));
@@ -139,7 +144,7 @@ public class ArmorHandler implements Listener {
             Player player = (Player) event.getWhoClicked();
             ItemStack cursorItem = player.getItemOnCursor().clone(); //unknown if clone necessary
             ItemStack hatItem = player.getInventory().getHelmet(); //unknown if clone necessary
-            if(cursorItem.hasItemMeta() && cursorItem.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl, "LunaCosmeticHelmet"), PersistentDataType.INTEGER)){
+            if(cursorItem.hasItemMeta() && cursorItem.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "LunaCosmeticHelmet"), PersistentDataType.INTEGER)){
                 event.setCancelled(true);
                 player.setItemOnCursor(hatItem);
                 player.getInventory().setHelmet(cursorItem);
@@ -152,10 +157,10 @@ public class ArmorHandler implements Listener {
     @EventHandler
     public void onRightClickArmor(PlayerInteractEvent event) {
         if (!event.getAction().isRightClick() || event.getItem() == null || !event.getItem().hasItemMeta()
-        || !event.getItem().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"LunaCosmeticHelmet"), PersistentDataType.INTEGER)) return;
+        || !event.getItem().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER)) return;
         Player player = event.getPlayer();
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(pl, () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {
             if (event.getHand() != null && event.getHand().equals(EquipmentSlot.HAND)){
                 player.getInventory().setItemInMainHand(player.getInventory().getHelmet());
             } else {

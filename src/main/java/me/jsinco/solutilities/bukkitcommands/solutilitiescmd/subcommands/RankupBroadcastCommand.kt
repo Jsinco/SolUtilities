@@ -2,7 +2,7 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
 import me.jsinco.solutilities.Util
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.bukkitcommands.solutilitiescmd.SubCommand
+import me.jsinco.solutilities.SubCommand
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.command.CommandSender

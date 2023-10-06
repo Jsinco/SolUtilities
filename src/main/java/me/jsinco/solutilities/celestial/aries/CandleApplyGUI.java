@@ -1,5 +1,6 @@
 package me.jsinco.solutilities.celestial.aries;
 
+import me.jsinco.solutilities.SolUtilities;
 import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.*;
@@ -19,9 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
+
 
 public class CandleApplyGUI implements Listener {
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
 
     static List<Inventory> candleGUIs = new ArrayList<>();
 
@@ -62,10 +64,10 @@ public class CandleApplyGUI implements Listener {
 
         boolean glowCandle = false;
         boolean alreadyGlowItem = false;
-        if (candleData.has(new NamespacedKey(pl.getSolItems(),"Glow"), PersistentDataType.STRING)) {
+        if (candleData.has(new NamespacedKey(plugin.getSolItems(),"Glow"), PersistentDataType.STRING)) {
             glowCandle = true;
         }
-        if (itemData.has(new NamespacedKey(pl.getSolItems(),"Glow"), PersistentDataType.STRING)) {
+        if (itemData.has(new NamespacedKey(plugin.getSolItems(),"Glow"), PersistentDataType.STRING)) {
             alreadyGlowItem = true;
         }
         if (!item.getType().equals(Material.ELYTRA) && glowCandle) {
@@ -81,7 +83,7 @@ public class CandleApplyGUI implements Listener {
                 if (glowCandle && !alreadyGlowItem){
                     itemLore.add(i, "§7Glow I§§");
                 } else if (!glowCandle) {
-                    itemLore.add(i, Util.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(pl.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
+                    itemLore.add(i, Util.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(plugin.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
                 }
                 solitem = true;
                 break;
@@ -94,24 +96,24 @@ public class CandleApplyGUI implements Listener {
             if (glowCandle && !alreadyGlowItem){
                 itemLore.add(0, "§7Glow I§§");
             } else if (!glowCandle) {
-                itemLore.add(0, Util.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(pl.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
+                itemLore.add(0, Util.colorcode(candleMeta.getPersistentDataContainer().get(new NamespacedKey(plugin.getSolItems(),"EnchantName"), PersistentDataType.STRING)) + "§§");
             }
             itemLore.add(1,"§");
         }
 
-        itemData.set(new NamespacedKey(pl.getSolItems(),"Candled"), PersistentDataType.SHORT, (short) 2);
+        itemData.set(new NamespacedKey(plugin.getSolItems(),"Candled"), PersistentDataType.SHORT, (short) 2);
 
-        if (!candleData.has(new NamespacedKey(pl.getSolItems(),"Candle"), PersistentDataType.SHORT)) return;
+        if (!candleData.has(new NamespacedKey(plugin.getSolItems(),"Candle"), PersistentDataType.SHORT)) return;
         Set<NamespacedKey> candleKeys = candleData.getKeys();
 
 
         candleKeys.forEach(key -> {
             if (key.getKey().equalsIgnoreCase("Candle") || key.getKey().equalsIgnoreCase("EnchantName")) return;
             if (key.getKey().equalsIgnoreCase("Glow")) {
-                itemData.set(new NamespacedKey(pl.getSolItems(), "Glow"), PersistentDataType.STRING, candleData.get(new NamespacedKey(pl.getSolItems(), "Glow"), PersistentDataType.STRING));
+                itemData.set(new NamespacedKey(plugin.getSolItems(), "Glow"), PersistentDataType.STRING, candleData.get(new NamespacedKey(plugin.getSolItems(), "Glow"), PersistentDataType.STRING));
                 return;
             }
-            itemData.set(new NamespacedKey(pl.getSolItems(), key.getKey()), PersistentDataType.SHORT, (short) 2);
+            itemData.set(new NamespacedKey(plugin.getSolItems(), key.getKey()), PersistentDataType.SHORT, (short) 2);
         });
 
         itemMeta.setLore(itemLore);

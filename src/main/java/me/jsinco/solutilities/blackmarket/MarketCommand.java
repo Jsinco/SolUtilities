@@ -25,10 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
-
 public class MarketCommand implements CommandExecutor, TabCompleter {
 
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
 
     public MarketCommand(SolUtilities plugin) {
         if (Saves.get().get("Blackmarket.Items") != null && plugin.getConfig().getBoolean("Blackmarket.Enabled")) {
@@ -55,7 +54,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         // /blackmarket <currency> <price> <weight>
         if (player != null) {
             if (args.length < 1) {
-                String cmd = pl.getConfig().getString("Blackmarket.BlackMarketDefaultCommand");
+                String cmd = plugin.getConfig().getString("Blackmarket.BlackMarketDefaultCommand");
                 if (cmd.contains("[P]")) {
                     Bukkit.dispatchCommand(player, cmd.replace("[P]", "").strip());
                 } else {
@@ -120,11 +119,11 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
                     sender.sendMessage("/blackmarket market <1-3> <player>");
                 }
             }
-            case "time" -> sender.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") +"Time until next market refresh: " + Market.getResetTime() + " mins"));
+            case "time" -> sender.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") +"Time until next market refresh: " + Market.getResetTime() + " mins"));
             case "reset" -> {
                 Saves.get().set("Blackmarket.ResetTime", System.currentTimeMillis());
                 Saves.save();
-                sender.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Reset time set to now... (T-60s)"));
+                sender.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Reset time set to now... (T-60s)"));
             }
 
             case "previewrl" -> {
@@ -136,13 +135,13 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
                 Player target = Bukkit.getPlayerExact(args[1]);
                 if (target == null) return false;
                 else if (Saves.get().get("Blackmarket.Cooldown." + target.getUniqueId()) == null) {
-                    sender.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + target.getName() + " does not have an active cooldown!"));
+                    sender.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + target.getName() + " does not have an active cooldown!"));
                     return true;
                 }
                 Saves.get().set("Blackmarket.Cooldown." + target.getUniqueId(), null);
                 Saves.save();
-                target.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
-                sender.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Reset cooldown for " + target.getName()));
+                target.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
+                sender.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Reset cooldown for " + target.getName()));
             }
         }
         return true;
@@ -162,10 +161,10 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
     private void addItemBlackMarket(@NotNull String currency, double price, int weight, int stock, Player player) {
         ItemStack item = player.getInventory().getItemInMainHand();
         if (item.getType().isAir()) {
-            player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Hold the specified item to add."));
+            player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Hold the specified item to add."));
             return;
         } else if (!currency.equals("dollar") && !currency.equals("solcoin")) {
-            player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Invalid currency! (dollar/solcoin)"));
+            player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Invalid currency! (dollar/solcoin)"));
         }
         String itemName;
         if (!item.hasItemMeta() || !item.getItemMeta().hasDisplayName()) {
@@ -189,7 +188,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         Saves.save();
         Saves.reload();
 
-        TextComponent message = new TextComponent(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Item added to the blackmarket! [Click to reload preview]"));
+        TextComponent message = new TextComponent(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Item added to the blackmarket! [Click to reload preview]"));
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("/blackmarket previewrl")));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/blackmarket previewrl"));
         player.sendMessage(message);
@@ -198,7 +197,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
     private void removeItemBlackMarket(Player player, @Nullable String itemName) {
         ItemStack item = player.getInventory().getItemInMainHand();
         if (item.getType().isAir() && itemName == null) {
-            player.sendMessage(Util.colorcode(pl.getConfig().getString("prefix") + "Hold the specified item to remove or specify it's name."));
+            player.sendMessage(Util.colorcode(plugin.getConfig().getString("prefix") + "Hold the specified item to remove or specify it's name."));
             return;
         }
 
@@ -207,7 +206,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         if (itemName != null) {
             ItemStack fileItem = Saves.get().getItemStack("Blackmarket.Items." + itemName);
             if (fileItem == null) {
-                player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Item not found!"));
+                player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Item not found!"));
                 return;
             }
             name = itemName;
@@ -216,7 +215,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
             String physicalItemName = ChatColor.stripColor(item.getItemMeta().getDisplayName()).replace(" ", "_") + "_" + item.getAmount();
             ItemStack fileItem = Saves.get().getItemStack("Blackmarket.Items." + physicalItemName);
             if (fileItem == null) {
-                player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Item not found!"));
+                player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Item not found!"));
                 return;
             }
             name = physicalItemName;
@@ -230,7 +229,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         Saves.save();
         Saves.reload();
 
-        TextComponent message = new TextComponent(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Item removed from the blackmarket! [Click to reload preview]"));
+        TextComponent message = new TextComponent(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Item removed from the blackmarket! [Click to reload preview]"));
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("/blackmarket previewrl")));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/blackmarket previewrl"));
         player.sendMessage(message);
@@ -238,12 +237,12 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
 
     private void adjustItemBlackMarket(String itemName, String currency, double price, int weight, int stock, Player player) {
         if (!currency.equals("dollar") && !currency.equals("solcoin")) {
-            player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Invalid currency! (dollar/solcoin)"));
+            player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Invalid currency! (dollar/solcoin)"));
         }
 
         ItemStack fileItem = Saves.get().getItemStack("Blackmarket.Items." + itemName);
         if (fileItem == null) {
-            player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Item not found!"));
+            player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Item not found!"));
             return;
         }
 
@@ -261,7 +260,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         Saves.save();
         Saves.reload();
 
-        TextComponent message = new TextComponent(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Item adjusted. "+currency+": "+price+" Weight: "+weight+" Default Stock: "+stock + " [Click to reload preview]"));
+        TextComponent message = new TextComponent(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "Item adjusted. "+currency+": "+price+" Weight: "+weight+" Default Stock: "+stock + " [Click to reload preview]"));
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("/blackmarket previewrl")));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/blackmarket previewrl"));
         player.sendMessage(message);

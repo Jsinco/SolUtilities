@@ -7,8 +7,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import java.util.*
 
-class WrapCommand : SubCommand {
-
+class WrapInventoryCommand : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
         val player = sender as Player
 
@@ -20,8 +19,11 @@ class WrapCommand : SubCommand {
         val name = args.joinToString(" ")
             .replace(args[0], "")
             .trim()
-        val item = player.inventory.itemInMainHand
-        player.inventory.addItem(LunaUtil.createItemAsWrap(item, name))
+        for (item in player.inventory.contents) {
+            if (item != null && item.hasItemMeta()) {
+                player.inventory.addItem(LunaUtil.createItemAsWrap(item, name))
+            }
+        }
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): MutableList<String>? {

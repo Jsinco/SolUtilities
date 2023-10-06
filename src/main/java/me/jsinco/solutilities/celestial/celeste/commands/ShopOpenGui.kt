@@ -1,15 +1,19 @@
-package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
+package me.jsinco.solutilities.celestial.celeste.commands
 
-import me.jsinco.solutilities.Util
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
+import me.jsinco.solutilities.celestial.celeste.Shop
+import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 
-class ReloadCommand : SubCommand {
+class ShopOpenGui : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
-        plugin.reloadConfig()
-        Util.loadUtils()
-        sender.sendMessage(Util.colorcode(plugin.config.getString("prefix") + "Config reloaded!"))
+        if (args.size < 2) {
+            sender.sendMessage("${plugin.config.getString("prefix")}Usage: /celeste shop <player>")
+            return
+        }
+        val target = Bukkit.getPlayerExact(args[1]) ?: return
+        Shop.openInventory(target, 0)
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): MutableList<String>? {
@@ -17,11 +21,10 @@ class ReloadCommand : SubCommand {
     }
 
     override fun permission(): String {
-        return "solutilities.command.reload"
+        return "solutilities.celestial.celeste"
     }
 
     override fun playerOnly(): Boolean {
         return false
     }
-
 }

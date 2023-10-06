@@ -3,6 +3,7 @@ package me.jsinco.solutilities.celestial.celeste;
 import me.jsinco.solutilities.SolUtilities;
 import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.celestial.CelestialFile;
+import me.jsinco.solutilities.hooks.VaultHook;
 import me.jsinco.solutilities.utility.GUIActions;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -24,7 +25,9 @@ import java.util.List;
 public class Shop implements Listener {
 
     private static final ArrayList<Inventory> pages = new ArrayList<>();
-
+    public Shop() {
+        adminInitializeShop();
+    }
 
     public static void adminInitializeShop() {
         try {
@@ -115,7 +118,7 @@ public class Shop implements Listener {
 
 
     private void purchaseItem(Player player, String itemName) {
-        Economy economy = SolUtilities.getEconomy();
+        Economy economy = VaultHook.getEconomy();
         int price = CelestialFile.get().getInt("Prices." + itemName);
         ItemStack item = CelestialFile.get().getItemStack("Items." + itemName);
         if (item == null) return;

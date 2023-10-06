@@ -2,30 +2,24 @@ package me.jsinco.solutilities.celestial.luna.commands
 
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
-import me.jsinco.solutilities.celestial.luna.LunaUtil
+import me.jsinco.solutilities.celestial.luna.SelectGUI
+import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import java.util.*
 
-class WrapCommand : SubCommand {
-
+class OpenGUICommand : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
-        val player = sender as Player
-
         if (args.size < 2) {
-            player.sendMessage("${plugin.config.getString("prefix")}Usage: /luna wrap <name>")
+            sender.sendMessage("${plugin.config.getString("prefix")}Usage: /luna open <player>")
             return
         }
-
-        val name = args.joinToString(" ")
-            .replace(args[0], "")
-            .trim()
-        val item = player.inventory.itemInMainHand
-        player.inventory.addItem(LunaUtil.createItemAsWrap(item, name))
+        val target: Player = Bukkit.getPlayerExact(args[1]) ?: return
+        SelectGUI.init()
+        SelectGUI.openInventory(target)
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): MutableList<String>? {
-        return Collections.singletonList("<name>")
+        return null
     }
 
     override fun permission(): String {
@@ -33,6 +27,6 @@ class WrapCommand : SubCommand {
     }
 
     override fun playerOnly(): Boolean {
-        return true
+        return false
     }
 }

@@ -22,11 +22,11 @@ public class ItemProfilerMethods {
         try {
             keys = item.getItemMeta().getPersistentDataContainer().getKeys();
         } catch (NullPointerException e) {
-            return plugin.ItemProfilesFile().getString("NoProfile");
+            return ItemProfilerFile.get().getString("NoProfile");
         }
 
         for (NamespacedKey key : keys) {
-            String profile = plugin.ItemProfilesFile().getString("Profiles." + key.getKey());
+            String profile = ItemProfilerFile.get().getString("Profiles." + key.getKey());
 
             if (profile != null) {
                 return profile.replace("%itemname%", item.getItemMeta().getDisplayName());
@@ -34,24 +34,24 @@ public class ItemProfilerMethods {
         }
 
         for (NamespacedKey key : keys) {
-            String profile = plugin.ItemProfilesFile().getString("Profiles." + key.getNamespace());
+            String profile = ItemProfilerFile.get().getString("Profiles." + key.getNamespace());
 
             if (profile != null) {
                 return profile.replace("%itemname%", item.getItemMeta().getDisplayName());
             }
         }
 
-        return plugin.ItemProfilesFile().getString("NoProfile");
+        return ItemProfilerFile.get().getString("NoProfile");
     }
 
 
     public static String setProfilePlaceholders(SolUtilities plugin, Player player, String string) {
 
-        List<String> placeholders = List.copyOf(plugin.ItemProfilesFile().getConfigurationSection("Placeholders").getKeys(false));
+        List<String> placeholders = List.copyOf(ItemProfilerFile.get().getConfigurationSection("Placeholders").getKeys(false));
 
         for (String s : placeholders) {
             if (string.contains(s)) {
-                String placeholder = PlaceholderAPI.setPlaceholders(player, plugin.ItemProfilesFile().getString("Placeholders." + s));
+                String placeholder = PlaceholderAPI.setPlaceholders(player, ItemProfilerFile.get().getString("Placeholders." + s));
                 try {
                     string = string.replace(s, (int) UtilMethods.evalMath(placeholder) + "");
                 } catch (Exception ex) {

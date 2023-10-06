@@ -5,6 +5,7 @@ import me.jsinco.oneannouncer.discord.JDAMethods;
 import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
 import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.hooks.VaultHook;
 import net.milkbowl.vault.economy.Economy;
 import org.black_ixx.playerpoints.PlayerPoints;
 import org.black_ixx.playerpoints.PlayerPointsAPI;
@@ -16,9 +17,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
-
 public class Market {
+
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
+
     public static void refreshMarketItems() {
         List<String> itemNames = List.copyOf(Saves.get().getConfigurationSection("Blackmarket.Items").getKeys(false));
 
@@ -76,7 +78,7 @@ public class Market {
     public static boolean marketPurchase(Player player, ItemStack purchasedItem) {
         if (Saves.get().get("Blackmarket.Cooldown." + player.getUniqueId()) != null) {
             if (Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) > System.currentTimeMillis()) {
-                player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You can only purchase items every 30 minutes! &7(Cooldown: " + ((Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) - System.currentTimeMillis()) / 60000) + " minutes)"));
+                player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "You can only purchase items every 30 minutes! &7(Cooldown: " + ((Saves.get().getLong("Blackmarket.Cooldown." + player.getUniqueId()) - System.currentTimeMillis()) / 60000) + " minutes)"));
                 return false;
             } else {
                 Saves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), null);
@@ -104,14 +106,14 @@ public class Market {
             String bmItemName = ChatColor.stripColor(blackmarketItems.get(i).getItemMeta().getDisplayName()).replace(" ","_") + "_" + blackmarketItems.get(i).getAmount();
             if (bmItemName.equals(purchasedItemName)) {
                 if (Saves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) <= 0) {
-                    player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "This item is out of stock!"));
+                    player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "This item is out of stock!"));
                     return false;
                 }
 
                 if (Saves.get().get("Blackmarket.dollar." + purchasedItemName) != null) {
-                    Economy economy = SolUtilities.getEconomy();
+                    Economy economy = VaultHook.getEconomy();
                     if (economy.getBalance(player) < blackmarketPrice.get(i)) {
-                        player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough money!"));
+                        player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "You don't have enough money!"));
                         return false;
                     }
                     economy.withdrawPlayer(player, blackmarketPrice.get(i));
@@ -119,14 +121,14 @@ public class Market {
                     PlayerPointsAPI ppAPI = PlayerPoints.getInstance().getAPI();
                     int solcoinPrice = (int) Math.round(blackmarketPrice.get(i));
                     if (!ppAPI.take(player.getUniqueId(),  solcoinPrice)) {
-                        player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You don't have enough Solcoins!"));
+                        player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "You don't have enough Solcoins!"));
                         return false;
                     }
                 }
                 Saves.get().set("Blackmarket.ActiveItemsStock." + purchasedItemName, Saves.get().getInt("Blackmarket.ActiveItemsStock." + purchasedItemName) - 1);
                 Saves.save();
                 player.getInventory().addItem(blackmarketItems.get(i));
-                player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "You purchased a " + blackmarketItems.get(i).getItemMeta().getDisplayName() + "&#E2E2E2!"));
+                player.sendMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Prefix") + "You purchased a " + blackmarketItems.get(i).getItemMeta().getDisplayName() + "&#E2E2E2!"));
 
                 Saves.get().set("Blackmarket.Cooldown." + player.getUniqueId(), System.currentTimeMillis() + 1800000); // 30 minutes
                 Saves.save();
@@ -143,7 +145,7 @@ public class Market {
                 MarketItemPreview.initMarketItemPreviewGui();
                 refreshMarketItems();
                 reselectMarket();
-                Bukkit.broadcastMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Message").replace("%prefix%",pl.getConfig().getString("Blackmarket.Prefix"))));
+                Bukkit.broadcastMessage(Util.colorcode(plugin.getConfig().getString("Blackmarket.Message").replace("%prefix%", Market.plugin.getConfig().getString("Blackmarket.Prefix"))));
 
                 long randomHour = new Random().nextLong(plugin.getConfig().getLong("Blackmarket.ResetMin"),plugin.getConfig().getLong("Blackmarket.ResetMax"));
 
@@ -166,7 +168,7 @@ public class Market {
                     Saves.save();
                     Player player = Bukkit.getPlayer(UUID.fromString(cooldownPlayer));
                     if (player != null) {
-                        player.sendMessage(Util.colorcode(pl.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
+                        player.sendMessage(Util.colorcode(Market.plugin.getConfig().getString("Blackmarket.Prefix") + "Your Blackmarket cooldown has expired!"));
                     }
                 }
             }
@@ -194,7 +196,7 @@ public class Market {
     }
 
     public static String activeMarketNPCName(int market) {
-        String npcName = pl.getConfig().getString("Blackmarket.Return-NPC-Name?.NPC"+market);
+        String npcName = plugin.getConfig().getString("Blackmarket.Return-NPC-Name?.NPC"+market);
         if (npcName == null) {
             return "NPC" + market;
         }

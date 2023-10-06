@@ -3,8 +3,9 @@ version: '${version}'
 main: me.jsinco.solutilities.SolUtilities
 api-version: '1.20'
 author: 'Jsinco'
-depend: [Vault, SolItems, PlaceholderAPI]
-softdepend: [PlayerPoints]
+depend: [Vault, PlaceholderAPI]
+softdepend: [PlayerPoints, SolItems]
+load: STARTUP
 permissions:
   solutilities.prefix.staff:
     default: false
@@ -25,39 +26,10 @@ permissions:
   solutilities.color.recruit:
     default: false
 commands:
-  solace:
-    description: Solace command
-    permission: solutilities.global
-    usage: §e/<command> <sols | sounds> <amountt>
-  celesteadmin:
-    description: Gives a player celeste admin
-    permission: solutilities.admin
-    usage: /<command>
-  celesteshop:
-    description: Opens the celeste shop
-    permission: solutilities.admin
-    usage: /<command> <player>
-  modelitem:
-    description: Gives a player a model item
-    permission: solutilities.admin
-    usage: /<command> <player> <model>
-  lunaadmin:
-    description: Gives a player luna admin
-    permission: solutilities.admin
-    usage: /<command>
-  lunawrapper:
-    description: Gives a player a luna wrapper
-    permission: solutilities.admin
-    usage: /<command> <player>
   ariesmisc:
     description: Gives a player aries misc
     permission: solutilities.admin
     usage: /<command> <player>
-  itemprofiler:
-    description: Item Profiler
-    permission: solutilities.global
-    usage: /<command>
-    aliases: [itemprofile, profiler]
   blackmarket:
     description: The Black Market
     permission: solutilities.blackmarket

@@ -4,7 +4,7 @@ import com.iridium.iridiumcolorapi.IridiumColorAPI
 import me.jsinco.oneannouncer.discord.JDAMethods
 import me.jsinco.solutilities.Util
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.bukkitcommands.solutilitiescmd.SubCommand
+import me.jsinco.solutilities.SubCommand
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Sound

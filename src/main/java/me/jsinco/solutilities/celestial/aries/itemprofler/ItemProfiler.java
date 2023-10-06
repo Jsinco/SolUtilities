@@ -7,9 +7,8 @@ import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,21 +24,20 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
+
 
 // Info box slot - 13
 // Search button slot - 23
 // Empty slot for custom item - 22
 //inv.setItem(13, GUIActions.createNBTItem(true,"itemprofilerinfo", 10070, Material.PAPER, "&#f7903b&lC&#f7953b&lu&#f7993b&ls&#f79e3b&lt&#f7a33b&lo&#f7a73b&lm &#f7ac3b&lI&#f7b13b&lt&#f8b63b&le&#f8ba3a&lm &#f8bf3a&li&#f8c43a&ln&#f8c83a&lf&#f8cd3a&lo&#f8d23a&l.&#f8d63a&l.&#f8db3a&l.",
 //                "&7Any info on your custom item will appear here."));
-public class ItemProfiler implements Listener, CommandExecutor {
+public class ItemProfiler extends BukkitCommand implements Listener {
 
     private static SolUtilities plugin;
 
     public ItemProfiler(SolUtilities plugin) {
+        super("itemprofiler", "Opens the item profiler", "/itemprofiler", List.of("profiler"));
         ItemProfiler.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-        plugin.getCommand("itemprofiler").setExecutor(this);
     }
 
 
@@ -91,7 +89,7 @@ public class ItemProfiler implements Listener, CommandExecutor {
 
             if (event.getInventory().getItem(22) == null)  return;
             ItemStack customItem = event.getInventory().getItem(22);
-            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(pl, player, ItemProfilerMethods.profileItem(pl, customItem)));
+            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(plugin, player, ItemProfilerMethods.profileItem(plugin, customItem)));
 
             // Experimental
             ItemStack infoBox = event.getInventory().getItem(13);
@@ -123,14 +121,14 @@ public class ItemProfiler implements Listener, CommandExecutor {
             event.setCancelled(true);
 
             if (event.getInventory().getItem(22) == null || !item.getItemMeta().hasItemFlag(ItemFlag.HIDE_DYE))  return;
-            String rgb1 = pl.ItemProfilesFile().getString("IridiumColors.rgb1");
-            String rgb2 = pl.ItemProfilesFile().getString("IridiumColors.rgb2");
+            String rgb1 = ItemProfilerFile.get().getString("IridiumColors.rgb1");
+            String rgb2 = ItemProfilerFile.get().getString("IridiumColors.rgb2");
             ItemStack customItem = event.getInventory().getItem(22);
 
-            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(pl, player, ItemProfilerMethods.profileItem(pl, customItem)));
-            player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + pl.ItemProfilesFile().getString("IridiumColors.border1") + "</GRADIENT:"+rgb2+">"));
+            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(plugin, player, ItemProfilerMethods.profileItem(plugin, customItem)));
+            player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + ItemProfilerFile.get().getString("IridiumColors.border1") + "</GRADIENT:"+rgb2+">"));
             player.sendMessage(profile);
-            player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + pl.ItemProfilesFile().getString("IridiumColors.border2") + "</GRADIENT:"+rgb2+">"));
+            player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + ItemProfilerFile.get().getString("IridiumColors.border2") + "</GRADIENT:"+rgb2+">"));
 
             player.closeInventory();
         } else if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "itemprofilerborder"), PersistentDataType.SHORT)) {
@@ -139,8 +137,8 @@ public class ItemProfiler implements Listener, CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (!(commandSender instanceof Player p)) return true;
+    public boolean execute(@NotNull CommandSender sender, @NotNull String commandLabel, @NotNull String[] args) {
+        if (!(sender instanceof Player p)) return false;
         openItemProfiler(p);
 
         return true;

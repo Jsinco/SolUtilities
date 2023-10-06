@@ -17,7 +17,11 @@ class Listeners(val plugin: SolUtilities) : Listener {
 
         event.joinMessage = ("${plugin.config.getString("joins.join-prefix")}${Joins.joinMessages.random()}")
         if (!event.player.hasPlayedBefore()) {
-            event.joinMessage = plugin.config.getString("joins.join-firsttime")!!
+            event.joinMessage = plugin.config.getString("joins.join-firsttime.message")!!
+
+            for (command in plugin.config.getStringList("joins.join-firsttime.commands")) {
+                plugin.server.dispatchCommand(plugin.server.consoleSender, command.replace("%player%", event.player.name))
+            }
         }
 
         if (event.joinMessage != null) {

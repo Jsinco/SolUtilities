@@ -65,14 +65,14 @@ public class WrapGUI implements Listener {
             ItemStack item = wrapGUI.getItem(12);
             ItemStack wrap = wrapGUI.getItem(14);
 
-            if (item == null || wrap == null || !wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(ModelAdmin.pl,"type"), PersistentDataType.STRING)) {
+            if (item == null || wrap == null || !wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"type"), PersistentDataType.STRING)) {
                 player.sendMessage(Util.colorcode("&#b9ddffH&#badcffm&#bcdcffm&#bddbffm&#bfdaff, &#c0d9fft&#c2d9ffh&#c3d8ffi&#c5d7ffs &#c6d6ffd&#c7d6ffo&#c9d5ffe&#cad4ffs&#ccd4ffn&#cdd3ff'&#cfd2fft &#d0d1ffl&#d2d1ffo&#d3d0ffo&#d5cfffk &#d6cfffl&#d7ceffi&#d9cdffk&#daccffe &#dcccffa &#ddcbffw&#dfcaffr&#e0c9ffa&#e2c9ffp&#e3c8ff!"));
                 return;
             }
 
             String m = item.getType().toString().toLowerCase();
             if (m.contains("netherite")||m.contains("shield")||m.contains("bow")||m.contains("rod")) {
-                if (Wrapping.isArmor(item) && !wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(ModelAdmin.pl, "PaperHelmet"), PersistentDataType.SHORT)) {
+                if (Wrapping.isArmor(item) && !wrap.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "PaperHelmet"), PersistentDataType.SHORT)) {
                     Wrapping.wrapItem(item, Wrapping.convertArmorToLeather(item), wrap, player, wrapGUI);
                 } else {
                     Wrapping.wrapItem(item, item, wrap, player, wrapGUI);

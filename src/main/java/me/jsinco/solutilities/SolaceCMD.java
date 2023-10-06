@@ -1,6 +1,5 @@
 package me.jsinco.solutilities;
 
-import me.jsinco.solutilities.utility.TagParticleVouchers;
 import me.jsinco.solutilities.utility.UtilMethods;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

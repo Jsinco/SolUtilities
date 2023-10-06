@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.BookMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.plugin;
 
 public class UtilMethods {
 

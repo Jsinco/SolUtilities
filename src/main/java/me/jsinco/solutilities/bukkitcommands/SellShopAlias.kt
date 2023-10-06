@@ -24,10 +24,6 @@ class SellShopAlias : BukkitCommand(
     }
 
     override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>?): MutableList<String> {
-        val materials: MutableList<String> = ArrayList()
-        for (material in Material.entries) {
-            materials.add(material.name.lowercase())
-        }
-        return materials
+        return Util.MATERIALS_STRING
     }
 }

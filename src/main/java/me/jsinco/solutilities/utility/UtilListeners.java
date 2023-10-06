@@ -23,7 +23,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.Random;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
+import static me.jsinco.solutilities.celestial.luna.plugin;
 
 public class UtilListeners implements Listener {
 

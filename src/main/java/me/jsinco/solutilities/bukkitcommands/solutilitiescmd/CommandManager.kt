@@ -1,6 +1,7 @@
 package me.jsinco.solutilities.bukkitcommands.solutilitiescmd
 
 import me.jsinco.solutilities.SolUtilities
+import me.jsinco.solutilities.SubCommand
 import me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands.*
 import org.bukkit.command.CommandSender
 import org.bukkit.command.defaults.BukkitCommand
@@ -8,7 +9,7 @@ import org.bukkit.entity.Player
 import java.util.Collections
 
 class CommandManager(val plugin: SolUtilities) : BukkitCommand(
-    "solutilities", "Main command for SolUtilities", "/solutilities <subcommand>", listOf()
+    "solutilities", "Main command for SolUtilities", "/solutilities <subcommand>", listOf("solace")
 ) {
 
     private val subCommands: MutableMap<String, SubCommand> = mutableMapOf()
@@ -20,6 +21,7 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["rankupbroadcast"] = RankupBroadcastCommand()
         subCommands["nbtsee"] = NBTSeeCommand()
         subCommands["nicksee"] = NickPreviewCommand()
+        subCommands["voucher"] = Vouchers()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {

@@ -1,6 +1,7 @@
 package me.jsinco.solutilities.blackmarket;
 
 import me.jsinco.solutilities.Saves;
+import me.jsinco.solutilities.SolUtilities;
 import me.jsinco.solutilities.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
@@ -20,9 +21,9 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.jsinco.solutilities.celestial.luna.ModelAdmin.pl;
-
 public class MarketGUI implements Listener {
+
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
 
     private static final Inventory marketGUI = Bukkit.createInventory(null, 45, Util.colorcode("&#df4a4a&lM&#ca464b&la&#b5414b&lr&#9f3d4c&lk&#8a384c&le&#75344d&lt"));
     // in 27 slot gui 11, 13, 15
@@ -38,7 +39,7 @@ public class MarketGUI implements Listener {
 
         for (ItemStack activeItem : activeItems) {
             ItemMeta meta = activeItem.getItemMeta();
-            meta.getPersistentDataContainer().set(new NamespacedKey(pl, "BlackmarketItem"), PersistentDataType.BOOLEAN, true);
+            meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "BlackmarketItem"), PersistentDataType.BOOLEAN, true);
             List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
 
             boolean editedStock = false;
@@ -92,7 +93,7 @@ public class MarketGUI implements Listener {
         Player player = (Player) event.getWhoClicked();
         if (clickedItem == null || clickedItem.getType().isAir() || !clickedItem.hasItemMeta()) return;
 
-        if (clickedItem.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"BlackmarketItem"), PersistentDataType.BOOLEAN)) {
+        if (clickedItem.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"BlackmarketItem"), PersistentDataType.BOOLEAN)) {
             if (Market.marketPurchase(player, clickedItem)) {
                 loadMarketGUI();
             }

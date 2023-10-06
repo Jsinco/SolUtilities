@@ -2,9 +2,8 @@ package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.utility.GUIActions;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
@@ -89,7 +88,7 @@ public class ItemProfiler extends BukkitCommand implements Listener {
 
             if (event.getInventory().getItem(22) == null)  return;
             ItemStack customItem = event.getInventory().getItem(22);
-            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(plugin, player, ItemProfilerMethods.profileItem(plugin, customItem)));
+            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(plugin, player, ItemProfilerMethods.profileItem(customItem)));
 
             // Experimental
             ItemStack infoBox = event.getInventory().getItem(13);
@@ -125,7 +124,7 @@ public class ItemProfiler extends BukkitCommand implements Listener {
             String rgb2 = ItemProfilerFile.get().getString("IridiumColors.rgb2");
             ItemStack customItem = event.getInventory().getItem(22);
 
-            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(plugin, player, ItemProfilerMethods.profileItem(plugin, customItem)));
+            String profile = Util.colorcode(ItemProfilerMethods.setProfilePlaceholders(plugin, player, ItemProfilerMethods.profileItem(customItem)));
             player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + ItemProfilerFile.get().getString("IridiumColors.border1") + "</GRADIENT:"+rgb2+">"));
             player.sendMessage(profile);
             player.sendMessage(IridiumColorAPI.process("<GRADIENT:"+rgb1+">" + ItemProfilerFile.get().getString("IridiumColors.border2") + "</GRADIENT:"+rgb2+">"));

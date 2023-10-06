@@ -1,6 +1,7 @@
 package me.jsinco.solutilities.celestial.luna;
 
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public class WrapGUI implements Listener {
 
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
     static List<Inventory> wrapGUIs = new ArrayList<>();
 
     public static Inventory wrapGUI() {

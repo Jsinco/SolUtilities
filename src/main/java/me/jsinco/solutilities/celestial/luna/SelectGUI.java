@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.luna;
 
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

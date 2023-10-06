@@ -2,7 +2,7 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI
 import me.jsinco.oneannouncer.discord.JDAMethods
-import me.jsinco.solutilities.Util
+import me.jsinco.solutilities.utility.Util
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
 import org.bukkit.Bukkit

@@ -1,8 +1,8 @@
-package me.jsinco.solutilities.misc.joins
+package me.jsinco.solutilities.features.joins
 
 import me.jsinco.solutilities.Saves
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.Util
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

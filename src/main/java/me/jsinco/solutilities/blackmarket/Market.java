@@ -4,7 +4,7 @@ import me.jsinco.oneannouncer.DiscordSRVUtil;
 import me.jsinco.oneannouncer.discord.JDAMethods;
 import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.hooks.VaultHook;
 import net.milkbowl.vault.economy.Economy;
 import org.black_ixx.playerpoints.PlayerPoints;

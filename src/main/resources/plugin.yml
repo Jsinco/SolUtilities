@@ -4,7 +4,7 @@ main: me.jsinco.solutilities.SolUtilities
 api-version: '1.20'
 author: 'Jsinco'
 depend: [Vault, PlaceholderAPI]
-softdepend: [PlayerPoints, SolItems]
+softdepend: [PlayerPoints, SolItems, LuckPerms]
 load: STARTUP
 permissions:
   solutilities.prefix.staff:
@@ -25,16 +25,10 @@ permissions:
     default: false
   solutilities.color.recruit:
     default: false
+  # TODO: Add permissions
+  solutilities.colorbook:
+    description: Auto colors book after closing
 commands:
-  ariesmisc:
-    description: Gives a player aries misc
-    permission: solutilities.admin
-    usage: /<command> <player>
-  blackmarket:
-    description: The Black Market
-    permission: solutilities.blackmarket
-    usage: §c/<command> <add | remove | preview | market | reset | time> <dollar | solcoin | itemname | marketnumber> <player | price> <weight> <stock>
-    aliases: [bm]
   refer:
     description: Refer CMD
     usage: /<command> <player>

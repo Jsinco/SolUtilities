@@ -85,6 +85,10 @@ Referrals:
       chance_5: 'crates key give $player solacecratekey 1'
 
 
+discord-booster-rewards:
+  - 'give %player% axolotl_bucket 1'
+  - 'crates key give %player% wrapcratekey 1'
+
 #Placeholder %player% can be used to replace with player name
 #Placeholder %joins% can be used to replace with total unique player joins
 joins:

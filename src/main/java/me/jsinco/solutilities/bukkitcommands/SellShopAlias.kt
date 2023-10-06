@@ -1,14 +1,10 @@
 package me.jsinco.solutilities.bukkitcommands
 
-import me.jsinco.solutilities.Util
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Bukkit
-import org.bukkit.Material
-import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
-import org.bukkit.command.TabCompleter
 import org.bukkit.command.defaults.BukkitCommand
 import org.bukkit.entity.Player
-import java.util.ArrayList
 
 class SellShopAlias : BukkitCommand(
     "lb", "Searchshop Alias", "/lb <item>", listOf()

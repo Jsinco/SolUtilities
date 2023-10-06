@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.celestial.aries;
 
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.celestial.aries.itemprofler.ItemProfiler;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class ChooseGUI implements Listener {
+public class AriesMainGUI implements Listener {
     public static Inventory gui = Bukkit.createInventory(null, 27, Util.colorcode("&#ffb89c&lA&#ffb8b3&lr&#ffb9ca&li&#ffb9e1&le&#ffb9f8&ls"));
 
     @SuppressWarnings("DuplicatedCode")

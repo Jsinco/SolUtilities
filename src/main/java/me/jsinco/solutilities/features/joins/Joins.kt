@@ -1,4 +1,4 @@
-package me.jsinco.solutilities.misc.joins
+package me.jsinco.solutilities.features.joins
 
 import me.jsinco.solutilities.SolUtilities
 

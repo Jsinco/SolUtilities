@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
-import me.jsinco.solutilities.Util
+import me.jsinco.solutilities.utility.Util
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
 import org.bukkit.command.CommandSender

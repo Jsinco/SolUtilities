@@ -1,7 +1,7 @@
-package me.jsinco.solutilities.misc.joins
+package me.jsinco.solutilities.features.joins
 
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.Util
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.command.CommandSender

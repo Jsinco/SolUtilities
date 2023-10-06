@@ -4,8 +4,8 @@ import io.papermc.paper.event.player.AsyncChatEvent
 import me.jsinco.solutilities.Saves.get
 import me.jsinco.solutilities.Saves.save
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.Util
-import me.jsinco.solutilities.Util.colorcode
+import me.jsinco.solutilities.utility.Util
+import me.jsinco.solutilities.utility.Util.colorcode
 import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit

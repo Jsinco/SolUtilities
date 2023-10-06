@@ -1,7 +1,7 @@
-package me.jsinco.solutilities.misc;
+package me.jsinco.solutilities.features;
 
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

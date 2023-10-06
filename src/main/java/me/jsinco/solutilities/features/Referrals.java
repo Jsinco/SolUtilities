@@ -1,9 +1,9 @@
-package me.jsinco.solutilities.misc;
+package me.jsinco.solutilities.features;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;

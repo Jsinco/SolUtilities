@@ -22,6 +22,8 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["nbtsee"] = NBTSeeCommand()
         subCommands["nicksee"] = NickPreviewCommand()
         subCommands["voucher"] = Vouchers()
+        subCommands["armorstand"] = ArmorstandCommand()
+        subCommands["discordreward"] = DiscordRewardCommand()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {

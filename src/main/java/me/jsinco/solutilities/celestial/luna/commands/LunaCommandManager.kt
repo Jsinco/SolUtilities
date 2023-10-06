@@ -16,6 +16,7 @@ class LunaCommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["wrap"] = WrapCommand()
         subCommands["wrapinv"] = WrapInventoryCommand()
         subCommands["open"] = OpenGUICommand()
+        subCommands["wraptoken"] = WrapTokenCommand()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {

@@ -2,8 +2,7 @@ package me.jsinco.solutilities.celestial.aries.itemprofler;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
-import me.jsinco.solutilities.utility.UtilMethods;
+import me.jsinco.solutilities.utility.Util;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -16,7 +15,7 @@ import java.util.Set;
 public class ItemProfilerMethods {
 
 
-    public static String profileItem(SolUtilities plugin, ItemStack item) {
+    public static String profileItem(ItemStack item) {
         @NotNull Set<NamespacedKey> keys;
 
         try {
@@ -53,7 +52,7 @@ public class ItemProfilerMethods {
             if (string.contains(s)) {
                 String placeholder = PlaceholderAPI.setPlaceholders(player, ItemProfilerFile.get().getString("Placeholders." + s));
                 try {
-                    string = string.replace(s, (int) UtilMethods.evalMath(placeholder) + "");
+                    string = string.replace(s, (int) Util.evalMath(placeholder) + "");
                 } catch (Exception ex) {
                     string = string.replace(s, Util.colorcode(placeholder));
                 }

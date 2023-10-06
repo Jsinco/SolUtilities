@@ -1,7 +1,7 @@
 package me.jsinco.solutilities.celestial.luna;
 
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;

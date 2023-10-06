@@ -1,113 +1,69 @@
-package me.jsinco.solutilities.utility;
+package me.jsinco.solutilities.utility
 
-import me.jsinco.solutilities.Util;
-import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerEditBookEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
+import me.jsinco.solutilities.SolUtilities
+import org.bukkit.Bukkit
+import org.bukkit.Sound
+import org.bukkit.entity.EntityType
+import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
+import org.bukkit.event.Listener
+import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.player.PlayerCommandPreprocessEvent
+import org.bukkit.event.player.PlayerEditBookEvent
+import org.bukkit.event.player.PlayerTeleportEvent
+import java.util.*
 
-import java.util.Random;
-
-import static me.jsinco.solutilities.celestial.luna.plugin;
-
-public class UtilListeners implements Listener {
-
-    @EventHandler (priority = EventPriority.HIGHEST)
-    public void onEntityDeath(EntityDeathEvent event) {
-        for (String entity : pl.getConfig().getStringList("DropBlocker.DeathWhitelist")) {
-            if (event.getEntity().getType().equals(EntityType.valueOf(entity))) return;
+class GeneralEvents(private val plugin: SolUtilities) : Listener {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    fun onEntityDeath(event: EntityDeathEvent) {
+        for (entity in plugin.getConfig().getStringList("DropBlocker.DeathWhitelist")) {
+            if (event.entity.type == EntityType.valueOf(entity!!)) return
         }
-        for (String cause : pl.getConfig().getStringList("DropBlocker.CauseWhitelist")) {
-            if (event.getEntity().getLastDamageCause() != null && event.getEntity().getLastDamageCause().getCause().equals(EntityDamageEvent.DamageCause.valueOf(cause))) return;
+        for (cause in plugin.getConfig().getStringList("DropBlocker.CauseWhitelist")) {
+            if (event.entity.lastDamageCause != null && event.entity.lastDamageCause!!.cause == EntityDamageEvent.DamageCause.valueOf(cause!!)) return
         }
-        if (event.getEntity().getKiller() != null) {
-            for (String entity : pl.getConfig().getStringList("DropBlocker.KillerWhitelist")) {
-                if (event.getEntity().getKiller().getType().equals(EntityType.valueOf(entity))) return;
+        if (event.entity.killer != null) {
+            for (entity in plugin.getConfig().getStringList("DropBlocker.KillerWhitelist")) {
+                if (event.entity.killer!!.type == EntityType.valueOf(entity!!)) return
             }
         }
-
-        event.getDrops().clear();
-        event.setDroppedExp(0);
-    }
-
-
-    @EventHandler
-    public void commandPreProcess(PlayerCommandPreprocessEvent event) {
-        if (!event.getPlayer().getScoreboardTags().contains("solutilities.silent") && !pl.getConfig().getStringList("SilentCommands").contains(event.getMessage().split(" ")[0])) {
-            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.2f, 0.78f);
-        }
-        String m = event.getMessage();
-        Player p = event.getPlayer();
-        if (m.equals("/crates") && !p.hasPermission("excellentcrates.command")) {
-            event.setMessage("/warp crates");
-        }
+        event.drops.clear()
+        event.droppedExp = 0
     }
 
     @EventHandler
-    public void onPlayerTP(PlayerTeleportEvent event) {
-        if (!event.getPlayer().getScoreboardTags().contains("solutilities.silent") && event.getCause().equals(PlayerTeleportEvent.TeleportCause.COMMAND)) {
-            Sound sound;
-            float pitch;
-            int random = new Random().nextInt(1,3);
+    fun commandPreProcess(event: PlayerCommandPreprocessEvent) {
+        val player = event.player
+        if (!player.scoreboardTags.contains("solutilities.silent")) {
+            player.playSound(player.location, Sound.ENTITY_ITEM_PICKUP, 0.2f, 0.78f)
+        }
+    }
+
+    @EventHandler (ignoreCancelled = true)
+    fun onPlayerTP(event: PlayerTeleportEvent) {
+        if (!event.player.scoreboardTags.contains("solutilities.silent") && event.cause == PlayerTeleportEvent.TeleportCause.COMMAND) {
+            val sound: Sound
+            val pitch: Float
+            val random = Random().nextInt(1, 3)
             if (random == 2) {
-                sound = Sound.BLOCK_PORTAL_TRAVEL;
-                pitch = 8f;
+                sound = Sound.BLOCK_PORTAL_TRAVEL
+                pitch = 8f
             } else {
-                sound = Sound.ENTITY_ENDERMAN_TELEPORT;
-                pitch = 1f;
+                sound = Sound.ENTITY_ENDERMAN_TELEPORT
+                pitch = 1f
             }
-
-            Bukkit.getScheduler().scheduleSyncDelayedTask(pl, () -> {
-                event.getPlayer().playSound(event.getPlayer().getLocation(), sound, 0.2f, pitch);
-            }, 1L);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(
+                plugin,
+                { event.player.playSound(event.player.location, sound, 0.2f, pitch) },
+                1L)
         }
     }
 
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent event) {
-        ItemStack item = event.getItemInHand();
-        if (!item.hasItemMeta()) return;
-        PersistentDataContainer data = item.getItemMeta().getPersistentDataContainer();
-        if (data.has(new NamespacedKey(pl, "WrapToken"), PersistentDataType.SHORT)) {
-            event.setCancelled(true);
-        }
-    }
-
-
-    @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
-        ItemStack item = event.getItem();
-        if (item == null || !item.hasItemMeta()) return;
-        if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"model"), PersistentDataType.INTEGER)) {
-            event.setCancelled(true);
-            event.getPlayer().sendMessage(Util.colorcode(pl.getConfig().getString("prefix")  + "This is a wrap! It should not be used as a normal item. Please speak to &#a8ff92Luna &#E2E2E2at [/celestial] to apply!"));
-        } else if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(pl,"wraptoken"), PersistentDataType.SHORT)) {
-            event.setCancelled(true);
-            event.getPlayer().sendMessage(Util.colorcode(pl.getConfig().getString("prefix")  + "This is a wrap token! Head to [/wraps] to exchange!"));
-        }
-    }
-
-    @EventHandler
-    public void onPlayerEditBook(PlayerEditBookEvent event) {
-        if (!event.getPlayer().hasPermission("solutilities.colorbooks")) return;
-        BookMeta book = UtilMethods.formatBook(event.getNewBookMeta());
-
-        // Update
-        event.setNewBookMeta(book);
+    @EventHandler (ignoreCancelled = true)
+    fun onPlayerEditBook(event: PlayerEditBookEvent) {
+        if (!event.player.hasPermission("solutilities.colorbooks")) return
+        val book = Util.formatBook(event.newBookMeta)
+        event.setNewBookMeta(book)
     }
 }

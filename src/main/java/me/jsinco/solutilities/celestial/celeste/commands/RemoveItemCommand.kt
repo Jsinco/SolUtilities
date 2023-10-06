@@ -2,7 +2,7 @@ package me.jsinco.solutilities.celestial.celeste.commands
 
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
-import me.jsinco.solutilities.Util.colorcode
+import me.jsinco.solutilities.utility.Util.colorcode
 import me.jsinco.solutilities.celestial.CelestialFile.get
 import me.jsinco.solutilities.celestial.CelestialFile.save
 import org.bukkit.ChatColor

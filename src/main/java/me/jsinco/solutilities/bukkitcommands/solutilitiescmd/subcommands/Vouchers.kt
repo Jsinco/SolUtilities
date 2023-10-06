@@ -3,8 +3,8 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 import com.iridium.iridiumcolorapi.IridiumColorAPI
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
-import me.jsinco.solutilities.Util
-import me.jsinco.solutilities.Util.colorcode
+import me.jsinco.solutilities.utility.Util
+import me.jsinco.solutilities.utility.Util.colorcode
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
@@ -21,10 +21,8 @@ import org.bukkit.persistence.PersistentDataType
 import java.util.*
 
 class Vouchers : SubCommand, Listener {
-
-    val plugin: SolUtilities = SolUtilities.getPlugin()
-
     companion object {
+        val plugin: SolUtilities = SolUtilities.getPlugin()
         val USAGE: String = "${Util.prefix}Usages: \n/solutilities voucher tag <tagID> <name>\n/solutilities voucher particle <material> particle.<node> <name>"
         val IDS: List<String> = listOf("tagid", "particleid")
         val QUEUE: MutableList<UUID> = mutableListOf()

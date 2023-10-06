@@ -2,12 +2,14 @@ package me.jsinco.solutilities.celestial.luna;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import me.jsinco.solutilities.SolUtilities;
+import me.jsinco.solutilities.utility.Util;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -16,6 +18,7 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ import java.util.Random;
 
 
 
-public class ArmorHandler implements Listener {
+public class WrapsEventHandler implements Listener {
 
     private final SolUtilities plugin = SolUtilities.getPlugin();
 
@@ -171,4 +174,30 @@ public class ArmorHandler implements Listener {
         player.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_LEATHER, 1, 1);
 
     }
+
+    // TODO: At least redo the bottom 2 listeners
+
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent event) {
+        ItemStack item = event.getItemInHand();
+        if (!item.hasItemMeta()) return;
+        PersistentDataContainer data = item.getItemMeta().getPersistentDataContainer();
+        if (data.has(new NamespacedKey(plugin, "WrapToken"), PersistentDataType.SHORT)) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        ItemStack item = event.getItem();
+        if (item == null || !item.hasItemMeta()) return;
+        if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"model"), PersistentDataType.INTEGER)) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(Util.colorcode(plugin.getConfig().getString("prefix")  + "This is a wrap! It should not be used as a normal item. Please speak to &#a8ff92Luna &#E2E2E2at [/celestial] to apply!"));
+        } else if (item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin,"wraptoken"), PersistentDataType.SHORT)) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(Util.colorcode(plugin.getConfig().getString("prefix")  + "This is a wrap token! Head to [/wraps] to exchange!"));
+        }
+    }
+
 }

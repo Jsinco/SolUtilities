@@ -2,7 +2,7 @@ package me.jsinco.solutilities.celestial.luna
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI
 import me.jsinco.solutilities.SolUtilities
-import me.jsinco.solutilities.Util
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.enchantments.Enchantment

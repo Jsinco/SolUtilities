@@ -1,7 +1,7 @@
 package me.jsinco.solutilities.blackmarket;
 
 import me.jsinco.solutilities.Saves;
-import me.jsinco.solutilities.Util;
+import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.utility.GUIActions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

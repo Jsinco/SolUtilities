@@ -1,20 +1,16 @@
 package me.jsinco.solutilities.blackmarket;
 
-import me.jsinco.oneannouncer.api.DiscordCommandManager;
 import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
-import me.jsinco.solutilities.utility.UtilMethods;
+import me.jsinco.solutilities.utility.Util;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
+import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -25,11 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MarketCommand implements CommandExecutor, TabCompleter {
+public class MarketCommand extends BukkitCommand {
 
     private static final SolUtilities plugin = SolUtilities.getPlugin();
 
+    // TODO: Redo a lot of the code for Blackmarket
     public MarketCommand(SolUtilities plugin) {
+        super("blackmarket", "Blackmarket command", "/blackmarket <subcommand?>", List.of("bm"));
         if (Saves.get().get("Blackmarket.Items") != null && plugin.getConfig().getBoolean("Blackmarket.Enabled")) {
             new Market().marketResetter(plugin);
         } else {
@@ -37,19 +35,13 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         }
 
         MarketItemPreview.initMarketItemPreviewGui();
-        plugin.getCommand("blackmarket").setExecutor(this);
-        plugin.getCommand("blackmarket").setTabCompleter(this);
 
-        plugin.getServer().getPluginManager().registerEvents(new MarketItemPreview(), plugin);
-        plugin.getServer().getPluginManager().registerEvents(new MarketGUI(), plugin);
-        DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand()); // discord command
+
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
+    public boolean execute(@NotNull CommandSender sender, @NotNull String commandLabel, @NotNull String[] args) {
         Player player = sender instanceof Player ? (Player) sender : null;
-
-
 
         // /blackmarket <currency> <price> <weight>
         if (player != null) {
@@ -147,6 +139,60 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    @Override
+    public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) throws IllegalArgumentException {
+        // /blackmarket add <currency> <price> <weight> <stock>
+        // /blackmarket remove <itemname|iteminhand>
+        if (!sender.hasPermission("solutilities.admin")) return null;
+        if (args.length == 1) {
+            return List.of("add", "remove", "adjust","preview", "market", "reset", "time", "previewrl","cooldownreset","cdreset");
+        }
+        if (args[0].equalsIgnoreCase("add")) {
+            switch (args.length) {
+                case 2 -> {
+                    return List.of("dollar", "solcoin");
+                }
+                case 3 -> {
+                    return List.of("<price>");
+                }
+                case 4 -> {
+                    return List.of("<weight>");
+                }
+                case 5 -> {
+                    return List.of("<stock>");
+                }
+            }
+        } else if (args[0].equalsIgnoreCase("remove")) {
+            List<String> returnThis = new ArrayList<>(getItemNamesLowerCase());
+            returnThis.add("<itemInHand>");
+            return returnThis;
+        } else if (args[0].equalsIgnoreCase("adjust")) {
+            switch (args.length) {
+                case 2 -> {
+                    return getItemNamesLowerCase();
+                }
+                case 3 -> {
+                    return List.of("dollar", "solcoin");
+                }
+                case 4 -> {
+                    return List.of("<price>");
+                }
+                case 5 -> {
+                    return List.of("<weight/chance>");
+                }
+                case 6 -> {
+                    return List.of("<stock>");
+                }
+            }
+
+        } else if (args[0].equalsIgnoreCase("market") && args.length == 2) {
+            return List.of(String.valueOf(Market.seeActiveMarket()));
+        }
+
+
+        return null;
+    }
+
     private static String ignoreCapsItemNames(@NotNull String itemName) {
         List<String> itemNames = List.copyOf(Saves.get().getConfigurationSection("Blackmarket.Items").getKeys(false));
         for (String name : itemNames) {
@@ -171,7 +217,7 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
             item = item.clone();
             ItemMeta meta = item.getItemMeta();
 
-            meta.setDisplayName(UtilMethods.defaultMinecraftColor(item, true) + UtilMethods.itemNameFromMaterial(item));
+            meta.setDisplayName(Util.defaultMinecraftColor(item, true) + Util.itemNameFromMaterial(item));
             item.setItemMeta(meta);
 
         }
@@ -264,61 +310,6 @@ public class MarketCommand implements CommandExecutor, TabCompleter {
         message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("/blackmarket previewrl")));
         message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/blackmarket previewrl"));
         player.sendMessage(message);
-    }
-
-
-    @Override
-    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        // /blackmarket add <currency> <price> <weight> <stock>
-        // /blackmarket remove <itemname|iteminhand>
-        if (!sender.hasPermission("solutilities.admin")) return null;
-        if (args.length == 1) {
-            return List.of("add", "remove", "adjust","preview", "market", "reset", "time", "previewrl","cooldownreset","cdreset");
-        }
-        if (args[0].equalsIgnoreCase("add")) {
-            switch (args.length) {
-                case 2 -> {
-                    return List.of("dollar", "solcoin");
-                }
-                case 3 -> {
-                    return List.of("<price>");
-                }
-                case 4 -> {
-                    return List.of("<weight>");
-                }
-                case 5 -> {
-                    return List.of("<stock>");
-                }
-            }
-        } else if (args[0].equalsIgnoreCase("remove")) {
-            List<String> returnThis = new ArrayList<>(getItemNamesLowerCase());
-            returnThis.add("<itemInHand>");
-            return returnThis;
-        } else if (args[0].equalsIgnoreCase("adjust")) {
-            switch (args.length) {
-                case 2 -> {
-                    return getItemNamesLowerCase();
-                }
-                case 3 -> {
-                    return List.of("dollar", "solcoin");
-                }
-                case 4 -> {
-                    return List.of("<price>");
-                }
-                case 5 -> {
-                    return List.of("<weight/chance>");
-                }
-                case 6 -> {
-                    return List.of("<stock>");
-                }
-            }
-
-        } else if (args[0].equalsIgnoreCase("market") && args.length == 2) {
-            return List.of(String.valueOf(Market.seeActiveMarket()));
-        }
-
-
-        return null;
     }
 
     private List<String> getItemNamesLowerCase() {

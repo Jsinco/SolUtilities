@@ -1,7 +1,6 @@
 package me.jsinco.solutilities.utility;
 
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,7 +15,9 @@ import java.util.*;
 
 public class GUIActions {
 
-    private static final SolUtilities plugin = me.jsinco.solutilities.SolUtilities.getPlugin();
+    // TODO: Merge with Util
+
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
 
     public static ItemStack createGuiItem(boolean enchanted, ItemStack itemStack, String name, String... lore) {
         ItemMeta meta = itemStack.getItemMeta();

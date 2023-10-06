@@ -6,8 +6,10 @@ import me.jsinco.solutilities.utility.Util
 import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerCommandPreprocessEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
+import org.bukkit.metadata.FixedMetadataValue
 
 class Listeners(val plugin: SolUtilities) : Listener {
 
@@ -15,7 +17,7 @@ class Listeners(val plugin: SolUtilities) : Listener {
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val sound: Sound = Sound.valueOf(plugin.config.getString("joins.join-sound")!!)
 
-        event.joinMessage = ("${plugin.config.getString("joins.join-prefix")}${Joins.joinMessages.random()}")
+        event.joinMessage = ("${plugin.config.getString("joins.join-prefix")}${Joins.JOIN_MSGS.random()}")
         if (!event.player.hasPlayedBefore()) {
             event.joinMessage = plugin.config.getString("joins.join-firsttime.message")!!
 
@@ -36,7 +38,16 @@ class Listeners(val plugin: SolUtilities) : Listener {
     fun onPlayerQuit(event: PlayerQuitEvent) {
         val sound: Sound = Sound.valueOf(plugin.config.getString("joins.quit-sound")!!)
 
-        event.quitMessage = Util.colorcode("${plugin.config.getString("joins.quit-prefix")}${Joins.quitMessages.random()}".replace("%player%", event.player.name))
+        event.quitMessage = Util.colorcode("${plugin.config.getString("joins.quit-prefix")}${Joins.QUIT_MSGS.random()}".replace("%player%", event.player.name))
         Util.playServerSound(sound, 0.5f, 1f)
+    }
+
+    @EventHandler
+    fun onCommandPreProcess(event: PlayerCommandPreprocessEvent) {
+        val command = event.message.substring(1).split(" ")[0]
+        if (Joins.VANISH_CMDS.contains(command) && event.message.contains("-s")) {
+            event.player.setMetadata("silentvanish", FixedMetadataValue(plugin, true))
+            event.player.sendMessage(Util.prefix + "Silently vanishing...")
+        }
     }
 }

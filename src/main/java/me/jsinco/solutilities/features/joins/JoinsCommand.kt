@@ -17,17 +17,24 @@ class JoinsCommand(val plugin: SolUtilities) : BukkitCommand(
         val arg = args?.getOrNull(0) ?: return false
         val player = sender as? Player ?: return false
 
-        if (player.hasMetadata("vanished")) return true
+        if (player.hasMetadata("silentvanish")) {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, {
+                if (!player.hasMetadata("vanished")) {
+                    player.removeMetadata("silentvanish", plugin)
+                }
+            }, 1L)
+            return true
+        }
 
         when (arg.lowercase()) {
             "join" -> {
-                Bukkit.broadcastMessage(Util.colorcode("${plugin.config.getString("joins.join-prefix")}${Joins.joinMessages.random()}".replace("%player%", player.name)))
+                Bukkit.broadcastMessage(Util.colorcode("${plugin.config.getString("joins.join-prefix")}${Joins.JOIN_MSGS.random()}".replace("%player%", player.name)))
                 val sound = Sound.valueOf(plugin.config.getString("joins.quit-sound")!!)
                 Util.playServerSound(sound, 0.5f, 1f)
             }
 
             "quit" -> {
-                Bukkit.broadcastMessage(Util.colorcode("${plugin.config.getString("joins.quit-prefix")}${Joins.quitMessages.random()}".replace("%player%", player.name)))
+                Bukkit.broadcastMessage(Util.colorcode("${plugin.config.getString("joins.quit-prefix")}${Joins.QUIT_MSGS.random()}".replace("%player%", player.name)))
                 val sound = Sound.valueOf(plugin.config.getString("joins.quit-sound")!!)
                 Util.playServerSound(sound, 0.5f, 1f)
             }

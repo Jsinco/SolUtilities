@@ -34,7 +34,7 @@ class Celestial { // Can't be abstract because classes can only have one superty
             return subCommands.keys.toMutableList()
         } else if (subCommands.containsKey(args[0])) {
             val subCommand = subCommands[args[0]]!!
-            return subCommand.tabComplete(plugin, sender, args) ?: mutableListOf()
+            return subCommand.tabComplete(plugin, sender, args) ?: getOnlinePlayers()
         }
         return getOnlinePlayers()
     }

@@ -74,6 +74,7 @@ public final class SolUtilities extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MarketItemPreview(), this);
         getServer().getPluginManager().registerEvents(new MarketGUI(), this);
         getServer().getPluginManager().registerEvents(new GeneralEvents(this), this);
+        getServer().getPluginManager().registerEvents(new CommandSpy(), this);
 
         CommandMapper.registerBukkitCommand("ping", new PingCommand());
         CommandMapper.registerBukkitCommand("ls", new BuyShopAlias());
@@ -88,6 +89,7 @@ public final class SolUtilities extends JavaPlugin {
         CommandMapper.registerBukkitCommand("itemprofiler", new ItemProfiler(this));
         CommandMapper.registerBukkitCommand("aries", new OpenAriesGUI()); // Celestial Aries
         CommandMapper.registerBukkitCommand("blackmarket", new MarketCommand(this));
+        CommandMapper.registerBukkitCommand("commandspy", new CommandSpy());
 
         DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand());
 
@@ -103,7 +105,7 @@ public final class SolUtilities extends JavaPlugin {
     @Override
     public void onDisable() {
         papiManager.unregisterPlaceholders();
-
+        CommandMapper.unRegisterBukkitCommands();
         for (Player player : Bukkit.getOnlinePlayers()) { // Better solution to this?
             Inventory inv = player.getOpenInventory().getTopInventory();
             if (inv.getHolder() == null) {

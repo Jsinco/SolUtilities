@@ -89,9 +89,14 @@ discord-booster-rewards:
   - 'give %player% axolotl_bucket 1'
   - 'crates key give %player% wrapcratekey 1'
 
-#Placeholder %player% can be used to replace with player name
-#Placeholder %joins% can be used to replace with total unique player joins
+# Placeholder %player% can be used to replace with player name
+# Placeholder %joins% can be used to replace with total unique player joins
+# Declare vanish commands here, use -s flag in command to make it silent
 joins:
+  vanish-commands:
+    - premiumvanish
+    - vanish
+    - v
   join-sound: BLOCK_AMETHYST_BLOCK_HIT
   join-firsttime:
     message: "&#EEE1D5⋆⁺₊⋆★ &#f76a3b&lP&#f76f3b&ll&#f7743b&le&#f7793b&la&#f77e3b&ls&#f7833b&le &#f7873b&lw&#f78c3b&le&#f7913b&ll&#f7963b&lc&#f79b3b&lo&#f7a03b&lm&#f8a53a&le %player% &#f8aa3a&lt&#f8af3a&lo &#f8b43a&lS&#f8b93a&lo&#f8be3a&ll&#f8c23a&la&#f8c73a&lc&#f8cc3a&le&#f8d13a&lM&#f8d63a&lC&#f8db3a&l! &r&7(#%joins%) &#EEE1D5★⋆₊⁺⋆"

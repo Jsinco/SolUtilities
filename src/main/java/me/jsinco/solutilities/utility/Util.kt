@@ -69,7 +69,8 @@ object Util {
 
     @JvmStatic
     fun getOnlinePlayers(): MutableList<String> {
-        return Bukkit.getOnlinePlayers().map { it.name.lowercase() }.toMutableList()
+        return Bukkit.getOnlinePlayers().map { it.name
+        }.toMutableList()
     }
 
     // https://stackoverflow.com/questions/3422673/evaluating-a-math-expression-given-in-string-form

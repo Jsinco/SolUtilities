@@ -10,12 +10,14 @@ class SilentCommand : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
         val player = sender as Player
 
-        if (player.scoreboardTags.contains("solutilities.silent")) {
+        val string = if (player.scoreboardTags.contains("solutilities.silent")) {
             player.scoreboardTags.remove("solutilities.silent")
+            "&aenabled"
         } else {
             player.scoreboardTags.add("solutilities.silent")
+            "&cdisabled"
         }
-        player.sendMessage("${Util.prefix}Sounds toggled!")
+        player.sendMessage(Util.colorcode("${Util.prefix}Your sounds are now $string&#E2E2E2!"))
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): MutableList<String>? {

@@ -69,7 +69,7 @@ class Vouchers : SubCommand, Listener {
         val item = ItemStack(material)
         val meta = item.itemMeta!!
 
-        meta.setDisplayName(IridiumColorAPI.process(Util.colorcode(name)))
+        meta.setDisplayName(IridiumColorAPI.process(colorcode(name)))
         meta.lore = listOf("§7Right-click to redeem!")
         meta.persistentDataContainer.set(NamespacedKey(plugin, dataType), PersistentDataType.STRING, data.replace("particle.", "").trim())
 
@@ -148,7 +148,7 @@ class Vouchers : SubCommand, Listener {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set particle.$data true")
             }
         }
-        event.player.sendMessage("${Util.prefix}You have redeemed a ${meta.displayName} voucher!")
+        event.player.sendMessage(colorcode("${Util.prefix}You have redeemed a ${meta.displayName}&#E2E2E2 voucher!"))
         item.amount -= 1
         player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f)
         QUEUE.remove(player.uniqueId)

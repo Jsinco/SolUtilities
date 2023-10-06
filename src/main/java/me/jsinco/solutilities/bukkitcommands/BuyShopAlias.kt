@@ -9,15 +9,16 @@ import org.bukkit.entity.Player
 class BuyShopAlias : BukkitCommand(
     "ls", "Searches for an item in the shop", "/ls <item>", listOf()
 ) {
-    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
+    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
         if (sender !is Player) return false
-        if (args == null) {
+        if (args.size != 1) {
             sender.sendMessage(Util.prefix + "Specify an item to search for.")
             return true
         }
         Bukkit.dispatchCommand(sender, "searchshop TO_BUY " + args[0].uppercase())
         return true
     }
+
 
 
     override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>?): MutableList<String> {

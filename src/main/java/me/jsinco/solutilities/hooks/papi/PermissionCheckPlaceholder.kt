@@ -2,17 +2,17 @@ package me.jsinco.solutilities.hooks.papi
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import me.jsinco.solutilities.SolUtilities
+import me.jsinco.solutilities.hooks.LuckPermsHook
 import net.luckperms.api.LuckPerms
 import net.luckperms.api.model.user.User
 import net.luckperms.api.node.Node
-import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 
 
 class PermissionCheckPlaceholder : PlaceholderExpansion() {
     private val plugin: SolUtilities = SolUtilities.getPlugin()
-    private val luckPerms: LuckPerms? = Bukkit.getServicesManager().getRegistration(LuckPerms::class.java)?.provider
+    private val luckPerms: LuckPerms? = LuckPermsHook.luckPermsInstance
 
     override fun getIdentifier(): String {
         return "permission"
@@ -42,9 +42,9 @@ class PermissionCheckPlaceholder : PlaceholderExpansion() {
         val onlinePlayer: Player? = player.player
         return if (user.data().toCollection().contains(node) || (onlinePlayer != null && onlinePlayer.hasPermission(params))
         ) {
-            "true"
+            "yes"
         } else {
-            "false"
+            "no"
         }
     }
 }

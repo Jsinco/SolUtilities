@@ -9,9 +9,9 @@ import org.bukkit.entity.Player
 class SellShopAlias : BukkitCommand(
     "lb", "Searchshop Alias", "/lb <item>", listOf()
 ) {
-    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
+    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
         if (sender !is Player) return false
-        if (args == null) {
+        if (args.size != 1) {
             sender.sendMessage(Util.prefix + "Specify an item to search for.")
             return true
         }

@@ -4,8 +4,9 @@ import me.jsinco.solutilities.SolUtilities
 
 class Joins {
     companion object {
-        private val plugin: SolUtilities = SolUtilities.getPlugin(SolUtilities::class.java)
-        val joinMessages: List<String> = plugin.config.getStringList("joins.join-messages")
-        val quitMessages: List<String> = plugin.config.getStringList("joins.quit-messages")
+        private val plugin: SolUtilities = SolUtilities.getPlugin()
+        val JOIN_MSGS: List<String> = plugin.config.getStringList("joins.join-messages")
+        val QUIT_MSGS: List<String> = plugin.config.getStringList("joins.quit-messages")
+        val VANISH_CMDS: List<String> = plugin.config.getStringList("joins.vanish-commands")
     }
 }

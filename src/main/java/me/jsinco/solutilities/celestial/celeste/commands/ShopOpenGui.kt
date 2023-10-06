@@ -3,13 +3,14 @@ package me.jsinco.solutilities.celestial.celeste.commands
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
 import me.jsinco.solutilities.celestial.celeste.Shop
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 
 class ShopOpenGui : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
         if (args.size < 2) {
-            sender.sendMessage("${plugin.config.getString("prefix")}Usage: /celeste shop <player>")
+            sender.sendMessage("${Util.prefix}Usage: /celeste shop <player>")
             return
         }
         val target = Bukkit.getPlayerExact(args[1]) ?: return
@@ -17,7 +18,7 @@ class ShopOpenGui : SubCommand {
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): MutableList<String>? {
-        return null
+        return mutableListOf()
     }
 
     override fun permission(): String {

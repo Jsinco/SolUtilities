@@ -7,7 +7,7 @@ import org.bukkit.command.defaults.BukkitCommand
 import org.bukkit.entity.Player
 
 class PingCommand : BukkitCommand(
-    "ping", "Shows your ping", "/ping <player?>", listOf()
+    "ping", "Shows your ping", "/ping <player?>", listOf("ping")
 ) {
 
 

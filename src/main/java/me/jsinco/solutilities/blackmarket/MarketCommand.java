@@ -140,10 +140,10 @@ public class MarketCommand extends BukkitCommand {
     }
 
     @Override
-    public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) throws IllegalArgumentException {
+    public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String[] args) {
         // /blackmarket add <currency> <price> <weight> <stock>
         // /blackmarket remove <itemname|iteminhand>
-        if (!sender.hasPermission("solutilities.admin")) return null;
+        if (!sender.hasPermission("solutilities.admin")) return Util.getOnlinePlayers();
         if (args.length == 1) {
             return List.of("add", "remove", "adjust","preview", "market", "reset", "time", "previewrl","cooldownreset","cdreset");
         }
@@ -190,7 +190,7 @@ public class MarketCommand extends BukkitCommand {
         }
 
 
-        return null;
+        return Util.getOnlinePlayers();
     }
 
     private static String ignoreCapsItemNames(@NotNull String itemName) {

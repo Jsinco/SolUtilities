@@ -3,10 +3,11 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
 import me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands.*
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.command.CommandSender
 import org.bukkit.command.defaults.BukkitCommand
 import org.bukkit.entity.Player
-import java.util.Collections
+import java.util.*
 
 class CommandManager(val plugin: SolUtilities) : BukkitCommand(
     "solutilities", "Main command for SolUtilities", "/solutilities <subcommand>", listOf("solace")
@@ -27,23 +28,22 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
-        val prefix = plugin.config.getString("prefix")
         if (args == null) {
-            sender.sendMessage("${prefix}An error occurred while executing this command.")
+            sender.sendMessage("${Util.prefix}An error occurred while executing this command.")
             return true
         }
 
         if (!subCommands.containsKey(args[0])) {
-            sender.sendMessage("${prefix}Unknown subcommand.")
+            sender.sendMessage("${Util.prefix}Unknown subcommand.")
             return true
         }
 
         val subCommand: SubCommand = subCommands[args[0]]!!
         if (subCommand.playerOnly() && sender !is Player) {
-            sender.sendMessage("${prefix}This command can only be executed by players.")
+            sender.sendMessage("${Util.prefix}This command can only be executed by players.")
             return true
         } else if (subCommand.permission() != null && !sender.hasPermission(subCommand.permission()!!)) {
-            sender.sendMessage("${prefix}You do not have permission to execute this command.")
+            sender.sendMessage("${Util.prefix}You do not have permission to execute this command.")
             return true
         }
 
@@ -53,7 +53,7 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
 
     override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>?): MutableList<String> {
         if (args == null) {
-            return Collections.emptyList()
+            return Util.getOnlinePlayers()
         } else if (args.size == 1) {
             val subCommandNames: MutableList<String> = mutableListOf()
             for (subcommand in subCommands) {
@@ -67,6 +67,6 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         if (!subCommands.containsKey(args[0])) return Collections.emptyList()
         val subCommand: SubCommand = subCommands[args[0]]!!
 
-        return subCommand.tabComplete(plugin, sender, args) ?: Collections.emptyList()
+        return subCommand.tabComplete(plugin, sender, args) ?: Util.getOnlinePlayers()
     }
 }

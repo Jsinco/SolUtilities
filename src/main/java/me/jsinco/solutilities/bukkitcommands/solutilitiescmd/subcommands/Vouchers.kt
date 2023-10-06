@@ -44,7 +44,9 @@ class Vouchers : SubCommand, Listener {
                 dataType = "tagid"
                 material = Material.NAME_TAG
                 data = args[2].lowercase()
-                name = args.joinToString(" ").replace("voucher tag $data ", "").trim()
+                name = args.joinToString(" ")
+                    .replace("${args[0]} ${args[1]} ${args[2]} ", "")
+                    .trim()
             }
             "particle" -> {
                 dataType = "particleid"
@@ -54,7 +56,9 @@ class Vouchers : SubCommand, Listener {
                 }
                 material = Material.getMaterial(args[2].uppercase()) ?: return
                 data = args[3].lowercase()
-                name = args.joinToString(" ").replace("voucher particle $data ", "").trim()
+                name = args.joinToString(" ")
+                    .replace("${args[0]} ${args[1]} ${args[2]} ${args[3]} ", "")
+                    .trim()
             }
             else -> {
                 player.sendMessage(USAGE)
@@ -85,9 +89,17 @@ class Vouchers : SubCommand, Listener {
                     return mutableListOf("<tagID>", "<name>")
                 } else if (args[1] == "particle") {
                     val list: MutableList<String> = ArrayList(Util.MATERIALS_STRING)
-                    list.add("particle.<node>")
-                    list.add("<name>")
                     return list
+                }
+            }
+            4 -> {
+                if (args[1] == "particle") {
+                    return mutableListOf("particle.<node>")
+                }
+            }
+            5 -> {
+                if (args[1] == "particle") {
+                    return mutableListOf("<name>")
                 }
             }
         }
@@ -121,6 +133,7 @@ class Vouchers : SubCommand, Listener {
             Bukkit.getScheduler().runTaskLater(plugin, Runnable {
                 QUEUE.remove(event.player.uniqueId)
             }, 100L)
+            event.isCancelled = true
             return
         }
 
@@ -135,9 +148,10 @@ class Vouchers : SubCommand, Listener {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set particle.$data true")
             }
         }
-        event.player.sendMessage("${Util.prefix}§aYou have redeemed a ${meta.displayName()} voucher!")
+        event.player.sendMessage("${Util.prefix}You have redeemed a ${meta.displayName} voucher!")
         item.amount -= 1
         player.playSound(player.location, Sound.ENTITY_PLAYER_LEVELUP, 1f, 1f)
         QUEUE.remove(player.uniqueId)
+        event.isCancelled = true
     }
 }

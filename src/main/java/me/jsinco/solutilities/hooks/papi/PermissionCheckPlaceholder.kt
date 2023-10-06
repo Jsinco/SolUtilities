@@ -1,6 +1,7 @@
-package me.jsinco.solutilities.hooks
+package me.jsinco.solutilities.hooks.papi
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
+import me.jsinco.solutilities.SolUtilities
 import net.luckperms.api.LuckPerms
 import net.luckperms.api.model.user.User
 import net.luckperms.api.node.Node
@@ -10,7 +11,7 @@ import org.bukkit.entity.Player
 
 
 class PermissionCheckPlaceholder : PlaceholderExpansion() {
-
+    private val plugin: SolUtilities = SolUtilities.getPlugin()
     private val luckPerms: LuckPerms? = Bukkit.getServicesManager().getRegistration(LuckPerms::class.java)?.provider
 
     override fun getIdentifier(): String {
@@ -18,11 +19,11 @@ class PermissionCheckPlaceholder : PlaceholderExpansion() {
     }
 
     override fun getAuthor(): String {
-        return "Jsinco"
+        return plugin.description.authors[0]
     }
 
     override fun getVersion(): String {
-        return "1.2.0"
+        return plugin.description.version
     }
 
     override fun canRegister(): Boolean {

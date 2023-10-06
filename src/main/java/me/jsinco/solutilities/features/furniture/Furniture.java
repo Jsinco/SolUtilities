@@ -2,8 +2,8 @@ package me.jsinco.solutilities.features.furniture;
 
 import me.jsinco.solutilities.Saves;
 import me.jsinco.solutilities.SolUtilities;
-import me.jsinco.solutilities.utility.Util;
 import me.jsinco.solutilities.utility.GUIActions;
+import me.jsinco.solutilities.utility.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -106,7 +106,7 @@ public class Furniture extends BukkitCommand implements Listener {
             }
 
         }
-        return Collections.emptyList();
+        return Util.getOnlinePlayers();
     }
 
 

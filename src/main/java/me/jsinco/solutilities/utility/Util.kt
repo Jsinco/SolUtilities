@@ -14,12 +14,10 @@ import kotlin.math.*
 object Util {
 
     lateinit var prefix: String
-    lateinit var MATERIALS_STRING: MutableList<String>
+    val MATERIALS_STRING: MutableList<String> = Material.entries.map { it.name.lowercase() }.toMutableList()
+    val ONLINE_PLAYERS = Bukkit.getOnlinePlayers().map { it.name.lowercase() }.toMutableList()
     fun loadUtils() {
         prefix = colorcode(SolUtilities.getPlugin().config.getString("prefix")!!)
-        for (material in Material.entries) {
-            MATERIALS_STRING.add(material.name.lowercase())
-        }
     }
 
     const val WITH_DELIMITER = "((?<=%1\$s)|(?=%1\$s))"
@@ -67,6 +65,11 @@ object Util {
             array[i] = colorcode(array[i])
         }
         return array
+    }
+
+    @JvmStatic
+    fun getOnlinePlayers(): MutableList<String> {
+        return Bukkit.getOnlinePlayers().map { it.name.lowercase() }.toMutableList()
     }
 
     // https://stackoverflow.com/questions/3422673/evaluating-a-math-expression-given-in-string-form

@@ -2,6 +2,7 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -14,7 +15,7 @@ class SilentCommand : SubCommand {
         } else {
             player.scoreboardTags.add("solutilities.silent")
         }
-        player.sendMessage("${plugin.config.getString("prefix")}Sounds toggled!")
+        player.sendMessage("${Util.prefix}Sounds toggled!")
     }
 
     override fun tabComplete(plugin: SolUtilities, sender: CommandSender, args: Array<out String>): MutableList<String>? {

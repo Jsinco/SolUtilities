@@ -10,25 +10,27 @@ import me.jsinco.solutilities.bukkitcommands.*;
 import me.jsinco.solutilities.bukkitcommands.solutilitiescmd.CommandManager;
 import me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands.Vouchers;
 import me.jsinco.solutilities.celestial.CelestialFile;
-import me.jsinco.solutilities.celestial.aries.CandleApplyGUI;
 import me.jsinco.solutilities.celestial.aries.AriesMainGUI;
+import me.jsinco.solutilities.celestial.aries.CandleApplyGUI;
 import me.jsinco.solutilities.celestial.aries.commands.OpenAriesGUI;
 import me.jsinco.solutilities.celestial.aries.itemprofler.ItemProfiler;
 import me.jsinco.solutilities.celestial.aries.itemprofler.ItemProfilerFile;
 import me.jsinco.solutilities.celestial.celeste.Shop;
 import me.jsinco.solutilities.celestial.celeste.commands.CelesteCommandManager;
-import me.jsinco.solutilities.celestial.luna.WrapsEventHandler;
 import me.jsinco.solutilities.celestial.luna.RemoveWrapGUI;
 import me.jsinco.solutilities.celestial.luna.SelectGUI;
 import me.jsinco.solutilities.celestial.luna.WrapGUI;
+import me.jsinco.solutilities.celestial.luna.WrapsEventHandler;
 import me.jsinco.solutilities.celestial.luna.commands.LunaCommandManager;
-import me.jsinco.solutilities.hooks.PermissionCheckPlaceholder;
 import me.jsinco.solutilities.features.InvisibleFrames;
 import me.jsinco.solutilities.features.PvGui;
 import me.jsinco.solutilities.features.Referrals;
 import me.jsinco.solutilities.features.furniture.Furniture;
 import me.jsinco.solutilities.features.joins.JoinsCommand;
 import me.jsinco.solutilities.features.joins.Listeners;
+import me.jsinco.solutilities.hooks.PAPIManager;
+import me.jsinco.solutilities.hooks.papi.PermissionCheckPlaceholder;
+import me.jsinco.solutilities.hooks.papi.SolutilitiesPlaceholder;
 import me.jsinco.solutilities.utility.GeneralEvents;
 import me.jsinco.solutilities.utility.Util;
 import org.bukkit.Bukkit;
@@ -38,7 +40,9 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SolUtilities extends JavaPlugin {
+
     private static SolUtilities plugin;
+    private final PAPIManager papiManager = new PAPIManager();
 
     @Override
     public void onEnable() {
@@ -52,7 +56,7 @@ public final class SolUtilities extends JavaPlugin {
         CelestialFile.save();
         ItemProfilerFile.setup();
 
-        // New stuff, slowly refactoring
+        // New stuff
         getServer().getPluginManager().registerEvents(new Listeners(this), this);
         getServer().getPluginManager().registerEvents(new WelcomePoints(this), this);
         getServer().getPluginManager().registerEvents(new InvisibleFrames(), this);
@@ -84,27 +88,28 @@ public final class SolUtilities extends JavaPlugin {
         CommandMapper.registerBukkitCommand("itemprofiler", new ItemProfiler(this));
         CommandMapper.registerBukkitCommand("aries", new OpenAriesGUI()); // Celestial Aries
         CommandMapper.registerBukkitCommand("blackmarket", new MarketCommand(this));
-        
+
         DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand());
 
-        new PlaceHolders().register(); //register PAPI placeholder
+        papiManager.addPlaceholder(new PermissionCheckPlaceholder());
+        papiManager.addPlaceholder(new SolutilitiesPlaceholder());
+        papiManager.registerPlaceholders();
+
+
+        // TODO: edit referrals to use the new command manager
         new Referrals(this);
-
-
-
-        new PermissionCheckPlaceholder().register();
     }
 
     @Override
     public void onDisable() {
+        papiManager.unregisterPlaceholders();
+
         for (Player player : Bukkit.getOnlinePlayers()) { // Better solution to this?
             Inventory inv = player.getOpenInventory().getTopInventory();
             if (inv.getHolder() == null) {
                 player.closeInventory();
             }
         }
-        new PlaceHolders().unregister();
-        new PermissionCheckPlaceholder().unregister();
     }
 
 

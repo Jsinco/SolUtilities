@@ -8,9 +8,9 @@ Welcome-keywords:
 
 # solutilities.prefix.staff
 # solutilities.color.<group>
-Prefixes:
-  Staff: '★ '
-  Colors:
+prefixes:
+  staff: '★ '
+  colors:
     owner: '&#9c3dee'
     admin: '&#ff3535'
     mod: '&#ff8383'

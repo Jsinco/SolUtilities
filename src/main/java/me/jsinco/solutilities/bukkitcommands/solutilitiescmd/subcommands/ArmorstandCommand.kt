@@ -2,6 +2,7 @@ package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.Player
@@ -11,7 +12,7 @@ class ArmorstandCommand : SubCommand {
         val player = sender as Player
 
         if (args.size < 2) {
-            player.sendMessage("${plugin.config.getString("prefix")}Usage: /solutilities armorstand <sethand/sethelmet>")
+            player.sendMessage("${Util.prefix}Usage: /solutilities armorstand <sethand/sethelmet>")
             return
         }
 
@@ -19,7 +20,7 @@ class ArmorstandCommand : SubCommand {
         val armorStand = if (player.getTargetEntity(5) is ArmorStand) {
             player.getTargetEntity(5) as ArmorStand
         } else {
-            player.sendMessage("${plugin.config.getString("prefix")}You must be looking at an armorstand!")
+            player.sendMessage("${Util.prefix}You must be looking at an armorstand!")
             return
         }
 

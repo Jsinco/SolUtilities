@@ -11,8 +11,8 @@ class Celestial { // Can't be abstract because classes can only have one superty
         private val plugin: SolUtilities = SolUtilities.getPlugin()
     }
 
-    fun executeCelestialCommand(subCommands: MutableMap<String, SubCommand>, sender: CommandSender, args: Array<out String>?): Boolean {
-        if (args == null || !subCommands.containsKey(args[0])) return false
+    fun executeCelestialCommand(subCommands: MutableMap<String, SubCommand>, sender: CommandSender, args: Array<out String>): Boolean {
+        if (args.isEmpty() || !subCommands.containsKey(args[0])) return false
 
         val subCommand = subCommands[args[0]]!!
         if (subCommand.permission() != null && !sender.hasPermission(subCommand.permission()!!)) {
@@ -28,9 +28,8 @@ class Celestial { // Can't be abstract because classes can only have one superty
         return true
     }
 
-    fun tabCompleteCelestialCommand(subCommands: MutableMap<String, SubCommand>, sender: CommandSender, args: Array<out String>?): MutableList<String> {
-        if (args == null) return getOnlinePlayers()
-        else if (args.size == 1) {
+    fun tabCompleteCelestialCommand(subCommands: MutableMap<String, SubCommand>, sender: CommandSender, args: Array<out String>): MutableList<String> {
+        if (args.size == 1) {
             return subCommands.keys.toMutableList()
         } else if (subCommands.containsKey(args[0])) {
             val subCommand = subCommands[args[0]]!!

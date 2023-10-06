@@ -1,16 +1,16 @@
 package me.jsinco.solutilities.bukkitcommands.solutilitiescmd.subcommands
 
 import me.clip.placeholderapi.PlaceholderAPI
-import me.jsinco.solutilities.utility.Util
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.SubCommand
+import me.jsinco.solutilities.utility.Util
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 class NickPreviewCommand : SubCommand {
     override fun execute(plugin: SolUtilities, sender: CommandSender, args: Array<out String>) {
-        val player = if (args.size > 2) {
+        val player = if (args.size == 2) {
             Bukkit.getPlayerExact(args[1])
         } else {
             sender as? Player ?: return

@@ -11,8 +11,8 @@ class PingCommand : BukkitCommand(
 ) {
 
 
-    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
-        val player = if (args != null && args.size > 2) {
+    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
+        val player = if (args.size == 2) {
             Bukkit.getPlayerExact(args[1])
         } else {
             sender as? Player ?: return true

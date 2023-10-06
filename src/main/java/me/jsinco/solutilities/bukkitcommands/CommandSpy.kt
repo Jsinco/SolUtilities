@@ -18,6 +18,7 @@ class CommandSpy : BukkitCommand(
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
+        if (!Util.checkPermission(sender, "solutilities.command.commandspy")) return true
         if (args.isEmpty()) {
             val player = sender as? Player ?: return false
             setSpy(player)

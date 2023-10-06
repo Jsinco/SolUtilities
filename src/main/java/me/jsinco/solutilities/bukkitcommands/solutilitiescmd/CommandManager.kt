@@ -28,13 +28,8 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["checkpermission"] = CheckPermissionCommand()
     }
 
-    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
-        if (args == null) {
-            sender.sendMessage("${Util.prefix}An error occurred while executing this command.")
-            return true
-        }
-
-        if (!subCommands.containsKey(args[0])) {
+    override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
+        if (args.isEmpty() || !subCommands.containsKey(args[0])) {
             sender.sendMessage("${Util.prefix}Unknown subcommand.")
             return true
         }
@@ -52,10 +47,8 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         return true
     }
 
-    override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>?): MutableList<String> {
-        if (args == null) {
-            return Util.getOnlinePlayers()
-        } else if (args.size == 1) {
+    override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>): MutableList<String> {
+        if (args.size == 1) {
             val subCommandNames: MutableList<String> = mutableListOf()
             for (subcommand in subCommands) {
                 if (subcommand.value.permission() == null || sender.hasPermission(subcommand.value.permission()!!)) {

@@ -13,7 +13,7 @@ class JoinsCommand(val plugin: SolUtilities) : BukkitCommand(
 ) {
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>?): Boolean {
-        Util.checkPermission(sender, "solutilities.command.joins")
+        if (!Util.checkPermission(sender, "solutilities.command.joins")) return false
         val arg = args?.getOrNull(0) ?: return false
         val player = sender as? Player ?: return false
 

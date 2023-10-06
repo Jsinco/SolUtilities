@@ -11,7 +11,7 @@ class SellShopAlias : BukkitCommand(
 ) {
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
         if (sender !is Player) return false
-        if (args.size != 1) {
+        if (args.isEmpty()) {
             sender.sendMessage(Util.prefix + "Specify an item to search for.")
             return true
         }
@@ -19,7 +19,7 @@ class SellShopAlias : BukkitCommand(
         return true
     }
 
-    override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>?): MutableList<String> {
+    override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>): MutableList<String> {
         return Util.MATERIALS_STRING
     }
 }

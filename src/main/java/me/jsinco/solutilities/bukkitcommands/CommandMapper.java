@@ -42,10 +42,10 @@ public class CommandMapper {
 
             for (BukkitCommand bukkitCommand : mappedCommands.values()) {
                 commandMap.getCommand(bukkitCommand.getName()).unregister(commandMap);
-                Bukkit.getCommandMap().getCommand(bukkitCommand.getName()).getAliases().forEach(alias -> {
-                    Bukkit.getCommandMap().getCommand(bukkitCommand.getName()).getAliases().remove(alias);
-                });
                 Bukkit.getCommandMap().getKnownCommands().remove(bukkitCommand.getName());
+                for (String alias : bukkitCommand.getAliases()) {
+                    Bukkit.getCommandMap().getKnownCommands().remove(alias);
+                }
                 Bukkit.getLogger().log(java.util.logging.Level.INFO, "Unregistered command: " + bukkitCommand.getName());
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {

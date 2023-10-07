@@ -3,6 +3,7 @@ package me.jsinco.solutilities.features.joins
 import me.jsinco.solutilities.Saves
 import me.jsinco.solutilities.SolUtilities
 import me.jsinco.solutilities.utility.Util
+import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -21,9 +22,11 @@ class Listeners(val plugin: SolUtilities) : Listener {
         if (!event.player.hasPlayedBefore()) {
             event.joinMessage = plugin.config.getString("joins.join-firsttime.message")!!
 
-            for (command in plugin.config.getStringList("joins.join-firsttime.commands")) {
-                plugin.server.dispatchCommand(plugin.server.consoleSender, command.replace("%player%", event.player.name))
-            }
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, {
+                for (command in plugin.config.getStringList("joins.join-firsttime.commands")) {
+                    plugin.server.dispatchCommand(plugin.server.consoleSender, command.replace("%player%", event.player.name))
+                }
+            }, 20L)
         }
 
         if (event.joinMessage != null) {

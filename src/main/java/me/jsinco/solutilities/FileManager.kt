@@ -5,7 +5,7 @@ import java.io.File
 import java.io.IOException
 import java.nio.file.Files
 
-class FileManager(val fileName: String) {
+class FileManager(fileName: String) {
     val plugin: SolUtilities = SolUtilities.getPlugin()
 
     var file: File = File(plugin.dataFolder, fileName)

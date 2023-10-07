@@ -12,17 +12,17 @@ class PingCommand : BukkitCommand(
 
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
-        val player = if (args.size == 2) {
-            Bukkit.getPlayerExact(args[1])
+        val target = if (args.size == 1) {
+            Bukkit.getPlayerExact(args[0])
         } else {
             sender as? Player ?: return true
         }
 
-        if (player == null) return true
-        if (player == sender) {
-            sender.sendMessage(Util.colorcode("${Util.prefix}Pong! Your ping is ${player.ping}ms"))
+        if (target == null) return true
+        if (target == sender) {
+            sender.sendMessage(Util.colorcode("${Util.prefix}Pong! Your ping is ${target.ping}ms"))
         } else {
-            sender.sendMessage(Util.colorcode("${Util.prefix}Pong! ${player.name}'s ping is ${player.ping}ms"))
+            sender.sendMessage(Util.colorcode("${Util.prefix}Pong! ${target.name}'s ping is ${target.ping}ms"))
         }
         return true
     }

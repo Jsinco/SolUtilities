@@ -1,8 +1,6 @@
 package me.jsinco.solutilities.utility
 
 import me.jsinco.solutilities.SolUtilities
-import org.bukkit.Bukkit
-import org.bukkit.Sound
 import org.bukkit.entity.EntityType
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -11,8 +9,6 @@ import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
 import org.bukkit.event.player.PlayerEditBookEvent
-import org.bukkit.event.player.PlayerTeleportEvent
-import java.util.*
 
 class GeneralEvents(private val plugin: SolUtilities) : Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -34,29 +30,9 @@ class GeneralEvents(private val plugin: SolUtilities) : Listener {
 
     @EventHandler
     fun commandPreProcess(event: PlayerCommandPreprocessEvent) {
-        val player = event.player
-        if (!player.scoreboardTags.contains("solutilities.silent")) {
-            player.playSound(player.location, Sound.ENTITY_ITEM_PICKUP, 0.2f, 0.78f)
-        }
-    }
-
-    @EventHandler (ignoreCancelled = true)
-    fun onPlayerTP(event: PlayerTeleportEvent) {
-        if (!event.player.scoreboardTags.contains("solutilities.silent") && event.cause == PlayerTeleportEvent.TeleportCause.COMMAND) {
-            val sound: Sound
-            val pitch: Float
-            val random = Random().nextInt(1, 3)
-            if (random == 2) {
-                sound = Sound.BLOCK_PORTAL_TRAVEL
-                pitch = 8f
-            } else {
-                sound = Sound.ENTITY_ENDERMAN_TELEPORT
-                pitch = 1f
-            }
-            Bukkit.getScheduler().scheduleSyncDelayedTask(
-                plugin,
-                { event.player.playSound(event.player.location, sound, 0.2f, pitch) },
-                1L)
+        // TODO: TEMPORARY
+        if (event.message == "/crates" && !event.player.hasPermission("excellentcrates.command")) {
+            event.message = "/warp crates"
         }
     }
 

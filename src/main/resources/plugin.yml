@@ -28,11 +28,6 @@ permissions:
   solutilities.colorbook:
     description: Auto colors book after closing
 commands:
-  # Commands that are here are commands that SolUtilities needs to take priority over because another plugin is using the same command
-  # Solutilities' CommandMapper cannot take priority from another plugin
-  ping:
-    description: Ping Command
-    usage: /<command>
   refer:
     description: Refer CMD
     usage: /<command> <player>

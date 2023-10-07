@@ -37,10 +37,12 @@ class WelcomePoints(val plugin: SolUtilities) : Listener, BukkitCommand(
     }
 
     override fun tabComplete(sender: CommandSender, alias: String, args: Array<out String>): MutableList<String> {
+        val list = Util.getOnlinePlayers()
         if (sender.hasPermission("solutilities.admin") && args.size == 1) {
-            return Collections.singletonList("open")
+            list.add("open")
+            return list
         }
-        return Util.getOnlinePlayers()
+        return list
     }
 
     companion object {

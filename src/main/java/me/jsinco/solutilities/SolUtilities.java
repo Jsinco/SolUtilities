@@ -23,6 +23,7 @@ import me.jsinco.solutilities.celestial.luna.WrapGUI;
 import me.jsinco.solutilities.celestial.luna.WrapsEventHandler;
 import me.jsinco.solutilities.celestial.luna.commands.LunaCommandManager;
 import me.jsinco.solutilities.features.InvisibleFrames;
+import me.jsinco.solutilities.features.LegacySolcoins;
 import me.jsinco.solutilities.features.PvGui;
 import me.jsinco.solutilities.features.Referrals;
 import me.jsinco.solutilities.features.furniture.Furniture;
@@ -57,6 +58,7 @@ public final class SolUtilities extends JavaPlugin {
         ItemProfilerFile.setup();
 
         // New stuff
+        getServer().getPluginManager().registerEvents(new LegacySolcoins(this), this); // TODO: Legacy
         getServer().getPluginManager().registerEvents(new Listeners(this), this);
         getServer().getPluginManager().registerEvents(new WelcomePoints(this), this);
         getServer().getPluginManager().registerEvents(new InvisibleFrames(), this);

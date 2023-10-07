@@ -17,6 +17,10 @@ public class CommandMapper {
      * @param commandName The name of the command to register.
      * @param bukkitCommand The BukkitCommand to register.
      */
+
+    // Paper gives access to the command map without NMS or reflection so...
+    // I'm still going to leave it like this though
+    // Guess it's still useful for Spigot projects though!
     public static void registerBukkitCommand(String commandName, BukkitCommand bukkitCommand) {
         try {
             final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");

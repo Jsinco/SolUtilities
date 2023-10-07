@@ -78,16 +78,16 @@ Referrals:
     Referrer:
       chance_75: 'points give $player 20'
       chance_20: 'soltarget $player stellar'
-      chance_5: 'crates key give $player solacecratekey 1'
+      chance_5: 'ecrates key give $player solacecratekey 1'
     Referred:
       chance_75: 'points give $player 20'
       chance_20: 'soltarget $player stellar'
-      chance_5: 'crates key give $player solacecratekey 1'
+      chance_5: 'ecrates key give $player solacecratekey 1'
 
 
 discord-booster-rewards:
   - 'give %player% axolotl_bucket 1'
-  - 'crates key give %player% wrapcratekey 1'
+  - 'ecrates key give %player% wrapcratekey 1'
 
 # Placeholder %player% can be used to replace with player name
 # Placeholder %joins% can be used to replace with total unique player joins

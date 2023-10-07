@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b99e8ecb-3829-4dc3-89e8-0a200b9417e1" name="Changes" comment="help me">
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandSpy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/subcommands/CheckPermissionCommand.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/LuckPermsHook.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/BuyShopAlias.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/BuyShopAlias.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/SellShopAlias.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/SellShopAlias.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/WelcomePoints.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/WelcomePoints.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/CommandManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/CommandManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/subcommands/SilentCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/subcommands/SilentCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/subcommands/Vouchers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/subcommands/Vouchers.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/Celestial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/celestial/Celestial.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/joins/Joins.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/joins/Joins.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/joins/JoinsCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/joins/JoinsCommand.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/joins/Listeners.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/joins/Listeners.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/PlayerPointsHook.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/PlayerPointsHook.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/papi/PermissionCheckPlaceholder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/hooks/papi/PermissionCheckPlaceholder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/utility/Util.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,9 +31,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Jsinco"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="dce0527e-60d6-4cc7-96df-7c73b1c89f2d" />
+        <option name="url" value="https://github.com/Jsinco/SolUtilities.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2WJX9wqpyz6BhhmdHAlJ49hMeUS" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -61,12 +58,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "new",
     "last_opened_file_path": "C:/Bukkit-Plugins/Secondary/SolUtilities",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "editor.preferences.folding",
     "vue.rearranger.settings.migration": "true"
   }
@@ -112,6 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696451508932</updated>
       <workItem from="1696451509938" duration="58999000" />
+      <workItem from="1696623226404" duration="17276000" />
     </task>
     <task id="LOCAL-00001" summary="redoing a lot">
       <option name="closed" value="true" />
@@ -145,7 +144,47 @@
       <option name="project" value="LOCAL" />
       <updated>1696580231952</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="help me">
+      <option name="closed" value="true" />
+      <created>1696623371872</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696623371872</updated>
+    </task>
+    <task id="LOCAL-00006" summary="help me">
+      <option name="closed" value="true" />
+      <created>1696625902051</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696625902051</updated>
+    </task>
+    <task id="LOCAL-00007" summary="help me">
+      <option name="closed" value="true" />
+      <created>1696627096898</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696627096898</updated>
+    </task>
+    <task id="LOCAL-00008" summary="help me">
+      <option name="closed" value="true" />
+      <created>1696634691760</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696634691760</updated>
+    </task>
+    <task id="LOCAL-00009" summary="help me">
+      <option name="closed" value="true" />
+      <created>1696696348416</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696696348416</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

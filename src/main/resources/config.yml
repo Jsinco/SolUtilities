@@ -1,114 +1,163 @@
 # prefix: '&#7ad563&lI&#89e373&ln&#99f182&lf&#a8ff92&lo &r&7➜&#E2E2E2 '
 prefix: '&#f7903b&lI&#f7a93b&ln&#f8c23a&lf&#f8db3a&lo &r&8»&#E2E2E2 '
-ServerName: 'SolaceMC Towny'
 
-# interval in seconds && %prefix% when setting to true you must restart the server to take effect
-Announcer:
-  donation-message: '&#f76a3b&lS&#f7863b&lt&#f8a33b&lo&#f8bf3a&lr&#f8db3a&le &8» <GRADIENT:FFAA00>&l%player%</GRADIENT:FDD394> &#E2E2E2has just purchased a %package%&#E2E2E2! Thank you for supporting &#f76a3b&lS&#f77a3b&lo&#f78a3b&ll&#f79a3b&la&#f8ab3a&lc&#f8bb3a&le&#f8cb3a&lM&#f8db3a&lC&r&f!'
-  donation-sound: 'UI_TOAST_CHALLENGE_COMPLETE'
+Welcome-keywords:
+  - wb
+  - welcome
+  - yo
 
-#NetherRoof
-NetherRoof:
-  dispatchCommand: 'spawn'
-  message: 'Players are not allowed on the Nether roof!'
-  sound: 'BLOCK_ANVIL_PLACE'
+# solutilities.prefix.staff
+# solutilities.color.<group>
+prefixes:
+  staff: '★ '
+  colors:
+    owner: '&#9c3dee'
+    admin: '&#ff3535'
+    mod: '&#ff8383'
+    builder: '&#44b3ee'
+    helper: '&#fff172'
+    dev: '&#f09240'
+    content: '&#82ff80'
+    recruit: '&#f1e6dc'
 
-# /healall
-Healall:
-  cooldown: 1200
-  message: '%prefix%&#a8ff92%sender% &#E2E2E2has healed everyone! '
+# Reset in hours
+# Amount of decoys that will be prepared. (/blackmarket <num> <player>)
+Blackmarket:
+  Enabled: false
+  Prefix: '&#df4a4a&lM&#ca464b&la&#b5414b&lr&#9f3d4c&lk&#8a384c&le&#75344d&lt &r&8»&#E2E2E2 '
+  ResetMin: 6
+  ResetMax: 8
+  Message: "%prefix%The blackmarket has been reset! &e/blackmarket"
+  BlackMarketDefaultCommand: '[P] warp blackmarket'
+  Return-NPC-Name?:
+    NPC1: 'Touji'
+    NPC2: 'Kosuke'
+    NPC3: 'Suzume'
 
-#Placeholder %player% can be used to replace with player name
-#Placeholder %joins% can be used to replace with total unique player joins. (Only for FirstJoin message)
-#I recommend using https://rgb.birdflop.com/ for RGB gradient colors
-#Sounds, Use ALL, PLAYER, or leave blank for none. All sound types can be found here https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-#Players with /joinsounds toggled will not hear sounds.
-Sounds: ALL
-# Unused
-Volume: 1
-Pitch: 1
-JoinSound: BLOCK_AMETHYST_BLOCK_HIT
-#Quit sounds are optional, leave blank for none. Leave sounds will play for ALL no matter what the Sounds option is set to. (You can't play a sound to an offline player!)
-QuitSound: BLOCK_AMETHYST_CLUSTER_BREAK
+# Death white list means this mob will drop loot no matter the killer
+# Killer white list means that any mob this killer kills will drop loot
+# If an entity dies from one of the whitelisted causes, it will drop loot
 
-#Particles, Leave blank for none. All particle types can be found here https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
-ParticleType: GLOW
-ParticleAmount: 0
+# ALl EntityTypes can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
+# All Causes can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+DropBlocker:
+  DeathWhitelist:
+    - 'PLAYER'
+    - 'SHULKER'
+    - 'MAGMA_CUBE'
+    - 'ARMOR_STAND'
+    - 'ITEM_FRAME'
+    - 'ITEM_DISPLAY'
+  KillerWhitelist:
+    - 'PLAYER'
+    - 'SHULKER'
+    - 'SHULKER_BULLET'
+    - 'FROG'
+    - 'WITHER'
+    - 'WITHER_SKULL'
+  CauseWhitelist:
+    - 'PROJECTILE'
+    - 'ENTITY_EXPLOSION'
+    - 'WITHER'
+    - 'MAGIC'
+    - 'FIRE_TICK'
+    - 'CUSTOM'
 
-UseTitle?: false
-#Max is 2 lines
-TitleMsg:
-  - "&#d6eff6Welcome back"
-  - "&#d6eff6%player%"
-#How long the title stays. Remember that 20 ticks = 1 second
-Stays: 60
-FadeIn: 2
-FadeOut: 3
+PVGUI:
+  Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt&#f8db3a&ls'
+  MaxVaults: 500
+  OpenVault:
+    Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt &#f8db3a&l#$vaultnum' # $vaultnum, this placeholder may only be used on OpenVaults
+    Lore: ['&eClick to open vault #$vaultnum','','&eRight click to edit color']
+  LockedVault:
+    Title: '&#f76a3b&lL&#f7753b&lo&#f7813b&lc&#f78c3b&lk&#f7973b&le&#f8a33b&ld &#f8ae3a&lV&#f8b93a&la&#f8c43a&lu&#f8d03a&ll&#f8db3a&lt'
+    Lore: ['&eUnlock vaults by ranking up!']
 
-#Message sent above player hotbar the 'ActionBar', RGB not supported but normal color codes will work
-UseActionBar?: true
-JoinBarMsg: "&aWelcome back %player%!"
+Referrals:
+  RewardCommands:
+    Referrer:
+      chance_75: 'points give $player 20'
+      chance_20: 'soltarget $player stellar'
+      chance_5: 'crates key give $player solacecratekey 1'
+    Referred:
+      chance_75: 'points give $player 20'
+      chance_20: 'soltarget $player stellar'
+      chance_5: 'crates key give $player solacecratekey 1'
 
-#The message sent when a player joins for the first time. A new line = a new line in game
-UseFirstJoin?: true
-FirstJoin:
-  - '&#EEE1D5⋆⁺₊⋆★ &#f76a3b&lP&#f76f3b&ll&#f7743b&le&#f7793b&la&#f77e3b&ls&#f7833b&le &#f7873b&lw&#f78c3b&le&#f7913b&ll&#f7963b&lc&#f79b3b&lo&#f7a03b&lm&#f8a53a&le %player% &#f8aa3a&lt&#f8af3a&lo &#f8b43a&lS&#f8b93a&lo&#f8be3a&ll&#f8c23a&la&#f8c73a&lc&#f8cc3a&le&#f8d13a&lM&#f8d63a&lC&#f8db3a&l! &r&7(#%joins%) &#EEE1D5★⋆₊⁺⋆'
 
-#Message sent when a player joins. A random message will be selected from the list upon join. If you only want 1 message, remove the other lines.
-#Prefix can be blank
-JoinPrefix: "&8[&#8dff7c+&8] "
-JoinMsg:
-  - "&#8dff7cIs it a bird? Is it a plane? No it's just %player%..."
-  - "&#8dff7cWoah %player% just joined the game!"
-  - "&#8dff7cHey %player%, welcome back!"
-  - "&#8dff7c%player% thanked the bus driver"
-  - "&#8dff7c%player% omg you're back!"
-  - "&#8dff7c%player% is back!"
-  - "&#8dff7cWb, %player%!"
-  - "&#8dff7cWe got %player%'s reboot card"
-  - "&#8dff7cHello? Hello? Is that %player%?"
-  - "&#8dff7cWow! It's %player%!"
-  - "&#8dff7cHmmm? Oh it's %player%!"
-  - "&#8dff7cwag1 %player%, wys g?"
-  - "&#8dff7cyooo o/ %player%"
-  - "&#8dff7chey hey %player%!"
-  - "&#8dff7cwbwbwbwbwbwbwb %player%"
-  - "&#8dff7cInsta-locked %player%"
-  - "&#8dff7cWelcome to the jungle, %player%"
-  - "&#8dff7cAnd then, there was %player%..."
-  - "&#8dff7cI hope you brought food for the rest of us, %player%"
-  - "&#8dff7cLookin' sharp today, %player%!"
-  - "&#8dff7cGm, %player%!"
-  - "&#8dff7c%player% is here!"
-  - "&#8dff7c%player% just slid in"
-  - "&#8dff7cWhere we dropping, %player%?"
-  - "&#8dff7c%player%"
-#Message sent when a player quits. A random message will be selected from the list upon quit. If you only want 1 message, remove the other lines.
-#Prefix can be blank
-QuitPrefix: "&8[&#FF5F5F-&8] "
-QuitMsg:
-  - "&#FF5F5F%player% just left"
-  - "&#FF5F5FWho needs %player% anyways?!"
-  - "&#FF5F5FCya, %player%"
-  - "&#FF5F5FFarewell, %player%"
-  - "&#FF5F5FSayonara, %player%"
-  - "&#FF5F5FBaibai, %player%"
-  - "&#FF5F5FAdios, %player%"
-  - "&#FF5F5F%player% left me all alone D:"
-  - "&#FF5F5FHasta lasagna %player%, don't get any on ya!"
-  - "&#FF5F5FCya later alligator, %player%"
-  - "&#FF5F5FIn a while crocodile, %player%"
-  - "&#FF5F5FSmell you later, %player%"
-  - "&#FF5F5FDon't miss me too much, %player%"
-  - "&#FF5F5FGoodbye %player%"
-  - "&#FF5F5FGOODNIGHT %player%"
-  - "&#FF5F5FGn, %player% :)"
-  - "&#FF5F5FWell, there goes %player%..."
-  - "&#FF5F5FI guess %player% had a bad connection..."
-  - "&#FF5F5F%player% didn't even say bye :("
-  - "&#FF5F5FAre we missing someone? Oh, %player% left"
-  - "&#FF5F5F%player%"
-  - "&#FF5F5FIt was a good time, %player%"
+discord-booster-rewards:
+  - 'give %player% axolotl_bucket 1'
+  - 'crates key give %player% wrapcratekey 1'
+
+# Placeholder %player% can be used to replace with player name
+# Placeholder %joins% can be used to replace with total unique player joins
+# Declare vanish commands here, use -s flag in command to make it silent
+joins:
+  vanish-commands:
+    - premiumvanish
+    - vanish
+    - v
+  join-sound: BLOCK_AMETHYST_BLOCK_HIT
+  join-firsttime:
+    message: "&#EEE1D5⋆⁺₊⋆★ &#f76a3b&lP&#f76f3b&ll&#f7743b&le&#f7793b&la&#f77e3b&ls&#f7833b&le &#f7873b&lw&#f78c3b&le&#f7913b&ll&#f7963b&lc&#f79b3b&lo&#f7a03b&lm&#f8a53a&le %player% &#f8aa3a&lt&#f8af3a&lo &#f8b43a&lS&#f8b93a&lo&#f8be3a&ll&#f8c23a&la&#f8c73a&lc&#f8cc3a&le&#f8d13a&lM&#f8d63a&lC&#f8db3a&l! &r&7(#%joins%) &#EEE1D5★⋆₊⁺⋆"
+    commands:
+      - 'lp user %player% parent add seed'
+      - 'lp user %player% parent add player'
+      - 'tags set rankseed %player%'
+      - 'eco give %player% 1000'
+  join-prefix: "&8[&#8dff7c+&8] "
+  join-messages:
+    - "&#8dff7cIs it a bird? Is it a plane? No it's just %player%..."
+    - "&#8dff7cWoah %player% just joined the game!"
+    - "&#8dff7cHey %player%, welcome back!"
+    - "&#8dff7c%player% thanked the bus driver"
+    - "&#8dff7c%player% omg you're back!"
+    - "&#8dff7c%player% is back!"
+    - "&#8dff7cWb, %player%!"
+    - "&#8dff7cWe got %player%'s reboot card"
+    - "&#8dff7cHello? Hello? Is that %player%?"
+    - "&#8dff7cWow! It's %player%!"
+    - "&#8dff7cHmmm? Oh it's %player%!"
+    - "&#8dff7cyooo o/ %player%"
+    - "&#8dff7chey hey %player%!"
+    - "&#8dff7cwbwbwbwbwbwbwb %player%"
+    - "&#8dff7cInsta-locked %player%"
+    - "&#8dff7cWelcome to the jungle, %player%"
+    - "&#8dff7cAnd then, there was %player%..."
+    - "&#8dff7cI hope you brought food for the rest of us, %player%"
+    - "&#8dff7cLookin' sharp today, %player%!"
+    - "&#8dff7cGm, %player%!"
+    - "&#8dff7c%player% is here!"
+    - "&#8dff7c%player% just slid in"
+    - "&#8dff7cWhere we dropping, %player%?"
+    - "&#8dff7c%player%"
+  # Quit messages
+  quit-sound: BLOCK_AMETHYST_CLUSTER_BREAK
+  quit-prefix: "&8[&#FF5F5F-&8] "
+  quit-messages:
+    - "&#FF5F5F%player% just left"
+    - "&#FF5F5FWho needs %player% anyways?!"
+    - "&#FF5F5FCya, %player%"
+    - "&#FF5F5FFarewell, %player%"
+    - "&#FF5F5FSayonara, %player%"
+    - "&#FF5F5FBaibai, %player%"
+    - "&#FF5F5FAdios, %player%"
+    - "&#FF5F5F%player% left me all alone D:"
+    - "&#FF5F5FHasta lasagna %player%, don't get any on ya!"
+    - "&#FF5F5FCya later alligator, %player%"
+    - "&#FF5F5FIn a while crocodile, %player%"
+    - "&#FF5F5FSmell you later, %player%"
+    - "&#FF5F5FDon't miss me too much, %player%"
+    - "&#FF5F5FGoodbye %player%"
+    - "&#FF5F5FGOODNIGHT %player%"
+    - "&#FF5F5FGn, %player% :)"
+    - "&#FF5F5FWell, there goes %player%..."
+    - "&#FF5F5FI guess %player% had a bad connection..."
+    - "&#FF5F5F%player% didn't even say bye :("
+    - "&#FF5F5FAre we missing someone? Oh, %player% left"
+    - "&#FF5F5F%player%"
+    - "&#FF5F5FIt was a good time, %player%"
+
 # For ranks gui
 Ranks:
   - '&#26fb04&lSeed'
@@ -334,83 +383,3 @@ RanksPrices:
   maple: '&#a8ff92$2,000,000'
   spruce: '&#a8ff92$5,000,000'
   cypress: '&#a8ff92$15,000,000'
-  sequoia: '&#a8ff92$35,000,000'
-  redwood: '&#a8ff92$75,000,000'
-
-# solutilities.prefix.staff
-# solutilities.color.<group>
-Prefixes:
-  Staff: '★ '
-  Colors:
-    owner: '&#9c3dee'
-    admin: '&#ff3535'
-    mod: '&#ff8383'
-    builder: '&#44b3ee'
-    helper: '&#fff172'
-    dev: '&#f09240'
-    content: '&#82ff80'
-    recruit: '&#f1e6dc'
-
-# Reset in hours
-# Amount of decoys that will be prepared. (/blackmarket <num> <player>)
-Blackmarket:
-  Enabled: false
-  Prefix: '&#df4a4a&lM&#ca464b&la&#b5414b&lr&#9f3d4c&lk&#8a384c&le&#75344d&lt &r&8»&#E2E2E2 '
-  ResetMin: 6
-  ResetMax: 8
-  Message: "%prefix%The blackmarket has been reset! &e/blackmarket"
-  BlackMarketDefaultCommand: '[P] warp blackmarket'
-  Return-NPC-Name?:
-    NPC1: 'Touji'
-    NPC2: 'Kosuke'
-    NPC3: 'Suzume'
-
-# Death white list means this mob will drop loot no matter the killer
-# Killer white list means that any mob this killer kills will drop loot
-# If an entity dies from one of the whitelisted causes, it will drop loot
-
-# ALl EntityTypes can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
-# All Causes can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
-DropBlocker:
-  DeathWhitelist:
-    - 'PLAYER'
-    - 'SHULKER'
-    - 'MAGMA_CUBE'
-    - 'ARMOR_STAND'
-    - 'ITEM_FRAME'
-    - 'ITEM_DISPLAY'
-  KillerWhitelist:
-    - 'PLAYER'
-    - 'SHULKER'
-    - 'SHULKER_BULLET'
-    - 'FROG'
-    - 'WITHER'
-    - 'WITHER_SKULL'
-  CauseWhitelist:
-    - 'PROJECTILE'
-    - 'ENTITY_EXPLOSION'
-    - 'WITHER'
-    - 'MAGIC'
-    - 'FIRE_TICK'
-    - 'CUSTOM'
-
-PVGUI:
-  Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt&#f8db3a&ls'
-  MaxVaults: 500
-  OpenVault:
-    Title: '&#f76a3b&lV&#f7813b&la&#f7973b&lu&#f8ae3a&ll&#f8c43a&lt &#f8db3a&l#$vaultnum' # $vaultnum, this placeholder may only be used on OpenVaults
-    Lore: ['&eClick to open vault #$vaultnum','','&eRight click to edit color']
-  LockedVault:
-    Title: '&#f76a3b&lL&#f7753b&lo&#f7813b&lc&#f78c3b&lk&#f7973b&le&#f8a33b&ld &#f8ae3a&lV&#f8b93a&la&#f8c43a&lu&#f8d03a&ll&#f8db3a&lt'
-    Lore: ['&eUnlock vaults by ranking up!']
-
-Referrals:
-  RewardCommands:
-    Referrer:
-      chance_75: 'points give $player 20'
-      chance_20: 'soltarget $player stellar'
-      chance_5: 'crates key give $player solacecratekey 1'
-    Referred:
-      chance_75: 'points give $player 20'
-      chance_20: 'soltarget $player stellar'
-      chance_5: 'crates key give $player solacecratekey 1'

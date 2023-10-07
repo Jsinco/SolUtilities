@@ -3,7 +3,7 @@ package me.jsinco.solutilities.blackmarket
 import me.jsinco.oneannouncer.DiscordSRVUtil
 import me.jsinco.oneannouncer.api.CommandOption
 import me.jsinco.oneannouncer.api.DiscordCommand
-import me.jsinco.solutilities.BulkSaves
+import me.jsinco.solutilities.Saves
 import me.jsinco.solutilities.SolUtilities
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
@@ -27,14 +27,14 @@ class BlackMarketNotifyCommand : DiscordCommand {
             return
         }
 
-        if (BulkSaves.get().get("Blackmarket.NotifyDiscord.$mcUUID") == null) {
-            BulkSaves.get().set("Blackmarket.NotifyDiscord.$mcUUID", true)
+        if (Saves.get().get("Blackmarket.NotifyDiscord.$mcUUID") == null) {
+            Saves.get().set("Blackmarket.NotifyDiscord.$mcUUID", true)
             event.reply("**Market** » You will now receive Blackmarket discord notifications").setEphemeral(true).queue()
         } else {
-            BulkSaves.get().set("Blackmarket.NotifyDiscord.$mcUUID", null)
+            Saves.get().set("Blackmarket.NotifyDiscord.$mcUUID", null)
             event.reply("**Market** » You will no longer receive Blackmarket discord notifications").setEphemeral(true).queue()
         }
-        BulkSaves.save()
+        Saves.save()
     }
 
     override fun options(): List<CommandOption>? {

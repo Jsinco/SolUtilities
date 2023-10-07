@@ -1,6 +1,6 @@
 package me.jsinco.solutilities.utility;
 
-import me.jsinco.solutilities.ColorUtils;
+import me.jsinco.solutilities.SolUtilities;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,16 +13,15 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.*;
 
-import static me.jsinco.solutilities.celestial.celeste.luna.ModelAdmin.pl;
-
 public class GUIActions {
 
-    public static final ItemStack border = createGuiItem(false,new ItemStack(Material.GRAY_STAINED_GLASS_PANE), " ");
+    // TODO: Merge with Util
 
+    private static final SolUtilities plugin = SolUtilities.getPlugin();
 
     public static ItemStack createGuiItem(boolean enchanted, ItemStack itemStack, String name, String... lore) {
         ItemMeta meta = itemStack.getItemMeta();
-        meta.setDisplayName(ColorUtils.colorcode(name));
+        meta.setDisplayName(Util.colorcode(name));
         meta.setLore(Arrays.asList(lore));
         if (enchanted) meta.addEnchant(Enchantment.DIG_SPEED, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
@@ -36,8 +35,8 @@ public class GUIActions {
         ItemStack item = new ItemStack(m);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(ColorUtils.colorcode(name));
-        meta.setLore(Arrays.asList(ColorUtils.colorArray(lore)));
+        meta.setDisplayName(Util.colorcode(name));
+        meta.setLore(Arrays.asList(Util.colorArray(lore)));
 
         if (glint) {
             meta.addEnchant(Enchantment.LUCK, 1, true);
@@ -45,7 +44,7 @@ public class GUIActions {
         }
 
         if (key != null) {
-            meta.getPersistentDataContainer().set(new NamespacedKey(pl, key), PersistentDataType.SHORT, (short) 1);
+            meta.getPersistentDataContainer().set(new NamespacedKey(plugin, key), PersistentDataType.SHORT, (short) 1);
         }
 
         if (cMdlData != 0) {
@@ -55,6 +54,7 @@ public class GUIActions {
         item.setItemMeta(meta);
         return item;
     }
+
     public static ItemStack getSkull(String UUID){ //method for creating a player head from a UUID
         ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) playerHead.getItemMeta();
@@ -62,9 +62,5 @@ public class GUIActions {
         playerHead.setItemMeta(meta);
         return playerHead;
     }
-
-
-
-
 }
 

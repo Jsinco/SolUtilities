@@ -21,7 +21,8 @@ class Listeners(val plugin: SolUtilities) : Listener {
         event.joinMessage = ("${plugin.config.getString("joins.join-prefix")}${Joins.JOIN_MSGS.random()}")
         if (!event.player.hasPlayedBefore()) {
             event.joinMessage = plugin.config.getString("joins.join-firsttime.message")!!
-
+            Saves.get().set("TotalJoins", Saves.get().getInt("TotalJoins") + 1)
+            Saves.save()
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, {
                 for (command in plugin.config.getStringList("joins.join-firsttime.commands")) {
                     plugin.server.dispatchCommand(plugin.server.consoleSender, command.replace("%player%", event.player.name))

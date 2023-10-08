@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b99e8ecb-3829-4dc3-89e8-0a200b9417e1" name="Changes" comment="updates">
+    <list default="true" id="b99e8ecb-3829-4dc3-89e8-0a200b9417e1" name="Changes" comment="fix totaljoins counter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +112,7 @@
       <workItem from="1696623226404" duration="17276000" />
       <workItem from="1696702781295" duration="6137000" />
       <workItem from="1696720763726" duration="141000" />
-      <workItem from="1696726131368" duration="733000" />
+      <workItem from="1696726131368" duration="2056000" />
     </task>
     <task id="LOCAL-00001" summary="redoing a lot">
       <option name="closed" value="true" />
@@ -202,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696726176155</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix totaljoins counter">
+      <option name="closed" value="true" />
+      <created>1696730102459</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696730102459</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +222,9 @@
     <MESSAGE value="help me" />
     <MESSAGE value="minor edits" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="fix totaljoins counter" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix totaljoins counter" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

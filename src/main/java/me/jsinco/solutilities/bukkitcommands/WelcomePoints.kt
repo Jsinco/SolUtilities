@@ -23,14 +23,14 @@ class WelcomePoints(val plugin: SolUtilities) : Listener, BukkitCommand(
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean { // Don't judge my code
         if (args.isEmpty()) {
             val player = sender as? Player ?: return true
-            player.sendMessage(colorcode(Util.prefix + "You have &a" + get().getInt("Welcomes." + player.uniqueId) + " &#E2E2E2welcome points!"))
+            player.sendMessage(colorcode(Util.prefix + "You have &a" + String.format("%,d",get().getInt("Welcomes." + player.uniqueId)) + " &#E2E2E2welcome points!"))
         } else if (args[0] == "open" && sender.hasPermission("solutilities.admin")) {
             if (args.size < 2) return true
             openWelcomes(Bukkit.getPlayerExact(args[1]) ?: return true, 400L)
             sender.sendMessage("${Util.prefix}Opened welcomes for ${args[1]} for 400 ticks")
         } else {
             Bukkit.getOfflinePlayer(args[0]).let {
-                sender.sendMessage(colorcode(Util.prefix + it.name + " has &a" + get().getInt("Welcomes." + it.uniqueId) + " &#E2E2E2welcome points!"))
+                sender.sendMessage(colorcode(Util.prefix + it.name + " has &a" + String.format("%,d",get().getInt("Welcomes." + it.uniqueId)) + " &#E2E2E2welcome points!"))
             }
         }
         return true
@@ -89,7 +89,7 @@ class WelcomePoints(val plugin: SolUtilities) : Listener, BukkitCommand(
         get()["Welcomes." + event.player.uniqueId] = get().getInt("Welcomes." + event.player.uniqueId) + 1
         save()
 
-        event.player.sendMessage(ChatMessageType.ACTION_BAR, TextComponent("§a+1 Welcome point §7(Total: " + get().getInt("Welcomes." + event.player.uniqueId) + ")"))
+        event.player.sendMessage(ChatMessageType.ACTION_BAR, TextComponent("§a+1 Welcome point §7(Total: " + String.format("%,d",get().getInt("Welcomes." + event.player.uniqueId)) + ")"))
         recentlyWelcomed.add(event.player.uniqueId)
     }
 }

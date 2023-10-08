@@ -86,7 +86,7 @@ class Vouchers : SubCommand, Listener {
             }
             3 -> {
                 if (args[1] == "tag") {
-                    return mutableListOf("<tagID>", "<name>")
+                    return mutableListOf("<tagID>")
                 } else if (args[1] == "particle") {
                     val list: MutableList<String> = ArrayList(Util.MATERIALS_STRING)
                     return list
@@ -95,6 +95,8 @@ class Vouchers : SubCommand, Listener {
             4 -> {
                 if (args[1] == "particle") {
                     return mutableListOf("particle.<node>")
+                } else if (args[1] == "tag") {
+                    return mutableListOf("<name>")
                 }
             }
             5 -> {

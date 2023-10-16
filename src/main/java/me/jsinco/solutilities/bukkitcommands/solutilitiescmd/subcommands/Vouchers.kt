@@ -144,10 +144,22 @@ class Vouchers : SubCommand, Listener {
 
         when (dataType) {
             "tagid" -> {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set eternaltags.tag.$data true")
+                if (!player.hasPermission("eternaltags.tag.$data")) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set eternaltags.tag.$data true")
+                } else {
+                    player.sendMessage(colorcode("${Util.prefix}You already have this tag!"))
+                    QUEUE.remove(player.uniqueId)
+                    return
+                }
             }
             "particleid" -> {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set particle.$data true")
+                if (!player.hasPermission("particle.$data")) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user ${player.name} permission set particle.$data true")
+                } else {
+                    player.sendMessage(colorcode("${Util.prefix}You already have this particle!"))
+                    QUEUE.remove(player.uniqueId)
+                    return
+                }
             }
         }
         event.player.sendMessage(colorcode("${Util.prefix}You have redeemed a ${meta.displayName}&#E2E2E2 voucher!"))

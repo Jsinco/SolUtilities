@@ -50,7 +50,7 @@ public class CommandMapper {
                 for (String alias : bukkitCommand.getAliases()) {
                     Bukkit.getCommandMap().getKnownCommands().remove(alias);
                 }
-                Bukkit.getLogger().log(java.util.logging.Level.INFO, "Unregistered command: " + bukkitCommand.getName());
+                // Bukkit.getLogger().log(java.util.logging.Level.INFO, "Unregistered command: " + bukkitCommand.getName());
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();

@@ -27,6 +27,7 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["discordreward"] = DiscordRewardCommand()
         subCommands["checkpermission"] = CheckPermissionCommand()
         subCommands["fallingblock"] = FallingBlockCommand()
+        subCommands["enchant"] = EnchantCommand()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {

@@ -28,6 +28,7 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["checkpermission"] = CheckPermissionCommand()
         subCommands["fallingblock"] = FallingBlockCommand()
         subCommands["enchant"] = EnchantCommand()
+        subCommands["killradius"] = KillRadiusCommand()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {

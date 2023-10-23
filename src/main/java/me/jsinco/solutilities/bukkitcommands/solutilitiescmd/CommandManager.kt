@@ -29,6 +29,7 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["fallingblock"] = FallingBlockCommand()
         subCommands["enchant"] = EnchantCommand()
         subCommands["killradius"] = KillRadiusCommand()
+        subCommands["copyitem"] = CopyItem()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {

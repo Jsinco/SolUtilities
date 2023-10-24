@@ -6,6 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.BookMeta
 import java.util.*
@@ -229,5 +230,13 @@ object Util {
             returnColor = colorChar.toString() + "b"
         }
         return returnColor
+    }
+
+    @JvmStatic
+    fun checkIfVanished(player: Player): Boolean {
+        if (player.hasMetadata("vanished")) {
+            return true
+        }
+        return false
     }
 }

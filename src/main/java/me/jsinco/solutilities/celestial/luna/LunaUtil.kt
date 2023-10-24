@@ -34,10 +34,11 @@ object LunaUtil {
         }
         if (!precondition) return null
 
-        return if (item.type == Material.PAPER) {
-            "Helmet"
-        } else {
-            item.type.toString().substring(item.type.toString().lastIndexOf("_") + 1).lowercase()
+
+        return when (item.type) {
+            Material.PAPER -> "Helmet"
+            Material.BLAZE_ROD -> "Wand"
+            else -> item.type.toString().substring(item.type.toString().lastIndexOf("_") + 1).lowercase()
         }
     }
 
@@ -68,3 +69,13 @@ object LunaUtil {
         return item
     }
 }
+
+/*
+        return if (item.type == Material.PAPER) {
+            "Helmet"
+        }  else if (item.type == Material.BLAZE_ROD) {
+            "Wand"
+        } else {
+            item.type.toString().substring(item.type.toString().lastIndexOf("_") + 1).lowercase()
+        }
+ */

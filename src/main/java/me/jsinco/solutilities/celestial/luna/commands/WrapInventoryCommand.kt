@@ -21,7 +21,7 @@ class WrapInventoryCommand : SubCommand {
             .trim()
         for (item in player.inventory.contents) {
             if (item != null && item.hasItemMeta()) {
-                player.inventory.addItem(LunaUtil.createItemAsWrap(item, name))
+                LunaUtil.createItemAsWrap(item, name)
             }
         }
     }

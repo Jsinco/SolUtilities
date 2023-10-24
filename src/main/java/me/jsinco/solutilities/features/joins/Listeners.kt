@@ -14,9 +14,10 @@ import org.bukkit.metadata.FixedMetadataValue
 
 class Listeners(val plugin: SolUtilities) : Listener {
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val sound: Sound = Sound.valueOf(plugin.config.getString("joins.join-sound")!!)
+        if (Util.checkIfVanished(event.player)) return
 
         event.joinMessage = ("${plugin.config.getString("joins.join-prefix")}${Joins.JOIN_MSGS.random()}")
         if (!event.player.hasPlayedBefore()) {
@@ -38,10 +39,10 @@ class Listeners(val plugin: SolUtilities) : Listener {
         Util.playServerSound(sound, 0.5f, 1f)
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     fun onPlayerQuit(event: PlayerQuitEvent) {
         val sound: Sound = Sound.valueOf(plugin.config.getString("joins.quit-sound")!!)
-
+        if (Util.checkIfVanished(event.player)) return
         event.quitMessage = Util.colorcode("${plugin.config.getString("joins.quit-prefix")}${Joins.QUIT_MSGS.random()}".replace("%player%", event.player.name))
         Util.playServerSound(sound, 0.5f, 1f)
     }

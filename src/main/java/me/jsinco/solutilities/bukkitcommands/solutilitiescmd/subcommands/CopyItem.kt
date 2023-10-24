@@ -28,9 +28,12 @@ class CopyItem : SubCommand {
         when (args[1].lowercase()) {
             "pull" -> {
                 val itemName = args[2]
-                val item = copiedItems.getItemStack(itemName)
+                val item = copiedItems.getItemStack("items.$itemName")
                 if (item != null) {
                     sender.inventory.addItem(item)
+                    sender.sendMessage("${Util.prefix}Successfully pulled item from file.")
+                } else {
+                    sender.sendMessage("${Util.prefix}Item not found.")
                 }
             }
 

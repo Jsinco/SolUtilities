@@ -29,7 +29,7 @@ class JoinsCommand(val plugin: SolUtilities) : BukkitCommand(
         when (arg.lowercase()) {
             "join" -> {
                 Bukkit.broadcastMessage(Util.colorcode("${plugin.config.getString("joins.join-prefix")}${Joins.JOIN_MSGS.random()}".replace("%player%", player.name)))
-                val sound = Sound.valueOf(plugin.config.getString("joins.quit-sound")!!)
+                val sound = Sound.valueOf(plugin.config.getString("joins.join-sound")!!)
                 Util.playServerSound(sound, 0.5f, 1f)
             }
 

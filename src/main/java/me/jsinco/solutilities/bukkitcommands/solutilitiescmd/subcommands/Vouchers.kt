@@ -46,7 +46,7 @@ class Vouchers : SubCommand, Listener {
                 data = args[2].lowercase()
                 name = args.joinToString(" ")
                     .replace("${args[0]} ${args[1]} ${args[2]} ", "")
-                    .trim()
+                    .trim() + " &7Tag"
             }
             "particle" -> {
                 dataType = "particleid"

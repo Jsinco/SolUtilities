@@ -34,10 +34,17 @@ object LunaUtil {
         }
         if (!precondition) return null
 
-        return if (item.type == Material.PAPER) {
-            "Helmet"
-        } else {
-            item.type.toString().substring(item.type.toString().lastIndexOf("_") + 1).lowercase()
+        return when (item.type) {
+            Material.PAPER -> {
+                "helmet"
+            }
+            Material.BLAZE_ROD -> {
+                "wand"
+            }
+
+            else -> {
+                item.type.toString().substring(item.type.toString().lastIndexOf("_") + 1).lowercase()
+            }
         }
     }
 
@@ -45,7 +52,7 @@ object LunaUtil {
         val meta: ItemMeta = item.itemMeta!!
 
         val data = meta.persistentDataContainer
-        val type = getItemType(item) ?: return item
+        val type = getItemType(item)?.uppercase() ?: return item
 
 
         data.set(NamespacedKey(plugin, "type"), PersistentDataType.STRING, type)

@@ -84,10 +84,11 @@ class WelcomePoints(val plugin: SolUtilities) : Listener, BukkitCommand(
         if (!welcomed) return
         val player = event.player
         if (get().getConfigurationSection("Welcomes") == null) get().createSection("Welcomes")
-        if (!get().contains("Welcomes.${player.uniqueId}")) {
+        if (get().get("Welcomes.${player.uniqueId}") == null) {
             get().set("Welcomes.${player.uniqueId}", 1)
+        } else {
+            get().set("Welcomes.${player.uniqueId}", get().getInt("Welcomes." + event.player.uniqueId) + 1)
         }
-        get().set("Welcomes.${player.uniqueId}", get().getInt("Welcomes." + event.player.uniqueId) + 1)
         save()
 
         player.sendMessage(ChatMessageType.ACTION_BAR, TextComponent("§a+1 Welcome point §7(Total: " + String.format("%,d",get().getInt("Welcomes." + event.player.uniqueId)) + ")"))

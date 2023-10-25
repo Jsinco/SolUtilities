@@ -18,7 +18,7 @@ class WrapCommand : SubCommand {
             return
         }
 
-        val name = args.joinToString(" ").replace(args[0], "").strip()
+        val name = args.joinToString(" ").replace(args[0], "").trim()
 
         player.sendMessage(Util.colorcode("${Util.prefix}Wrapping item as $name"))
         val item = player.inventory.itemInMainHand

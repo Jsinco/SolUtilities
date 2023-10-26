@@ -19,8 +19,8 @@ class QuickWrapCommand : SubCommand {
             return
         }
 
-        val rgb1 = args[1]
-        val rgb2 = args[2]
+        val rgb1 = args[1].replace("#", "").trim()
+        val rgb2 = args[2].replace("#", "").trim()
         var name = args.joinToString(" ")
             .replace(args[0], "")
             .replace(args[1], "")

@@ -43,6 +43,7 @@ public class Referrals implements CommandExecutor, Listener {
                 player.sendMessage(tryReferralRewarding(referrer, player, true));
             }
         } else {
+            if (strings.length != 1) return false;
             Player referral = Bukkit.getPlayerExact(strings[0]);
             if (referral == null) return false;
             player.sendMessage(tryReferralRewarding(player, referral, false));

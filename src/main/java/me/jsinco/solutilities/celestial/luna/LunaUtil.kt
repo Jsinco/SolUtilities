@@ -52,7 +52,7 @@ object LunaUtil {
         val meta: ItemMeta = item.itemMeta!!
 
         val data = meta.persistentDataContainer
-        val type = getItemType(item)?.uppercase() ?: return item
+        val type = getItemType(item)?.uppercase()?.replace("wand", "blaze_rod") ?: return item
 
 
         data.set(NamespacedKey(plugin, "type"), PersistentDataType.STRING, type)

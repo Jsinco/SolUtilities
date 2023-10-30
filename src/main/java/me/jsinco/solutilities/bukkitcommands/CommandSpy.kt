@@ -14,32 +14,29 @@ class CommandSpy : BukkitCommand(
 ), Listener {
 
     companion object {
-        val commandSpyList: MutableList<Player> = mutableListOf()
+        val commandSpyList: MutableMap<Player, String> = mutableMapOf()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {
         if (!Util.checkPermission(sender, "solutilities.command.commandspy")) return true
+        val player = sender as? Player ?: return false
         if (args.isEmpty()) {
-            val player = sender as? Player ?: return false
-            setSpy(player)
+            setSpy(player, "ALL", false)
         } else {
-            Bukkit.getPlayer(args[0]) ?: return false
-            val target = Bukkit.getPlayer(args[0])
-            if (target != null) {
-                setSpy(target)
-            }
-            sender.sendMessage(Util.colorcode("${Util.prefix}Command spy toggled for ${target?.name}"))
+            val target = Bukkit.getPlayerExact(args[0]) ?: return false
+            setSpy(player, target.uniqueId.toString(), true)
+            sender.sendMessage(Util.colorcode("${Util.prefix}Watching commands for only &d${target.name}"))
         }
         return true
     }
 
 
-    private fun setSpy(player: Player) {
-        val switch: String = if (commandSpyList.contains(player)) {
+    private fun setSpy(player: Player, target: String, boolean: Boolean) {
+        val switch: String = if (commandSpyList.contains(player) && !boolean) {
             commandSpyList.remove(player)
             "&cdisabled"
         } else {
-            commandSpyList.add(player)
+            commandSpyList.put(player, target)
             "&aenabled"
         }
         player.sendMessage(Util.colorcode("${Util.prefix}Command spy $switch"))
@@ -47,8 +44,11 @@ class CommandSpy : BukkitCommand(
 
     @EventHandler
     fun onCommandPreProcess(event: PlayerCommandPreprocessEvent) {
-        for (player in commandSpyList) {
-            if (player != event.player) {
+        for (player in commandSpyList.keys) {
+            if (player == event.player) continue
+            if (commandSpyList[player] == "ALL") {
+                player.sendMessage(Util.colorcode("${Util.prefix}&d${event.player.name} &#E2E2E2executed &d${event.message}"))
+            } else if (commandSpyList[player] == event.player.uniqueId.toString()) {
                 player.sendMessage(Util.colorcode("${Util.prefix}&d${event.player.name} &#E2E2E2executed &d${event.message}"))
             }
         }

@@ -57,7 +57,7 @@ public class WrapsEventHandler implements Listener {
             }
         }
 
-        double armorDMG = event.getDamage() / 2; // I'm debugging, I don't know the rate at which normal armor takes dura dmg
+        double armorDMG = event.getDamage() / 4.8; // I'm debugging, I don't know the rate at which normal armor takes dura dmg
         int currentDura = meta.getPersistentDataContainer().get(new NamespacedKey(plugin,"LunaCosmeticHelmet"), PersistentDataType.INTEGER); // get the current dura
         if (currentDura - armorDMG <= 0) { // if the armor is less than or equal to 0, break the armor
             player.getInventory().setHelmet(null);

@@ -32,6 +32,7 @@ class CommandManager(val plugin: SolUtilities) : BukkitCommand(
         subCommands["copyitem"] = CopyItem()
         subCommands["pdata"] = PlayerPersistentDataCommand()
         subCommands["itemflag"] = ItemFlagCommand()
+        subCommands["health"] = PlayerHealthsCommand()
     }
 
     override fun execute(sender: CommandSender, commandLabel: String, args: Array<out String>): Boolean {

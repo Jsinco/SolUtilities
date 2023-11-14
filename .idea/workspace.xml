@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b99e8ecb-3829-4dc3-89e8-0a200b9417e1" name="Changes" comment="push work">
+    <list default="true" id="b99e8ecb-3829-4dc3-89e8-0a200b9417e1" name="Changes" comment="wraps event handling changes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/subcommands/PlayerHealthsCommand.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/features/ItemLocker.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandSpy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/CommandSpy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/SolUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/CommandManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/jsinco/solutilities/bukkitcommands/solutilitiescmd/CommandManager.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -36,9 +42,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Object" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -60,6 +66,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -72,15 +81,18 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Bukkit-Plugins/ExtraCancelEvent&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Bukkit-Plugins/mcMMO&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -147,6 +159,15 @@
       <workItem from="1698288756824" duration="1383000" />
       <workItem from="1698352914103" duration="1598000" />
       <workItem from="1698496276299" duration="2204000" />
+      <workItem from="1698617341226" duration="1162000" />
+      <workItem from="1698790059913" duration="963000" />
+      <workItem from="1698880726322" duration="502000" />
+      <workItem from="1699133302119" duration="3653000" />
+      <workItem from="1699203441288" duration="1319000" />
+      <workItem from="1699627765044" duration="2212000" />
+      <workItem from="1699801340160" duration="3882000" />
+      <workItem from="1699926738096" duration="2581000" />
+      <workItem from="1699934568732" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="redoing a lot">
       <option name="closed" value="true" />
@@ -316,7 +337,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698297955500</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="push wrap changes">
+      <option name="closed" value="true" />
+      <created>1698638827466</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1698638827466</updated>
+    </task>
+    <task id="LOCAL-00023" summary="wraps event handling changes">
+      <option name="closed" value="true" />
+      <created>1699249697386</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699249697386</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +375,13 @@
     <MESSAGE value="fix welcomes" />
     <MESSAGE value="referal command check args" />
     <MESSAGE value="push work" />
-    <option name="LAST_COMMIT_MESSAGE" value="push work" />
+    <MESSAGE value="push wrap changes" />
+    <MESSAGE value="wraps event handling changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="wraps event handling changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>

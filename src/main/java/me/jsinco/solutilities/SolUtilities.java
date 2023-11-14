@@ -22,10 +22,7 @@ import me.jsinco.solutilities.celestial.luna.SelectGUI;
 import me.jsinco.solutilities.celestial.luna.WrapGUI;
 import me.jsinco.solutilities.celestial.luna.WrapsEventHandler;
 import me.jsinco.solutilities.celestial.luna.commands.LunaCommandManager;
-import me.jsinco.solutilities.features.InvisibleFrames;
-import me.jsinco.solutilities.features.LegacySolcoins;
-import me.jsinco.solutilities.features.PvGui;
-import me.jsinco.solutilities.features.Referrals;
+import me.jsinco.solutilities.features.*;
 import me.jsinco.solutilities.features.furniture.Furniture;
 import me.jsinco.solutilities.features.joins.JoinsCommand;
 import me.jsinco.solutilities.features.joins.Listeners;
@@ -77,6 +74,7 @@ public final class SolUtilities extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MarketGUI(), this);
         getServer().getPluginManager().registerEvents(new GeneralEvents(this), this);
         getServer().getPluginManager().registerEvents(new CommandSpy(), this);
+        getServer().getPluginManager().registerEvents(new ItemLocker(this), this);
 
         CommandMapper.registerBukkitCommand("ping", new PingCommand());
         CommandMapper.registerBukkitCommand("ls", new BuyShopAlias());
@@ -92,6 +90,7 @@ public final class SolUtilities extends JavaPlugin {
         CommandMapper.registerBukkitCommand("aries", new OpenAriesGUI()); // Celestial Aries
         CommandMapper.registerBukkitCommand("blackmarket", new MarketCommand(this));
         CommandMapper.registerBukkitCommand("commandspy", new CommandSpy());
+        CommandMapper.registerBukkitCommand("itemlock", new ItemLocker(this));
 
         DiscordCommandManager.registerGlobalCommand(new BlackMarketNotifyCommand());
 
